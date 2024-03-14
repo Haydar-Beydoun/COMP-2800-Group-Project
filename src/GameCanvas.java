@@ -31,7 +31,23 @@ public class GameCanvas extends Canvas implements Runnable {
 
     @Override
     public void run() {
+        double drawInterval = 1_000_000_000 / UPS;
+        double delta = 0;
+        long prevTime = System.nanoTime();
+        long currentTime;
 
+        while(thread != null){
+            currentTime = System.nanoTime();
+            delta += (currentTime - prevTime) / drawInterval;
+            prevTime = currentTime;
+
+            if(delta >= 1){
+                update();
+                delta--;
+            }
+
+            render();
+        }
     }
 
     public void update(){
