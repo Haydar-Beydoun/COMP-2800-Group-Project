@@ -8,12 +8,12 @@ import java.awt.*;
  * @author Haydar
  */
 public class Tile {
-    int x;
-    int y;
-    int width;
-    int height;
-    Rectangle hitBox;
-    Type type;
+    private int x;
+    private int y;
+    private int width;
+    private int height;
+    private Rectangle hitBox;
+    private Type type;
 
     public enum Type{
         WALL,
@@ -65,5 +65,17 @@ public class Tile {
 
     public int getY() {
         return y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public Type getType() {
+        return type;
     }
 }

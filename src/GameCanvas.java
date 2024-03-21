@@ -28,6 +28,7 @@ public class GameCanvas extends Canvas implements Runnable {
 
             thread = new Thread(this, "canvas thread");
             thread.start();
+
         }
     }
 
@@ -49,6 +50,7 @@ public class GameCanvas extends Canvas implements Runnable {
             }
 
             render();
+
         }
     }
 
@@ -60,6 +62,7 @@ public class GameCanvas extends Canvas implements Runnable {
         Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
         BufferedImage image = loader.getBackground();
         g2d.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+
 
         player.draw(g2d);
 

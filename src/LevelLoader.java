@@ -19,7 +19,8 @@ public class LevelLoader {
     private int numTiles;
     private String backgroundPath, pixelMapPath;
     private HashMap<Integer, Image> tileImages = new HashMap<>();       // <hex value pertaining to colour on pixel map, corresponding image>
-    private HashMap<Integer, Tile.Type> tileTypes = new HashMap<>();       // <hex value pertaining to colour on pixel map, corresponding tile type>
+    private HashMap<Integer, Tile.Type> tileTypes = new HashMap<>();    // <hex value pertaining to colour on pixel map, corresponding tile type>
+
 
 
 

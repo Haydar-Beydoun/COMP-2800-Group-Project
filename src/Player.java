@@ -14,6 +14,16 @@ public class Player extends Entity{
     private int[] downBinds = {KeyEvent.VK_DOWN, KeyEvent.VK_S};
     private int[] leftBinds = {KeyEvent.VK_LEFT, KeyEvent.VK_A};
     private int[] rightBinds = {KeyEvent.VK_RIGHT, KeyEvent.VK_D};
+    public enum State{
+        RUNNING,
+        FALLING,
+        JUMPING,
+        CROUCHING,
+        IFRAME
+    }
+    LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
+    Level level = loader.getLevel();
+    private CollisionChecker collisionChecker = new CollisionChecker(level, this, null);
     private Keyboard keyboard = GameCanvas.keyboard;
 
     /**
@@ -33,6 +43,14 @@ public class Player extends Entity{
     public void update(){
         collisionChecker.checkCollision();
         move();
+    }
+
+    public void crouch(int offset){
+        height -= offset;
+    }
+
+    public void jump(){
+
     }
 
     private void move(){
