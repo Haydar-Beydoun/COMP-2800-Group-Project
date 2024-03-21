@@ -10,13 +10,16 @@ import java.awt.image.BufferedImage;
 
 public abstract class Entity {
     int health;
-    int x;
-    int y;
+    double x;
+    double y;
+    double vx;
+    double vy;
     int width;
     int height;
     int speed;
     BufferedImage sprite;
-    Rectangle hitBox;
+    int leftHitBoxOffset = 0;
+    int rightHitBoxOffsert = 0;
 
     /**
      * Constructor of the entity
@@ -28,14 +31,13 @@ public abstract class Entity {
      * @param speed speed of the entity.
      *
      */
-    public Entity(int x,int y, int width,int height, int health, int speed){
+    public Entity(double x,double y, int width,int height, int health, int speed){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.health = health;
         this.speed = speed;
-        hitBox = new Rectangle(x,y,width,height);
     }
 
     /**
@@ -54,21 +56,21 @@ public abstract class Entity {
      */
     public void draw(Graphics2D g2d){
         g2d.setColor(Color.BLUE);
-        g2d.fillRect(x,y,width,height);
+        g2d.fillRect((int) x,(int) y,width,height);
 
         //Drawing hitbox
-        g2d.drawRect(x, y, width, height);
+        g2d.drawRect((int) x,(int) y, width, height);
     }
 
     public Rectangle getHitBox(){
-        return new Rectangle(x, y, width, height);
+        return new Rectangle((int) x, (int) y, width, height);
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 

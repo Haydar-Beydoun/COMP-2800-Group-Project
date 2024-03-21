@@ -110,6 +110,9 @@ public class LevelLoader {
 
                     tileMap[x][y] = new Tile(x * tileWidth, y * tileHeight, tileWidth, tileHeight, tileTypes.get(colour));
                 }
+                else{
+                    tileMap[x][y] = new Tile(x * tileWidth, y * tileHeight, tileWidth, tileHeight, Tile.Type.PASSABLE);
+                }
             }
         }
     }

@@ -15,6 +15,10 @@ public class Level {
         this.tilemap = tilemap;
     }
 
+    public Tile[][] getTilemap() {
+        return tilemap;
+    }
+
     public void drawLevel(){
 
     }

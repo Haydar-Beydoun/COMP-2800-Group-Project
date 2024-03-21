@@ -11,6 +11,8 @@ public class GameCanvas extends Canvas implements Runnable {
     public static final int HEIGHT = 800;
     public static Keyboard keyboard = new Keyboard();
     private Player player = new Player(WIDTH /2, HEIGHT /2, 20, 20,-1, 5);
+    LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
+    Level level = loader.getLevel();
 
 
     public GameCanvas(){
@@ -54,13 +56,8 @@ public class GameCanvas extends Canvas implements Runnable {
         player.update();
     }
 
-    LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
     public void render(){
         Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
-
-        g2d.setColor(Color.WHITE);
-        g2d.fillRect(0, 0, WIDTH, HEIGHT);
-
         BufferedImage image = loader.getBackground();
         g2d.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
 

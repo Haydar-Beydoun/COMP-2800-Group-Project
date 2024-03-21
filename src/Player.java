@@ -31,20 +31,21 @@ public class Player extends Entity{
     }
 
     public void update(){
+        collisionChecker.checkCollision();
         move();
     }
 
     private void move(){
-        if(keyboard.isPressed(upBinds)){
+        if(keyboard.isPressed(upBinds) && !collisionChecker.top){
             y -= speed;
         }
-        if(keyboard.isPressed(downBinds)){
+        if(keyboard.isPressed(downBinds) && !collisionChecker.bottom){
             y += speed;
         }
-        if(keyboard.isPressed(leftBinds)){
+        if(keyboard.isPressed(leftBinds) && !collisionChecker.left){
             x -= speed;
         }
-        if(keyboard.isPressed(rightBinds)){
+        if(keyboard.isPressed(rightBinds) && !collisionChecker.right){
             x += speed;
         }
     }
