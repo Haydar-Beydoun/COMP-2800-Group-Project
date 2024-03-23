@@ -1,6 +1,4 @@
-import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 
 
 /**
@@ -10,20 +8,28 @@ import java.awt.image.BufferedImage;
  * @author Haydar
  */
 public class Player extends Entity{
-    private int[] upBinds = {KeyEvent.VK_UP, KeyEvent.VK_W};
-    private int[] downBinds = {KeyEvent.VK_DOWN, KeyEvent.VK_S};
+    // Binds
+    private int[] jumpBinds = {KeyEvent.VK_SPACE, KeyEvent.VK_W, KeyEvent.VK_UP};
     private int[] leftBinds = {KeyEvent.VK_LEFT, KeyEvent.VK_A};
     private int[] rightBinds = {KeyEvent.VK_RIGHT, KeyEvent.VK_D};
-    public enum State{
-        RUNNING,
-        FALLING,
-        JUMPING,
-        CROUCHING,
-        IFRAME
-    }
-    LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
+
+    // States
+    private boolean falling = false;
+    private boolean jumping = false;
+    private boolean inAir   = true;
+    private boolean moving  = false;
+    private boolean left    = false;
+    private boolean right   = false;
+
+    // Vertical velocities
+    private double gravity = 0.2;
+    private double jumpSpeed = -7.5;
+    private double topCollisionFallSpeed = 1;
+
+    // Utilities
+    LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt"); // FIX ME: move me somewhere better
     Level level = loader.getLevel();
-    private CollisionChecker collisionChecker = new CollisionChecker(level, this, null);
+    private CollisionChecker collisionChecker = new CollisionChecker(this, level);
     private Keyboard keyboard = GameCanvas.keyboard;
 
     /**
@@ -31,40 +37,78 @@ public class Player extends Entity{
      * @see Entity
      */
     public Player(int x,int y, int width,int height, int health, int speed){
-        super(x, y, 20, 20, health, speed);
+        super(x, y, width, height, health, speed);
         initPlayer();
     }
 
-    private void initPlayer(){
-        this.x = GameCanvas.WIDTH / 2;
+    private void initPlayer(){//FIX MOI
+        this.x = 200;
         this.y = GameCanvas.HEIGHT / 2;
     }
 
     public void update(){
-        collisionChecker.checkCollision();
         move();
     }
 
-    public void crouch(int offset){
-        height -= offset;
-    }
-
     public void jump(){
-
+        if(inAir) {
+            return;
+        }
+        else{
+            vy = jumpSpeed;
+            inAir = true;
+        }
     }
 
     private void move(){
-        if(keyboard.isPressed(upBinds) && !collisionChecker.top){
-            y -= speed;
+        vx = 0;
+
+        System.out.println(inAir);
+        if(keyboard.isPressed(leftBinds)){
+            vx = -speed;
         }
-        if(keyboard.isPressed(downBinds) && !collisionChecker.bottom){
-            y += speed;
+        if(keyboard.isPressed(rightBinds)){
+            vx = speed;
         }
-        if(keyboard.isPressed(leftBinds) && !collisionChecker.left){
-            x -= speed;
+        if(keyboard.isPressed(jumpBinds)){
+            jump();
         }
-        if(keyboard.isPressed(rightBinds) && !collisionChecker.right){
-            x += speed;
+
+        // Update x is placed within to prevent both x and y correction at the same time
+        if(inAir){
+            if(!collisionChecker.isColliding(x, y + vy, width, height)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
+                vy += gravity;
+                y += vy;
+                updateX();
+            }
+            else{
+                y = collisionChecker.getCollidingTileY(getHitBox(), vy);
+                if(vy > 0){
+                    inAir = false;
+                    vy = 0;
+                }
+                else{
+                    vy = topCollisionFallSpeed;
+                }
+                updateX();
+            }
+        }
+        else{
+            if(!collisionChecker.isBottomColliding(x, y, width, height)){
+                inAir = true;
+            }
+            updateX();
+        }
+
+
+    }
+
+    private void updateX(){
+        if(!collisionChecker.isColliding(x + vx, y , width, height)) {   // Moving in the x direction//FIX ME: take in hitbox dims instead
+            x += vx;
+        }
+        else{
+            x = collisionChecker.getCollidingTileX(getHitBox(), vx);
         }
     }
 

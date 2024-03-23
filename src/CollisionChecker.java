@@ -1,83 +1,94 @@
-import java.awt.*;
-import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 public class CollisionChecker {
-    Tile[][] tilemap;
-    Entity[] enitities;
-    Player player;
-    public boolean bottom = false, top = false, right = false, left = false;
+    private Tile[][] tilemap;
+    private Entity entity;
 
-
-
-    public CollisionChecker(Level level, Player player, Entity[] entity){
+    public CollisionChecker(Entity entity, Level level){
         this.tilemap = level.getTilemap();
-        this.player = player;
+        this.entity = entity;
     }
 
-    public boolean checkCollision(){
-        for(int i=0; i < tilemap.length;i++){
-            for(int j=0;j < tilemap[i].length;j++){
-                Tile tile = tilemap[i][j];
-                bottom = false;
-                top = false;
-                right = false;
-                left = false;
+    //FIX ME: CHECK FOR COLLISION WITH EDGE OF THE MAP TO PREVENT OUT OF BOUNDS EXCEPTIONS
+    public boolean isColliding(double x, double y, double width, double height){
+        double leftX = x;
+        double rightX=  x + width;
+        double bottomY =  (y + height);
+        double topY = y;
 
-                if(!passable(tile) && player.getHitBox().intersects(tile.getHitBox())) {
-                    //System.out.println("General Collision");
-                    bottom = checkBottomCollision(tilemap[i][j]);
-//                    top    = checkTopCollision(tilemap[i][j]);
-//                    left   = checkLeftCollision(tilemap[i][j]);
-//                    right  = checkRightCollision(tilemap[i][j]);
-                    //System.out.println(bottom);
-                    //System.out.println(player.getX()+","+player.getY()+" == "+tilemap[i][j].getX()+","+tilemap[i][j].getX());
+        int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
+        int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
+        int topRow    = (int) (topY / GameCanvas.TILE_SIZE);
+        int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
 
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean checkBottomCollision(Tile tile){
-        double leftX = player.getX();
-        double  rightX=  player.getX() + player.getWidth();
-        double bottomY =  (player.getY() + player.getHeight());
-        double topY = player.getY();
-        Point2D.Double bottomLeft = new Point2D.Double(leftX, bottomY);
-        Point2D.Double rightLeft = new Point2D.Double(rightX, bottomY);
-
-        if(tile.getHitBox().contains(bottomLeft) || tile.getHitBox().contains(rightLeft)) {
-            System.out.println("Bottom Collision");
+        if(rightCol <= 0 || leftCol >= (tilemap.length - 1) || bottomRow <= 0 || topRow >= (tilemap[0].length -1)) // Colliding with edges of the level
             return true;
-        }
-        return false;
+
+        Tile bottomLeftTile  = tilemap[leftCol][bottomRow];
+        Tile bottomRightTile = tilemap[rightCol][bottomRow];
+        Tile topLeftTile     = tilemap[leftCol][topRow];
+        Tile topRightTile    = tilemap[rightCol][topRow];
+
+        if(passable(topLeftTile))
+            if(passable(bottomRightTile))
+                if(passable(topRightTile))
+                    if (passable(bottomLeftTile))
+                        return false;
+
+        return true;
     }
 
-    public boolean checkTopCollision(Tile tile){
-        if(!passable(tile) && (player.getY() + player.getHeight()) >= tile.getY()) {
-            System.out.println("Top Collision");
-            return true;
-        }
-        return false;
+    public boolean isBottomColliding(double x, double y, double width, double height){
+        double leftX = x;
+        double rightX=  x + width;
+        double bottomY =  (y + height);
+
+        int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
+        int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
+        int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
+
+        Tile bottomLeftTile  = tilemap[leftCol][bottomRow];
+        Tile bottomRightTile = tilemap[rightCol][bottomRow];
+
+        if(passable(bottomRightTile))
+            if(passable(bottomLeftTile))
+                return false;
+
+        return true;
     }
 
-    public boolean checkLeftCollision(Tile tile) {
-        if(!passable(tile) && (player.getX() + player.getWidth() >= (tile.getX()))) {
-            System.out.println("Left Collision");
-            //player.setX(tile.getX());
-            return true;
+    public double getCollidingTileX(Rectangle2D.Double hitbox, double vx){//FIX ME TO ACCOMODATE ALL PLAYER SIZES
+        if(vx > 0){ // moving in the right direction
+            int rightCol  = (int) ((hitbox.x + hitbox.width) / GameCanvas.TILE_SIZE);
+            int topRow    = (int) (hitbox.y / GameCanvas.TILE_SIZE);
+            Tile topRightTile    = tilemap[rightCol][topRow];
+
+            return topRightTile.getX() - hitbox.width  + GameCanvas.TILE_SIZE - 1;  // - 1 to prevent from being moved directly into tile
         }
-        return false;
+        else{   // Moving in the left direction
+            int leftCol   = (int) (hitbox.x / GameCanvas.TILE_SIZE);
+            int topRow    = (int) (hitbox.y / GameCanvas.TILE_SIZE);
+            Tile topLeftTile  = tilemap[leftCol][topRow];
+
+            return topLeftTile.getX();
+        }
     }
 
-    public boolean checkRightCollision(Tile tile){
-        if(!passable(tile) && (player.getX() + player.getWidth()) < (tile.getX() + tile.getWidth())) {
-            System.out.println("Right Collision");
-            //player.setX(tile.getX() + tile.getWidth());
-            return true;
+    public double getCollidingTileY(Rectangle2D.Double hitbox, double vy){//FIX ME TO ACCOMODATE ALL PLAYER SIZES
+        if(vy > 0){ // moving in the downwards direction
+            int rightCol  = (int) ((hitbox.x + hitbox.width) / GameCanvas.TILE_SIZE);
+            int topRow    = (int) (hitbox.y / GameCanvas.TILE_SIZE);
+            Tile topRightTile    = tilemap[rightCol][topRow];
+
+            return topRightTile.getY() + hitbox.height - 1;  // - 1 to prevent from being moved directly into tile
         }
-        return false;
+        else{   // Moving in the upwards direction
+            int leftCol   = (int) (hitbox.x / GameCanvas.TILE_SIZE);
+            int topRow    = (int) (hitbox.y / GameCanvas.TILE_SIZE);
+            Tile topLeftTile  = tilemap[leftCol][topRow];
+
+            return topLeftTile.getY();
+        }
     }
 
     private boolean passable(Tile tile){

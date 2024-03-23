@@ -126,5 +126,11 @@ public class LevelLoader {
         return new Level(tileMap);
     }
 
+    public int getTileHeight() {
+        return tileHeight;
+    }
 
+    public int getTileWidth() {
+        return tileWidth;
+    }
 }

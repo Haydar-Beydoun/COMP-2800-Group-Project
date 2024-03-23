@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -12,14 +13,14 @@ public abstract class Entity {
     int health;
     double x;
     double y;
-    double vx;
-    double vy;
+    double vx = 0;
+    double vy = 0;
     int width;
     int height;
     int speed;
     BufferedImage sprite;
     int leftHitBoxOffset = 0;
-    int rightHitBoxOffsert = 0;
+    int rightHitBoxOffset = 0;
 
     /**
      * Constructor of the entity
@@ -55,15 +56,14 @@ public abstract class Entity {
      * @param g2d  draw the image/hitbox.
      */
     public void draw(Graphics2D g2d){
-        g2d.setColor(Color.BLUE);
-        g2d.fillRect((int) x,(int) y,width,height);
-
-        //Drawing hitbox
-        g2d.drawRect((int) x,(int) y, width, height);
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect((int) x, (int) y, width, height);
+        g2d.setColor(Color.RED);
+        g2d.draw(getHitBox());
     }
 
-    public Rectangle getHitBox(){
-        return new Rectangle((int) x, (int) y, width, height);
+    public Rectangle2D.Double getHitBox(){
+        return new Rectangle2D.Double(x, y, width, height);
     }
 
     public double getX() {
@@ -112,5 +112,13 @@ public abstract class Entity {
 
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public double getVx() {
+        return vx;
+    }
+
+    public double getVy() {
+        return vy;
     }
 }
