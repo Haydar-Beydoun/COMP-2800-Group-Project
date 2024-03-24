@@ -88,7 +88,7 @@ public class CollisionChecker {
         int topRow    = (int) (topY / GameCanvas.TILE_SIZE);
         int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
 
-        if(vy > 0){
+        if(vy >= 0){
             // moving in the downwards direction
             Tile tile = tilemap[leftCol][bottomRow];
 

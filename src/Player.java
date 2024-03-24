@@ -79,6 +79,8 @@ public class Player extends Entity{
             initPlayer();
         }
 
+
+
         if(inAir){
             if(!collisionChecker.isColliding(x, y + vy, width, height)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
                 vy += gravity;
@@ -95,13 +97,17 @@ public class Player extends Entity{
                 }
             }
         }
+
+        if(!collisionChecker.isBottomColliding(x, y + vy, width, height)){
+            inAir = true;
+        }
         else{
-            if(!collisionChecker.isBottomColliding(x, y, width, height)){
-                //inAir = true;
-            }
+            y = collisionChecker.getCollidingTileY(getHitBox(), vy);
+
+            inAir = false;
+            vy = 0;
         }
 
-        System.out.println(inAir);
         updateX();
     }
 
