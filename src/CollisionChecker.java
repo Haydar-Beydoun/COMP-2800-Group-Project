@@ -9,7 +9,6 @@ public class CollisionChecker {
         this.entity = entity;
     }
 
-    //FIX ME: CHECK FOR COLLISION WITH EDGE OF THE MAP TO PREVENT OUT OF BOUNDS EXCEPTIONS
     public boolean isColliding(double x, double y, double width, double height){
         double leftX = x;
         double rightX=  x + width;
@@ -58,37 +57,50 @@ public class CollisionChecker {
     }
 
     public double getCollidingTileX(Rectangle2D.Double hitbox, double vx){//FIX ME TO ACCOMODATE ALL PLAYER SIZES
-        if(vx > 0){ // moving in the right direction
-            int rightCol  = (int) ((hitbox.x + hitbox.width) / GameCanvas.TILE_SIZE);
-            int topRow    = (int) (hitbox.y / GameCanvas.TILE_SIZE);
-            Tile topRightTile    = tilemap[rightCol][topRow];
+        double leftX = hitbox.x + vx;
+        double rightX=  hitbox.x + hitbox.width + vx;
+        double bottomY =  hitbox.y + hitbox.height;
 
-            return topRightTile.getX() - hitbox.width  + GameCanvas.TILE_SIZE - 1;  // - 1 to prevent from being moved directly into tile
+        int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
+        int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
+        int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
+
+        if(vx > 0){
+            // moving in the right direction
+            Tile tile = tilemap[rightCol][bottomRow];
+
+            return tile.getX() - hitbox.width - 1;  // - 1 to ground entity exactly
         }
-        else{   // Moving in the left direction
-            int leftCol   = (int) (hitbox.x / GameCanvas.TILE_SIZE);
-            int topRow    = (int) (hitbox.y / GameCanvas.TILE_SIZE);
-            Tile topLeftTile  = tilemap[leftCol][topRow];
+        else{
+            // Moving in the left direction
+            Tile tile  = tilemap[leftCol][bottomRow];
 
-            return topLeftTile.getX();
+            return tile.getX() + tile.getWidth();
         }
     }
 
-    public double getCollidingTileY(Rectangle2D.Double hitbox, double vy){//FIX ME TO ACCOMODATE ALL PLAYER SIZES
-        if(vy > 0){ // moving in the downwards direction
-            int rightCol  = (int) ((hitbox.x + hitbox.width) / GameCanvas.TILE_SIZE);
-            int topRow    = (int) (hitbox.y / GameCanvas.TILE_SIZE);
-            Tile topRightTile    = tilemap[rightCol][topRow];
+    public double getCollidingTileY(Rectangle2D.Double hitbox, double vy){
+        double leftX = hitbox.x;
+        double bottomY =  hitbox.y + hitbox.height + vy;
+        double topY = hitbox.y + vy;
 
-            return topRightTile.getY() + hitbox.height - 1;  // - 1 to prevent from being moved directly into tile
-        }
-        else{   // Moving in the upwards direction
-            int leftCol   = (int) (hitbox.x / GameCanvas.TILE_SIZE);
-            int topRow    = (int) (hitbox.y / GameCanvas.TILE_SIZE);
-            Tile topLeftTile  = tilemap[leftCol][topRow];
+        int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
+        int topRow    = (int) (topY / GameCanvas.TILE_SIZE);
+        int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
 
-            return topLeftTile.getY();
+        if(vy > 0){
+            // moving in the downwards direction
+            Tile tile = tilemap[leftCol][bottomRow];
+
+            return tile.getY() - hitbox.height - 1;  // - 1 to ground entity exactly
         }
+        else{
+            // Moving in the upwards direction
+            Tile tile  = tilemap[leftCol][topRow];
+
+            return tile.getY() + tile.getHeight();
+        }
+
     }
 
     private boolean passable(Tile tile){

@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Scanner;
 
 /**
  *
@@ -14,7 +13,7 @@ import java.util.Scanner;
  */
 public class LevelLoader {
     Tile[][] tileMap;
-    private BufferedImage pixelMap, background;
+    private BufferedImage pixelMap, background, levelImage;
     private int tileHeight, tileWidth;
     private int numTiles;
     private String backgroundPath, pixelMapPath;
@@ -91,10 +90,13 @@ public class LevelLoader {
      *
      */
     private void fillLevel(){
-        Graphics buffG = background.getGraphics();
-
         int width  = pixelMap.getWidth();
         int height = pixelMap.getHeight();
+
+        levelImage = new BufferedImage(width * tileWidth, height * tileHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics buffG = levelImage.getGraphics();
+
+        buffG.drawImage(background, 0, 0, background.getWidth(), background.getHeight(), null);
 
         tileMap = new Tile[width][height];
 
@@ -118,8 +120,8 @@ public class LevelLoader {
         }
     }
 
-    public BufferedImage getBackground(){
-        return background;
+    public BufferedImage getLevelImage(){
+        return levelImage;
     }
 
     public Level getLevel(){

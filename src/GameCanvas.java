@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
@@ -10,7 +9,7 @@ public class GameCanvas extends Canvas implements Runnable {
     public static final int WIDTH = 1200;
     public static final int HEIGHT = 800;
     public static Keyboard keyboard = new Keyboard();
-    private Player player = new Player(WIDTH /2, HEIGHT /2, 32, 32, -1, 3);
+    private Player player = new Player(WIDTH /2, HEIGHT /2, 25, 25, -1, 3);
     public static final int TILE_SIZE = 32;        //FIX ME: FIND A PROPER PLACE FOR ME
     LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
     Level level = loader.getLevel();
@@ -61,7 +60,13 @@ public class GameCanvas extends Canvas implements Runnable {
 
     public void render(){
         Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
-        BufferedImage image = loader.getBackground();
+
+        // Drawing plain white background behind
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, WIDTH, HEIGHT);
+
+        // Drawing Level --> FIX ME: move me into level class???
+        BufferedImage image = loader.getLevelImage();
         g2d.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
 
         player.draw(g2d);

@@ -16,7 +16,7 @@ public class Player extends Entity{
     // States
     private boolean falling = false;
     private boolean jumping = false;
-    private boolean inAir   = true;
+    private boolean inAir   = false;
     private boolean moving  = false;
     private boolean left    = false;
     private boolean right   = false;
@@ -51,10 +51,7 @@ public class Player extends Entity{
     }
 
     public void jump(){
-        if(inAir) {
-            return;
-        }
-        else{
+        if(!inAir) {
             vy = jumpSpeed;
             inAir = true;
         }
@@ -63,7 +60,6 @@ public class Player extends Entity{
     private void move(){
         vx = 0;
 
-        System.out.println(inAir);
         if(keyboard.isPressed(leftBinds)){
             vx = -speed;
         }
@@ -73,13 +69,20 @@ public class Player extends Entity{
         if(keyboard.isPressed(jumpBinds)){
             jump();
         }
+//        if(keyboard.isPressed(KeyEvent.VK_DOWN)){ // TEMP FOR TESTING
+//            vy += speed;
+//        }
+//        if(keyboard.isPressed(KeyEvent.VK_UP)){ // TEMP FOR TESTING
+//            vy -= speed;
+//        }
+        if(keyboard.isPressed(KeyEvent.VK_ESCAPE)){ //TEMP FOR TESTING
+            initPlayer();
+        }
 
-        // Update x is placed within to prevent both x and y correction at the same time
         if(inAir){
             if(!collisionChecker.isColliding(x, y + vy, width, height)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
                 vy += gravity;
                 y += vy;
-                updateX();
             }
             else{
                 y = collisionChecker.getCollidingTileY(getHitBox(), vy);
@@ -90,17 +93,16 @@ public class Player extends Entity{
                 else{
                     vy = topCollisionFallSpeed;
                 }
-                updateX();
             }
         }
         else{
             if(!collisionChecker.isBottomColliding(x, y, width, height)){
-                inAir = true;
+                //inAir = true;
             }
-            updateX();
         }
 
-
+        System.out.println(inAir);
+        updateX();
     }
 
     private void updateX(){
@@ -108,7 +110,7 @@ public class Player extends Entity{
             x += vx;
         }
         else{
-            x = collisionChecker.getCollidingTileX(getHitBox(), vx);
+           //x = collisionChecker.getCollidingTileX(getHitBox(), vx);
         }
     }
 
