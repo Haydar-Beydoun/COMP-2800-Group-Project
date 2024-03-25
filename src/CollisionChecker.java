@@ -20,6 +20,7 @@ public class CollisionChecker {
         int topRow    = (int) (topY / GameCanvas.TILE_SIZE);
         int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
 
+
         if(rightCol <= 0 || leftCol >= (tilemap.length - 1) || bottomRow <= 0 || topRow >= (tilemap[0].length -1)) // Colliding with edges of the level
             return true;
 
@@ -31,8 +32,10 @@ public class CollisionChecker {
         if(passable(topLeftTile))
             if(passable(bottomRightTile))
                 if(passable(topRightTile))
-                    if (passable(bottomLeftTile))
+                    if (passable(bottomLeftTile)){
                         return false;
+                    }
+
 
         return true;
     }
@@ -65,18 +68,10 @@ public class CollisionChecker {
         int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
         int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
 
-        if(vx > 0){
-            // moving in the right direction
-            Tile tile = tilemap[rightCol][bottomRow];
-
-            return tile.getX() - hitbox.width - 1;  // - 1 to ground entity exactly
+        if(vx != 0){
+            return 0;
         }
-        else{
-            // Moving in the left direction
-            Tile tile  = tilemap[leftCol][bottomRow];
-
-            return tile.getX() + tile.getWidth();
-        }
+        return vx;
     }
 
     public double getCollidingTileY(Rectangle2D.Double hitbox, double vy){
@@ -92,9 +87,10 @@ public class CollisionChecker {
             // moving in the downwards direction
             Tile tile = tilemap[leftCol][bottomRow];
 
-            return tile.getY() - hitbox.height - 1;  // - 1 to ground entity exactly
+            return tile.getY() - hitbox.height - 0.99;  // - 1 to ground entity exactly
         }
         else{
+
             // Moving in the upwards direction
             Tile tile  = tilemap[leftCol][topRow];
 

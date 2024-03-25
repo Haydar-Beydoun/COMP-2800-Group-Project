@@ -64,7 +64,9 @@ public class Player extends Entity{
             vx = -speed;
         }
         if(keyboard.isPressed(rightBinds)){
+
             vx = speed;
+
         }
         if(keyboard.isPressed(jumpBinds)){
             jump();
@@ -78,8 +80,6 @@ public class Player extends Entity{
         if(keyboard.isPressed(KeyEvent.VK_ESCAPE)){ //TEMP FOR TESTING
             initPlayer();
         }
-
-
 
         if(inAir){
             if(!collisionChecker.isColliding(x, y + vy, width, height)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
@@ -97,17 +97,11 @@ public class Player extends Entity{
                 }
             }
         }
-
-        if(!collisionChecker.isBottomColliding(x, y + vy, width, height)){
-            inAir = true;
-        }
         else{
-            y = collisionChecker.getCollidingTileY(getHitBox(), vy);
-
-            inAir = false;
-            vy = 0;
+            if(!collisionChecker.isBottomColliding(x, y, width, height)){
+                inAir = true;
+            }
         }
-
         updateX();
     }
 
@@ -116,7 +110,8 @@ public class Player extends Entity{
             x += vx;
         }
         else{
-           //x = collisionChecker.getCollidingTileX(getHitBox(), vx);
+            vx = collisionChecker.getCollidingTileX(getHitBox(), vx);
+            x += vx;
         }
     }
 
