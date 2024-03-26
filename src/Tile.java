@@ -22,16 +22,12 @@ public class Tile {
         PASSABLE;
 
         public static Type getType(String input){
-            switch(input){
-                case "wall":
-                    return Type.WALL;
-                case "platform":
-                    return Type.WALL;
-                case "roof":
-                    return Type.WALL;
-                default:
-                    return Type.PASSABLE;
-            }
+            return switch (input) {
+                case "wall" -> Type.WALL;
+                case "platform" -> Type.WALL;
+                case "roof" -> Type.WALL;
+                default -> Type.PASSABLE;
+            };
         }
 
     }
@@ -45,6 +41,14 @@ public class Tile {
         this.type = type;
         //this.sprite = sprite;
         hitBox = new Rectangle(x,y,width,height);
+    }
+
+    public void draw(Graphics2D g2d){
+        g2d.setColor(Color.RED);
+        g2d.fillRect((int) x,(int) y,width,height);
+
+        //Drawing hitbox
+        g2d.drawRect((int) x,(int) y, width, height);
     }
 
     public void setX(int x) {
