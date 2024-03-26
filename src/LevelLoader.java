@@ -123,12 +123,8 @@ public class LevelLoader {
         }
     }
 
-    public BufferedImage getLevelImage(){
-        return levelImage;
-    }
-
     public Level getLevel(){
-        return new Level(tileMap);
+        return new Level(tileMap, levelImage);
     }
 
     public int getTileHeight() {

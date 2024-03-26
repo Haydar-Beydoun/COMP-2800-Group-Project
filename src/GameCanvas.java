@@ -3,17 +3,23 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 public class GameCanvas extends Canvas implements Runnable {
+    // Helper values and more
     private Thread thread;
     private final int UPS = 60;
     private BufferStrategy bufferStrategy;
     public static final int WIDTH = 1200;
     public static final int HEIGHT = 800;
-    public static Keyboard keyboard = new Keyboard();
-    private Player player = new Player(WIDTH /2, HEIGHT /2, 25, 25, -1, 3);
-    public static final int TILE_SIZE = 32;        //FIX ME: FIND A PROPER PLACE FOR ME
-    LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
-    Level level = loader.getLevel();
+    public static final int TILE_SIZE = 32;
 
+    // Level and loader
+    private LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
+    private Level level = loader.getLevel();
+
+    //Entities
+    private Player player = new Player(WIDTH /2, HEIGHT /2, 34, 44, -1, 3, level.getTilemap());
+    // Utilities
+    public static Keyboard keyboard = new Keyboard();
+    private Camera camera = new Camera(level, player);
 
     public GameCanvas(){
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -65,11 +71,8 @@ public class GameCanvas extends Canvas implements Runnable {
         g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, WIDTH, HEIGHT);
 
-        // Drawing Level --> FIX ME: move me into level class???
-        BufferedImage image = loader.getLevelImage();
-        g2d.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
-
-        player.draw(g2d);
+        // Drawing Level, entities, and player
+        camera.draw(g2d);
 
         g2d.dispose();
         bufferStrategy.show();

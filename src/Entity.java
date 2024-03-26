@@ -11,8 +11,10 @@ import java.awt.image.BufferedImage;
 
 public abstract class Entity {
     int health;
-    double x;
-    double y;
+    double worldX;
+    double worldY;
+    int screenX;
+    int screenY;
     double vx = 0;
     double vy = 0;
     int width;
@@ -24,7 +26,7 @@ public abstract class Entity {
 
     /**
      * Constructor of the entity
-     * @param x X position on the canvas.
+     * @param worldX X position on the canvas.
      * @param y Y position on the canvas.
      * @param width width of the hitBox.
      * @param height height of the hitBox.
@@ -32,9 +34,9 @@ public abstract class Entity {
      * @param speed speed of the entity.
      *
      */
-    public Entity(double x,double y, int width,int height, int health, int speed){
-        this.x = x;
-        this.y = y;
+    public Entity(double worldX, double y, int width, int height, int health, int speed){
+        this.worldX = worldX;
+        this.worldY = y;
         this.width = width;
         this.height = height;
         this.health = health;
@@ -46,8 +48,8 @@ public abstract class Entity {
      * @param sprite add a BufferedImage for the entity.
      *
      */
-    public Entity(int x,int y, int width,int height, int health, int speed, BufferedImage sprite){
-        this(x,y,width,height,health,speed);
+    public Entity(int worldX, int y, int width, int height, int health, int speed, BufferedImage sprite){
+        this(worldX,y,width,height,health,speed);
         this.sprite = sprite;
     }
 
@@ -56,22 +58,20 @@ public abstract class Entity {
      * @param g2d  draw the image/hitbox.
      */
     public void draw(Graphics2D g2d){
-        g2d.setColor(Color.WHITE);
-        g2d.fillRect((int) x, (int) y, width, height);
-        g2d.setColor(Color.RED);
-        g2d.draw(getHitBox());
+        g2d.setColor(Color.MAGENTA);
+        g2d.fillRect(screenX, screenY, width, height);
     }
 
     public Rectangle2D.Double getHitBox(){
-        return new Rectangle2D.Double(x, y, width, height);
+        return new Rectangle2D.Double(worldX, worldY, width, height);
     }
 
-    public double getX() {
-        return x;
+    public double getWorldX() {
+        return worldX;
     }
 
-    public double getY() {
-        return y;
+    public double getWorldY() {
+        return worldY;
     }
 
     public int getHealth() {
@@ -98,12 +98,12 @@ public abstract class Entity {
         this.speed = speed;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setWorldX(int worldX) {
+        this.worldX = worldX;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setWorldY(int worldY) {
+        this.worldY = worldY;
     }
 
     public void setHeight(int height) {

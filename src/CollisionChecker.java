@@ -4,8 +4,8 @@ public class CollisionChecker {
     private Tile[][] tilemap;
     private Entity entity;
 
-    public CollisionChecker(Entity entity, Level level){
-        this.tilemap = level.getTilemap();
+    public CollisionChecker(Entity entity, Tile[][] tilemap){
+        this.tilemap = tilemap;
         this.entity = entity;
     }
 

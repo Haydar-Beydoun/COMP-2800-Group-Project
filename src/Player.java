@@ -20,6 +20,15 @@ public class Player extends Entity{
     private boolean moving  = false;
     private boolean left    = false;
     private boolean right   = false;
+    private enum State{
+        RIGHT,
+        LEFT,
+        JUMP,
+        FALL,
+        HURT,
+        IDLE
+    }
+    private State state = State.IDLE;
 
     // Vertical velocities
     private double gravity = 0.2;
@@ -27,23 +36,28 @@ public class Player extends Entity{
     private double topCollisionFallSpeed = 1;
 
     // Utilities
-    LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt"); // FIX ME: move me somewhere better
-    Level level = loader.getLevel();
-    private CollisionChecker collisionChecker = new CollisionChecker(this, level);
+    private CollisionChecker collisionChecker;
     private Keyboard keyboard = GameCanvas.keyboard;
 
     /**
      * Constructs a new player.
      * @see Entity
      */
-    public Player(int x,int y, int width,int height, int health, int speed){
+    public Player(int x,int y, int width,int height, int health, int speed, Tile[][] tileMap){
         super(x, y, width, height, health, speed);
+        this.collisionChecker = new CollisionChecker(this, tileMap);
+        this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/player.png", 6,6,62);
         initPlayer();
     }
 
-    private void initPlayer(){//FIX MOI
-        this.x = 200;
-        this.y = GameCanvas.HEIGHT / 2;
+    private void initPlayer(){
+        this.worldX = 200;
+        this.worldY = GameCanvas.HEIGHT / 2;
+        jumpAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,30, 31), 0 , 20);
+        fallAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,31, 32), 0 , 20);
+        runAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,6, 11), 0 , 20);
+        idleAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 4), 0 , 10);
+
     }
 
     public void update(){
@@ -69,55 +83,41 @@ public class Player extends Entity{
         if(keyboard.isPressed(jumpBinds)){
             jump();
         }
-//        if(keyboard.isPressed(KeyEvent.VK_DOWN)){ // TEMP FOR TESTING
-//            vy += speed;
-//        }
-//        if(keyboard.isPressed(KeyEvent.VK_UP)){ // TEMP FOR TESTING
-//            vy -= speed;
-//        }
         if(keyboard.isPressed(KeyEvent.VK_ESCAPE)){ //TEMP FOR TESTING
             initPlayer();
         }
 
-
-
-        if(inAir){
-            if(!collisionChecker.isColliding(x, y + vy, width, height)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
-                vy += gravity;
-                y += vy;
-            }
-            else{
-                y = collisionChecker.getCollidingTileY(getHitBox(), vy);
-                if(vy > 0){
-                    inAir = false;
-                    vy = 0;
-                }
-                else{
-                    vy = topCollisionFallSpeed;
-                }
-            }
-        }
-
-        if(!collisionChecker.isBottomColliding(x, y + vy, width, height)){
-            inAir = true;
-        }
-        else{
-            y = collisionChecker.getCollidingTileY(getHitBox(), vy);
-
-            inAir = false;
-            vy = 0;
-        }
-
+        updateY();
         updateX();
     }
 
     private void updateX(){
-        if(!collisionChecker.isColliding(x + vx, y , width, height)) {   // Moving in the x direction//FIX ME: take in hitbox dims instead
-            x += vx;
+        if(!collisionChecker.isColliding(worldX + vx, worldY, width, height)) {   // Moving in the x direction//FIX ME: take in hitbox dims instead
+            worldX += vx;
         }
         else{
-           x = collisionChecker.getCollidingTileX(getHitBox(), vx);
+           worldX = collisionChecker.getCollidingTileX(getHitBox(), vx);
         }
+    }
+
+    public void setState(){
+        if(Math.floor(vy) < 0){
+            state = State.JUMP;
+        }
+        else if(Math.floor(vy) > 0){
+            state = State.FALL;
+        }
+        else if(vx > 0){
+            state = State.RIGHT;
+        }
+        else if(vx < 0){
+            state = State.LEFT;
+        }
+        else{
+            state = State.IDLE;
+        }
+        System.out.println(state);
+        //System.out.println(vy);
     }
 
 }

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/COMP_2800_Group_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/COMP_2800_Group_Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LevelLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/background/back.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/background/back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/maps/level1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1.png" afterDir="false" />
+    </list>
+    <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.desktop/java/awt/Graphics.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Entity.java">
+      <ranges>
+        <range start1="13" end1="15" start2="13" end2="17" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="23" end1="23" start2="25" end2="29" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="26" end1="27" start2="32" end2="33" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="34" end1="37" start2="40" end2="43" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="48" end1="50" start2="54" end2="56" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="58" end1="62" start2="64" end2="66" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="65" end1="66" start2="69" end2="70" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="68" end1="70" start2="72" end2="74" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="72" end1="74" start2="76" end2="78" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="100" end1="102" start2="104" end2="106" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="104" end1="106" start2="108" end2="110" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/Player.java">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="1" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="1" end1="1" start2="2" end2="3" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="22" end1="22" start2="24" end2="33" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="29" end1="32" start2="40" end2="41" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="33" end1="33" start2="42" end2="48" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="38" end1="39" start2="53" end2="54" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="40" end1="40" start2="55" end2="57" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="43" end1="46" start2="60" end2="68" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="48" end1="48" start2="70" end2="102" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="50" end1="50" start2="104" end2="108" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="52" end1="52" start2="110" end2="113" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="59" end1="59" start2="120" end2="123" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="71" end1="77" start2="135" end2="135" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="81" end1="110" start2="139" end2="140" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="112" end1="112" start2="142" end2="175" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="114" end1="116" start2="177" end2="179" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="118" end1="119" start2="181" end2="182" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="121" end1="121" start2="184" end2="204" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+      </ranges>
+    </file>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2eEk8dBeo02AM9hkgSSuCOLLhfb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/A/IdeaProjects/COMP 2800/COMP 2800 LAB/COMP 2800 Group Project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="GameLauncher" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="GameLauncher" />
+      <module name="COMP_2800_Group_Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="" />
+      <created>1711476967119</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711476967119</updated>
+      <workItem from="1711476968177" duration="11086000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

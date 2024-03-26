@@ -3,29 +3,25 @@ import java.awt.image.BufferedImage;
 public class Animator {
     public BufferedImage[] frames;
     public BufferedImage currentFrame;
-    private int time;
-    private int frameDuration;
-    private int currentIndex;
 
-    Animator(BufferedImage[] frames, int startIndex, int frameDuration){
+    private int time = 0;
+    public int currentIndex;
+    public int durationPerFrame;
+
+    public Animator(BufferedImage[] frames,int startIndex,int durationPerFrame){
         this.frames = frames;
         this.currentIndex = startIndex;
-        this.frameDuration = frameDuration;
-        this.currentFrame = frames[currentIndex];
+        this.durationPerFrame = durationPerFrame;
+        currentFrame = frames[currentIndex];
     }
 
     public void update(){
         time++;
-
-        if(time >= frameDuration) {
+        if(time >= durationPerFrame){
             time = 0;
             currentIndex++;
-            if(currentIndex > frames.length - 1)
-                currentIndex = 0;
+            if(currentIndex > frames.length - 1) currentIndex = 0;
         }
-
         currentFrame = frames[currentIndex];
-
     }
-
 }
