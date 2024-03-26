@@ -116,7 +116,7 @@ public class Player extends Entity{
             x += vx;
         }
         else{
-           //x = collisionChecker.getCollidingTileX(getHitBox(), vx);
+           x = collisionChecker.getCollidingTileX(getHitBox(), vx);
         }
     }
 

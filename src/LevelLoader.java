@@ -37,8 +37,8 @@ public class LevelLoader {
      * <br>            -background path
      * <br>            -pixel map path
      * <br>            -Num tiles
-     * <br>            -Colour hex value
      * <br>            -corresponding tile
+     * <br>            -Colour hex value
      * <br>            -tile type(wall,platform, etc.)
      * <br>            -...
      * </p>
@@ -56,8 +56,8 @@ public class LevelLoader {
             -background path
             -pixel map path
             -Num tiles
-            -Colour hex value
             -corresponding tile path
+            -Colour hex value
             -tile type(wall,platform, etc.)
             -...
         */
@@ -72,9 +72,12 @@ public class LevelLoader {
             numTiles = Integer.parseInt(br.readLine());
 
             for(int i = 0; i < numTiles; i++){
+                String tilePath = br.readLine();
                 int colour =  Integer.parseInt(br.readLine(), 16);
-                tileImages.put(colour, ImageLoader.loadImage(br.readLine()));
-                tileTypes.put(colour, Tile.Type.getType(br.readLine()));
+                String tileType = br.readLine();
+
+                tileImages.put(colour, ImageLoader.loadImage(tilePath));
+                tileTypes.put(colour, Tile.Type.getType(tileType));
 
             }
         } catch (IOException e) {
