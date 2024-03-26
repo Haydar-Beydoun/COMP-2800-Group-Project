@@ -1,4 +1,6 @@
+import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
 
 
 /**
@@ -38,6 +40,12 @@ public class Player extends Entity{
     // Utilities
     private CollisionChecker collisionChecker;
     private Keyboard keyboard = GameCanvas.keyboard;
+    private Animator jumpAnimator;
+    private Animator fallAnimator;
+    private Animator runAnimator;
+    private Animator idleAnimator;
+    private Animator currentAnimator;
+
 
     /**
      * Constructs a new player.
@@ -60,10 +68,49 @@ public class Player extends Entity{
 
     }
 
-    public void update(){
-        move();
+    public void draw(Graphics2D g2d){
+//        g2d.setColor(Color.MAGENTA);
+        g2d.fillRect(screenX, screenY, width, height);
+
+        switch (state){
+            case JUMP:
+                currentAnimator = jumpAnimator;
+                break;
+            case FALL:
+                currentAnimator = fallAnimator;
+                break;
+            case RIGHT:
+                currentAnimator = runAnimator;
+                break;
+            default:
+                currentAnimator = idleAnimator;
+        }
+
+        if(state == Player.State.LEFT){
+            g2d.drawImage(currentAnimator.currentFrame, screenX + width/2, screenY, -width, height, null);
+        }
+        else{
+            g2d.drawImage(currentAnimator.currentFrame, screenX, screenY, width, height, null);
+        }
+        //currentAnimator.update();
+
+
     }
 
+    /**
+     * Update play position and state
+     */
+    public void update(){
+        move();
+        jumpAnimator.update();
+        idleAnimator.update();
+        runAnimator.update();
+        setState();
+    }
+
+    /**
+     * Player jump
+     */
     public void jump(){
         if(!inAir) {
             vy = jumpSpeed;
@@ -71,6 +118,9 @@ public class Player extends Entity{
         }
     }
 
+    /**
+     * Player move function
+     */
     private void move(){
         vx = 0;
 
@@ -89,6 +139,39 @@ public class Player extends Entity{
 
         updateY();
         updateX();
+    }
+
+    /**
+     * Player update Y
+     */
+    private void updateY(){
+
+        if(inAir){
+            if(!collisionChecker.isColliding(worldX, worldY + vy, width, height)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
+                vy += gravity;
+                worldY += vy;
+            }
+            else{
+                worldY = collisionChecker.getCollidingTileY(getHitBox(), vy);
+                if(vy > 0){
+                    inAir = false;
+                    vy = 0;
+                }
+                else{
+                    vy = topCollisionFallSpeed;
+                }
+            }
+        }
+
+        if(!collisionChecker.isBottomColliding(worldX, worldY + vy, width, height)){
+            inAir = true;
+        }
+        else{
+            worldY = collisionChecker.getCollidingTileY(getHitBox(), vy);
+
+            inAir = false;
+            vy = 0;
+        }
     }
 
     private void updateX(){

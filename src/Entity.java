@@ -23,6 +23,10 @@ public abstract class Entity {
     BufferedImage sprite;
     int leftHitBoxOffset = 0;
     int rightHitBoxOffset = 0;
+    SpriteSheet spriteSheet;
+
+
+
 
     /**
      * Constructor of the entity
