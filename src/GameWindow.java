@@ -1,8 +1,8 @@
 import javax.swing.*;
 
 public class GameWindow {
-    JFrame gameWindow = new JFrame("INSERT GAME NAME HERE");        // FIX ME: CHANGE NAME
-    GameCanvas canvas = new GameCanvas();
+    public static JFrame gameWindow = new JFrame("INSERT GAME NAME HERE");        // FIX ME: CHANGE NAME
+    private GameCanvas canvas = new GameCanvas();
 
     public GameWindow(){
         gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,6 +18,7 @@ public class GameWindow {
         gameWindow.setVisible(true);
 
         canvas.start();
+        canvas.setFullScreen();
     }
 
     private void addElements(){

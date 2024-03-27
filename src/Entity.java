@@ -21,8 +21,8 @@ public abstract class Entity {
     int height;
     int speed;
     BufferedImage sprite;
-    int leftHitBoxOffset = 0;
-    int rightHitBoxOffset = 0;
+    int hitBoxLeftOffset = 0;
+    int hitBoxRightOffset = 0;
     SpriteSheet spriteSheet;
 
 
@@ -124,5 +124,13 @@ public abstract class Entity {
 
     public double getVy() {
         return vy;
+    }
+
+    public void setHitBoxLeftOffset(int hitBoxLeftOffset) {
+        this.hitBoxLeftOffset = hitBoxLeftOffset;
+    }
+
+    public void setHitBoxRightOffset(int hitBoxRightOffset) {
+        this.hitBoxRightOffset = hitBoxRightOffset;
     }
 }

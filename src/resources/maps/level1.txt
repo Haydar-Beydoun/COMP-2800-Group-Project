@@ -1,5 +1,5 @@
-32
-32
+64
+64
 src/resources/background/back.png
 src/resources/maps/level1.png
 50

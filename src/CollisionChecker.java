@@ -11,47 +11,71 @@ public class CollisionChecker {
 
     public boolean isColliding(double x, double y, double width, double height){
         double leftX = x;
+        double middleX = x + (width / 2);
         double rightX=  x + width;
         double bottomY =  (y + height);
+        double middleY = y + (height / 2);
         double topY = y;
 
         int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
+        int middleCol = (int) (middleX / GameCanvas.TILE_SIZE);
         int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
+
         int topRow    = (int) (topY / GameCanvas.TILE_SIZE);
+        int middleRow = (int) (middleY / GameCanvas.TILE_SIZE);
         int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
 
-        if(rightCol <= 0 || leftCol >= (tilemap.length - 1) || bottomRow <= 0 || topRow >= (tilemap[0].length -1)) // Colliding with edges of the level
+        if(rightCol <= 0 || leftCol >= (tilemap.length - 1) || topRow <= 0 || bottomRow >= (tilemap[0].length)) // Colliding with edges of the level
             return true;
 
-        Tile bottomLeftTile  = tilemap[leftCol][bottomRow];
-        Tile bottomRightTile = tilemap[rightCol][bottomRow];
+        Tile bottomLeftTile   = tilemap[leftCol][bottomRow];
+        Tile bottomMiddleTile = tilemap[middleCol][bottomRow];
+        Tile bottomRightTile  = tilemap[rightCol][bottomRow];
+
+        Tile middleLeftTile  = tilemap[leftCol][middleRow];
+        Tile middleRightTile = tilemap[rightCol][middleRow];
+
         Tile topLeftTile     = tilemap[leftCol][topRow];
+        Tile topMiddleTile   = tilemap[middleCol][topRow];
         Tile topRightTile    = tilemap[rightCol][topRow];
 
         if(passable(topLeftTile))
             if(passable(bottomRightTile))
                 if(passable(topRightTile))
                     if (passable(bottomLeftTile))
-                        return false;
+                        if(passable(bottomMiddleTile))
+                            if(passable(middleLeftTile))
+                                if(passable(middleRightTile))
+                                    if (passable(topMiddleTile))
+                                        return false;
 
         return true;
     }
 
     public boolean isBottomColliding(double x, double y, double width, double height){
         double leftX = x;
+        double middleX = x + (width / 2);
         double rightX=  x + width;
         double bottomY =  (y + height);
 
         int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
+        int middleCol = (int) (middleX / GameCanvas.TILE_SIZE);
         int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
         int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
 
+        if(bottomRow >= tilemap[0].length) // Colliding with edges of the level
+            return true;
+
+        Tile bottomMiddleTile = tilemap[middleCol][bottomRow];
         Tile bottomLeftTile  = tilemap[leftCol][bottomRow];
         Tile bottomRightTile = tilemap[rightCol][bottomRow];
 
         if(passable(bottomRightTile))
             if(passable(bottomLeftTile))
-                return false;
+                if(passable(bottomMiddleTile))
+                    return false;
+
+        System.out.println("collision");
 
         return true;
     }
@@ -77,7 +101,7 @@ public class CollisionChecker {
 
             return tile.getX() + tile.getWidth();
         }
-    }
+    }//FIX ME TO ACCOUNT FOR OUT OF BOUNDS
 
     public double getCollidingTileY(Rectangle2D.Double hitbox, double vy){
         double leftX = hitbox.x;
@@ -101,7 +125,7 @@ public class CollisionChecker {
             return tile.getY() + tile.getHeight();
         }
 
-    }
+    }//FIX ME TO ACCOUNT FOR OUT OF BOUNDS
 
     private boolean passable(Tile tile){
         return tile.getType() == Tile.Type.PASSABLE;

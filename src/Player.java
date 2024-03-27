@@ -33,8 +33,8 @@ public class Player extends Entity{
     private State state = State.IDLE;
 
     // Vertical velocities
-    private double gravity = 0.2;
-    private double jumpSpeed = -7.5;
+    private double gravity = 0.3;
+    private double jumpSpeed = -12;
     private double topCollisionFallSpeed = 1;
 
     // Utilities
@@ -54,24 +54,23 @@ public class Player extends Entity{
     public Player(int x,int y, int width,int height, int health, int speed, Tile[][] tileMap){
         super(x, y, width, height, health, speed);
         this.collisionChecker = new CollisionChecker(this, tileMap);
-        this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/player.png", 6,6,62);
+        this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/player.png", 6,6,128);
+
         initPlayer();
     }
 
     private void initPlayer(){
         this.worldX = 200;
         this.worldY = GameCanvas.HEIGHT / 2;
+
+        idleAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 4), 0 , 7);
+        runAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,6, 12), 0 , 5);
         jumpAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,30, 31), 0 , 20);
         fallAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,31, 32), 0 , 20);
-        runAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,6, 11), 0 , 20);
-        idleAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 4), 0 , 10);
 
     }
 
     public void draw(Graphics2D g2d){
-//        g2d.setColor(Color.MAGENTA);
-        g2d.fillRect(screenX, screenY, width, height);
-
         switch (state){
             case JUMP:
                 currentAnimator = jumpAnimator;
@@ -79,21 +78,21 @@ public class Player extends Entity{
             case FALL:
                 currentAnimator = fallAnimator;
                 break;
-            case RIGHT:
+            case RIGHT, LEFT:
                 currentAnimator = runAnimator;
                 break;
             default:
                 currentAnimator = idleAnimator;
         }
 
-        if(state == Player.State.LEFT){
-            g2d.drawImage(currentAnimator.currentFrame, screenX + width/2, screenY, -width, height, null);
+        if(left){
+            g2d.drawImage(currentAnimator.currentFrame, screenX + width, screenY + 32, -currentAnimator.currentFrame.getWidth(), currentAnimator.currentFrame.getHeight(), null);
         }
         else{
-            g2d.drawImage(currentAnimator.currentFrame, screenX, screenY, width, height, null);
+            g2d.drawImage(currentAnimator.currentFrame, screenX, screenY + 32, null);
         }
-        //currentAnimator.update();
 
+        g2d.setColor(Color.MAGENTA);
 
     }
 
@@ -101,10 +100,8 @@ public class Player extends Entity{
      * Update play position and state
      */
     public void update(){
+        currentAnimator.update();
         move();
-        jumpAnimator.update();
-        idleAnimator.update();
-        runAnimator.update();
         setState();
     }
 
@@ -126,9 +123,11 @@ public class Player extends Entity{
 
         if(keyboard.isPressed(leftBinds)){
             vx = -speed;
+            left = true;
         }
         if(keyboard.isPressed(rightBinds)){
             vx = speed;
+            left = false;
         }
         if(keyboard.isPressed(jumpBinds)){
             jump();
@@ -199,8 +198,6 @@ public class Player extends Entity{
         else{
             state = State.IDLE;
         }
-        System.out.println(state);
-        //System.out.println(vy);
     }
 
 }
