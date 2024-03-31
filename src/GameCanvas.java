@@ -82,6 +82,7 @@ public class GameCanvas extends Canvas implements Runnable {
 
     public void update(){
         player.update();
+        eagle.update();
     }
 
     public void renderTempScreen(){

@@ -43,29 +43,16 @@ public abstract class Entity extends GameObject{
         return new Rectangle2D.Double(worldX + hitBoxLeftOffset, worldY + hitBoxTopOffset, width - hitBoxLeftOffset - hitBoxRightOffset, height - hitBoxTopOffset);
     }
 
-    public double getWorldX() {
-        return worldX;
-    }
-
-    public double getWorldY() {
-        return worldY;
-    }
 
     public int getHealth() {
         return health;
     }
 
-    public int getHeight() {
-        return height;
-    }
 
     public int getSpeed() {
         return speed;
     }
 
-    public int getWidth() {
-        return width;
-    }
 
     public void setHealth(int health) {
         this.health = health;
@@ -75,21 +62,6 @@ public abstract class Entity extends GameObject{
         this.speed = speed;
     }
 
-    public void setWorldX(int worldX) {
-        this.worldX = worldX;
-    }
-
-    public void setWorldY(int worldY) {
-        this.worldY = worldY;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
 
     public double getVx() {
         return vx;

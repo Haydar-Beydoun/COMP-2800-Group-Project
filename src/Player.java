@@ -177,6 +177,9 @@ public class Player extends Entity{
         }
     }
 
+    /**
+     * Player Update X
+     */
     private void updateX(){
         if(!collisionChecker.isColliding(getHitBox(), vx, 0)) {   // Moving in the x direction
             worldX += vx;
@@ -186,6 +189,9 @@ public class Player extends Entity{
         }
     }
 
+    /**
+     * Set the state the player is in during movement
+     */
     public void setState(){
         if(Math.floor(vy) < 0){
             state = State.JUMP;

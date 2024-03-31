@@ -1,3 +1,4 @@
+import javax.crypto.EncryptedPrivateKeyInfo;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -6,6 +7,7 @@ public class Camera {
     Level level;
     private BufferedImage levelImage;
     Player player;
+    Entity[] objectList;
 
 
     public Camera(Level level, Player player){
@@ -13,6 +15,7 @@ public class Camera {
         this.player = player;
         this.levelImage = level.getLevelImage();
     }
+
 
     public void cameraX(){
         if(player.getWorldX() <= (GameCanvas.WIDTH / 2)){
@@ -32,6 +35,7 @@ public class Camera {
     }
 
     public void cameraY(){
+        System.out.println(player.screenY);
         if(player.getWorldY() <= (GameCanvas.HEIGHT / 2)){
             offsety = 0;
             player.screenY = (int) player.worldY;

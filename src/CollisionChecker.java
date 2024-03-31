@@ -51,6 +51,7 @@ public class CollisionChecker {
         Tile topMiddleTile   = tilemap[middleCol][topRow];
         Tile topRightTile    = tilemap[rightCol][topRow];
 
+        //Checks if the tile the player is colliding
         if(passable(topLeftTile))
             if(passable(bottomRightTile))
                 if(passable(topRightTile))
@@ -64,7 +65,13 @@ public class CollisionChecker {
         return true;
     }
 
-    public boolean isBottomColliding(double x, double y, double width, double height){
+    public boolean isBottomColliding(Rectangle2D.Double hitbox , double vx, double vy){
+
+        double x = hitbox.x + vx;
+        double y = hitbox.y +vy;
+        double width = hitbox.width;
+        double height = hitbox.height;
+
         double leftX = x;
         double middleX = x + (width / 2);
         double rightX=  x + width;
