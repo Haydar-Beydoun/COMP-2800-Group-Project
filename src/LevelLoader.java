@@ -20,9 +20,6 @@ public class LevelLoader {
     private HashMap<Integer, Image> tileImages = new HashMap<>();       // <hex value pertaining to colour on pixel map, corresponding image>
     private HashMap<Integer, Tile.Type> tileTypes = new HashMap<>();    // <hex value pertaining to colour on pixel map, corresponding tile type>
 
-
-
-
     public LevelLoader(String filePath){
         loadConfig(filePath);
         fillLevel();

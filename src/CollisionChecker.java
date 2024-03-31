@@ -2,14 +2,26 @@ import java.awt.geom.Rectangle2D;
 
 public class CollisionChecker {
     private Tile[][] tilemap;
-    private Entity entity;
 
-    public CollisionChecker(Entity entity, Tile[][] tilemap){
+    public CollisionChecker(Tile[][] tilemap){
         this.tilemap = tilemap;
-        this.entity = entity;
     }
 
-    public boolean isColliding(double x, double y, double width, double height){
+
+    /**
+     * Checks whether the tiles the player is colliding with is passable or not.
+     *
+     * @param hitbox
+     * @param vx
+     * @param vy
+     * @return Boolean
+     */
+    public boolean isColliding(Rectangle2D.Double hitbox, double vx, double vy){
+        double x = hitbox.x + vx;
+        double y = hitbox.y +vy;
+        double width = hitbox.width;
+        double height = hitbox.height;
+
         double leftX = x;
         double middleX = x + (width / 2);
         double rightX=  x + width;
@@ -75,12 +87,10 @@ public class CollisionChecker {
                 if(passable(bottomMiddleTile))
                     return false;
 
-        System.out.println("collision");
-
         return true;
     }
 
-    public double getCollidingTileX(Rectangle2D.Double hitbox, double vx){
+    public double getCollidingTileX(Rectangle2D.Double hitbox, double hitBoxLeftOffset, double vx){
         double leftX = hitbox.x + vx;
         double rightX=  hitbox.x + hitbox.width + vx;
         double bottomY =  hitbox.y + hitbox.height;
@@ -93,15 +103,15 @@ public class CollisionChecker {
             // moving in the right direction
             Tile tile = tilemap[rightCol][bottomRow];
 
-            return tile.getX() - hitbox.width - 1;  // - 1 to ground entity exactly
+            return tile.getX() - hitbox.width - 1 - hitBoxLeftOffset;  // - 1 to ground entity exactly
         }
         else{
             // Moving in the left direction
             Tile tile  = tilemap[leftCol][bottomRow];
 
-            return tile.getX() + tile.getWidth();
+            return tile.getX() + tile.getWidth() - hitBoxLeftOffset;
         }
-    }//FIX ME TO ACCOUNT FOR OUT OF BOUNDS
+    }
 
     public double getCollidingTileY(Rectangle2D.Double hitbox, double vy){
         double leftX = hitbox.x;

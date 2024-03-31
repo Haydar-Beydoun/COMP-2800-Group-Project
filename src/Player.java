@@ -53,8 +53,11 @@ public class Player extends Entity{
      */
     public Player(int x,int y, int width,int height, int health, int speed, Tile[][] tileMap){
         super(x, y, width, height, health, speed);
-        this.collisionChecker = new CollisionChecker(this, tileMap);
+        this.collisionChecker = new CollisionChecker(tileMap);
         this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/player.png", 6,6,128);
+
+        setHitBoxLeftOffset(10);
+        setHitBoxRightOffset(8);
 
         initPlayer();
     }
@@ -93,6 +96,7 @@ public class Player extends Entity{
         }
 
         g2d.setColor(Color.MAGENTA);
+      // g2d.fillRect((int) screenX + hitBoxLeftOffset, (int) screenY + 32, (int) getHitBox().width, (int) getHitBox().height);
 
     }
 
@@ -146,7 +150,7 @@ public class Player extends Entity{
     private void updateY(){
 
         if(inAir){
-            if(!collisionChecker.isColliding(worldX, worldY + vy, width, height)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
+            if(!collisionChecker.isColliding(getHitBox(), 0, vy)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
                 vy += gravity;
                 worldY += vy;
             }
@@ -162,7 +166,7 @@ public class Player extends Entity{
             }
         }
 
-        if(!collisionChecker.isBottomColliding(worldX, worldY + vy, width, height)){
+        if(!collisionChecker.isBottomColliding(getHitBox(), 0, vy)){
             inAir = true;
         }
         else{
@@ -174,11 +178,11 @@ public class Player extends Entity{
     }
 
     private void updateX(){
-        if(!collisionChecker.isColliding(worldX + vx, worldY, width, height)) {   // Moving in the x direction//FIX ME: take in hitbox dims instead
+        if(!collisionChecker.isColliding(getHitBox(), vx, 0)) {   // Moving in the x direction
             worldX += vx;
         }
         else{
-           worldX = collisionChecker.getCollidingTileX(getHitBox(), vx);
+            worldX = collisionChecker.getCollidingTileX(getHitBox(), hitBoxLeftOffset, vx);
         }
     }
 

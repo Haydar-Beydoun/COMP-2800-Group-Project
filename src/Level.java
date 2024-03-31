@@ -1,16 +1,13 @@
 import java.awt.image.BufferedImage;
 
 public class Level {
-    Stage currStage;
-    int timeLimit;
-    Tile[][] tilemap;
-    BufferedImage levelImage;
+    private int timeLimit;
+    private Tile[][] tilemap;
 
-    public enum Stage{
-        Level1,
-        Level2,
-        Level3
-    }
+    private BufferedImage levelImage;
+    private int playerStartingX;
+    private int playerStartingY;
+
 
     public Level(Tile[][] tilemap, BufferedImage levelImage){
         this.tilemap = tilemap;

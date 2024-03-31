@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -26,7 +25,8 @@ public class GameCanvas extends Canvas implements Runnable {
     private Graphics2D g2d;
 
     //Entities
-    private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 88, -1, 5, level.getTilemap());
+    private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, -1, 5, level.getTilemap());
+    private Eagle eagle = new Eagle(WIDTH / 2, HEIGHT /2, 100, 100, HEIGHT / 2, HEIGHT / 2 + 400, 1, 5, level.getTilemap());
 
     // Utilities
     public static Keyboard keyboard = new Keyboard();
@@ -91,6 +91,9 @@ public class GameCanvas extends Canvas implements Runnable {
 
         // Drawing Level, entities, and player
         camera.draw(g2d);
+
+        eagle.draw(g2d);
+
 
     }
 

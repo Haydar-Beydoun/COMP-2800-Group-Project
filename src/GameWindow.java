@@ -15,10 +15,11 @@ public class GameWindow {
 
         gameWindow.setLocationRelativeTo(null);
 
+        canvas.setFullScreen();
         gameWindow.setVisible(true);
 
         canvas.start();
-        canvas.setFullScreen();
+
     }
 
     private void addElements(){
