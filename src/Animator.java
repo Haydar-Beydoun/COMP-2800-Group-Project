@@ -8,6 +8,7 @@ public class Animator {
     public int currentIndex;
     public int durationPerFrame;
 
+
     public Animator(BufferedImage[] frames,int startIndex,int durationPerFrame){
         this.frames = frames;
         this.currentIndex = startIndex;

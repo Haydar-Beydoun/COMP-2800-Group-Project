@@ -1,18 +1,21 @@
-import javax.crypto.EncryptedPrivateKeyInfo;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class Camera {
-    private int offsetx = 0, offsety = 0;
+    private int offsetx = 0;
+    private int offsety = 0;
     Level level;
     private BufferedImage levelImage;
     Player player;
-    Entity[] objectList;
+    ArrayList<Enemy> enemies;
+    ArrayList<Collectable> collectables;
 
-
-    public Camera(Level level, Player player){
+    public Camera(Level level, Player player, ArrayList<Enemy> enemies, ArrayList<Collectable> collectables){
         this.level = level;
         this.player = player;
+        this.enemies = enemies;
+        this.collectables = collectables;
         this.levelImage = level.getLevelImage();
     }
 
@@ -21,21 +24,17 @@ public class Camera {
         if(player.getWorldX() <= (GameCanvas.WIDTH / 2)){
             offsetx = 0;
             player.screenX = (int) player.worldX;
-            //player.screenY = (int) player.worldY;
         }
         else if(player.getWorldX() >= (levelImage.getWidth() -  GameCanvas.WIDTH / 2)){
             player.screenX = (int) player.worldX + (GameCanvas.WIDTH) - levelImage.getWidth();
-            //player.screenY = (int) player.worldY;
         }
         else{
             offsetx = (int) ((GameCanvas.WIDTH / 2) -(player.getWorldX()));
             player.screenX = GameCanvas.WIDTH / 2;
-            //player.screenY = (int) player.worldY;
         }
     }
 
     public void cameraY(){
-        System.out.println(player.screenY);
         if(player.getWorldY() <= (GameCanvas.HEIGHT / 2)){
             offsety = 0;
             player.screenY = (int) player.worldY;
@@ -50,12 +49,20 @@ public class Camera {
     }
 
     public void draw(Graphics2D g2d){
+        // Determining offset
         cameraX();
         cameraY();
 
+        // Drawing level
         g2d.drawImage(levelImage,  offsetx, offsety, levelImage.getWidth(), levelImage.getHeight(), null);
 
+        // Drawing player
         player.draw(g2d);
 
+        // Drawing entities
+        for(int i = 0; i < enemies.size(); i++){
+            enemies.get(i).draw(g2d, offsetx, offsety);
+        }
     }
+
 }

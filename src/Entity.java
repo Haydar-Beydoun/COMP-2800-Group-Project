@@ -16,7 +16,6 @@ public abstract class Entity extends GameObject{
     int speed;
     int hitBoxLeftOffset = 0;
     int hitBoxRightOffset = 0;
-    int hitBoxTopOffset = 0;
     SpriteSheet spriteSheet;
 
     /**
@@ -40,7 +39,7 @@ public abstract class Entity extends GameObject{
      * @return Rectangle
      */
     public Rectangle2D.Double getHitBox(){
-        return new Rectangle2D.Double(worldX + hitBoxLeftOffset, worldY + hitBoxTopOffset, width - hitBoxLeftOffset - hitBoxRightOffset, height - hitBoxTopOffset);
+        return new Rectangle2D.Double(worldX + hitBoxLeftOffset, worldY, width - hitBoxLeftOffset - hitBoxRightOffset, height);
     }
 
 
@@ -48,11 +47,9 @@ public abstract class Entity extends GameObject{
         return health;
     }
 
-
     public int getSpeed() {
         return speed;
     }
-
 
     public void setHealth(int health) {
         this.health = health;
@@ -61,7 +58,6 @@ public abstract class Entity extends GameObject{
     public void setSpeed(int speed) {
         this.speed = speed;
     }
-
 
     public double getVx() {
         return vx;
@@ -87,11 +83,4 @@ public abstract class Entity extends GameObject{
         this.hitBoxRightOffset = hitBoxRightOffset;
     }
 
-    public int getHitBoxTopOffset() {
-        return hitBoxTopOffset;
-    }
-
-    public void setHitBoxTopOffset(int hitBoxTopOffset) {
-        this.hitBoxTopOffset = hitBoxTopOffset;
-    }
 }

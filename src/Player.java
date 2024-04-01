@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 
 
@@ -35,6 +36,7 @@ public class Player extends Entity{
     // Vertical velocities
     private double gravity = 0.3;
     private double jumpSpeed = -12;
+    private double bounceSpeed = -12;
     private double topCollisionFallSpeed = 1;
 
     // Utilities
@@ -54,7 +56,7 @@ public class Player extends Entity{
     public Player(int x,int y, int width,int height, int health, int speed, Tile[][] tileMap){
         super(x, y, width, height, health, speed);
         this.collisionChecker = new CollisionChecker(tileMap);
-        this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/player.png", 6,6,128);
+        this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/player.png", 6,6,128, 128);
 
         setHitBoxLeftOffset(10);
         setHitBoxRightOffset(8);
@@ -64,7 +66,7 @@ public class Player extends Entity{
 
     private void initPlayer(){
         this.worldX = 200;
-        this.worldY = GameCanvas.HEIGHT / 2;
+        this.worldY = GameCanvas.HEIGHT;
 
         idleAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 4), 0 , 7);
         runAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,6, 12), 0 , 5);
@@ -89,10 +91,10 @@ public class Player extends Entity{
         }
 
         if(left){
-            g2d.drawImage(currentAnimator.currentFrame, screenX + width, screenY + 32, -currentAnimator.currentFrame.getWidth(), currentAnimator.currentFrame.getHeight(), null);
+            g2d.drawImage(currentAnimator.currentFrame, screenX + width, screenY, -currentAnimator.currentFrame.getWidth(), currentAnimator.currentFrame.getHeight(), null);
         }
         else{
-            g2d.drawImage(currentAnimator.currentFrame, screenX, screenY + 32, null);
+            g2d.drawImage(currentAnimator.currentFrame, screenX, screenY, null);
         }
 
         g2d.setColor(Color.MAGENTA);
@@ -119,6 +121,11 @@ public class Player extends Entity{
         }
     }
 
+    public void bounce(){
+        vy = bounceSpeed;
+        inAir = true;
+    }
+
     /**
      * Player move function
      */
@@ -139,9 +146,39 @@ public class Player extends Entity{
         if(keyboard.isPressed(KeyEvent.VK_ESCAPE)){ //TEMP FOR TESTING
             initPlayer();
         }
+        if(keyboard.isPressed(KeyEvent.VK_I)){ //TEMP FOR TESTING
+            iframe = false;
+        }
 
         updateY();
         updateX();
+    }
+
+    public boolean isKillingEnemy(Rectangle2D.Double enemyHitBox){
+//        if(iframe)
+//            return false;
+
+        if(getHitBox().intersects(enemyHitBox)){
+            if(state == State.FALL && getHitBox().intersects(enemyHitBox.x, enemyHitBox.y, enemyHitBox.width, 1)){
+                bounce();
+                return true;
+            }
+            else{
+                if(state == State.JUMP && worldY >= enemyHitBox.y + enemyHitBox.height) {
+                    vy = 0;
+                }
+//                if(getWorldX() + width - hitBoxLeftOffset <= enemyHitBox.x || getWorldX() >=  enemyHitBox.x + enemyHitBox.width){
+//                    vx *=-1;
+//                }
+
+                //player gets hurt
+                health -=10;
+               // iframe = true;
+                return false;
+            }
+        }
+
+        return false;
     }
 
     /**

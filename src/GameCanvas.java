@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class GameCanvas extends Canvas implements Runnable {
     // Level and loader
@@ -26,16 +27,23 @@ public class GameCanvas extends Canvas implements Runnable {
 
     //Entities
     private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, -1, 5, level.getTilemap());
-    private Eagle eagle = new Eagle(WIDTH / 2, HEIGHT /2, 100, 100, HEIGHT / 2, HEIGHT / 2 + 400, 1, 5, level.getTilemap());
+    private ArrayList<Enemy> enemies = new ArrayList<>();
+    private ArrayList<Collectable> collectables = new ArrayList<>();
 
     // Utilities
     public static Keyboard keyboard = new Keyboard();
-    private Camera camera = new Camera(level, player);
+    private Camera camera = new Camera(level, player, enemies, collectables);
 
     public GameCanvas(){
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.addKeyListener(keyboard);
         this.setFocusable(true);
+
+        enemies.add(new Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));
+        enemies.add(new Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));
+        enemies.add(new Eagle(500, 1800, 500, 1800, 104, 123, 1, 1, level.getTilemap()));
+
+        camera = new Camera(level, player, enemies, collectables);
 
         initGame();
     }
@@ -82,18 +90,30 @@ public class GameCanvas extends Canvas implements Runnable {
 
     public void update(){
         player.update();
-        eagle.update();
+
+        // Updating entities
+        for (int i = 0; i < enemies.size(); i++) {
+            Enemy enemy = enemies.get(i);
+
+            enemy.update();
+
+            if(player.isKillingEnemy(enemy.getHitBox())){
+                enemy.death();
+            }
+            if(enemy.isDeathComplete()){
+                enemies.remove(enemy);
+            }
+
+        }
     }
 
     public void renderTempScreen(){
-        // Drawing plain white background behind
+        // Drawing plain white background
         g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, WIDTH, HEIGHT);
 
-        // Drawing Level, entities, and player
+        // Drawing Level, entities, collectables, and player
         camera.draw(g2d);
-
-        eagle.draw(g2d);
 
 
     }
@@ -101,7 +121,7 @@ public class GameCanvas extends Canvas implements Runnable {
     public void render(){
         Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
 
-        // Drawing level
+        // Drawing temp Image (contains all components)
         g2d.drawImage(tempImage, 0, 0, WIDTH2, HEIGHT2, null);
 
         g2d.dispose();

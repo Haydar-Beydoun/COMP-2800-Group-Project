@@ -108,8 +108,8 @@ public class LevelLoader {
 
                 if(tileImages.containsKey(colour)){
                     Image tile = tileImages.get(colour);
-                    int offset = tileHeight - tile.getHeight(null);
-                    buffG.drawImage(tile, x * tileWidth, y * tileHeight + offset, tileWidth, tileHeight, null);
+
+                    buffG.drawImage(tile, x * tileWidth, y * tileHeight, tileWidth, tileHeight, null);
 
                     tileMap[x][y] = new Tile(x * tileWidth, y * tileHeight, tileWidth, tileHeight, tileTypes.get(colour));
                 }

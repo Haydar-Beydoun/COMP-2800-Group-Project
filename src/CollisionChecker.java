@@ -18,7 +18,7 @@ public class CollisionChecker {
      */
     public boolean isColliding(Rectangle2D.Double hitbox, double vx, double vy){
         double x = hitbox.x + vx;
-        double y = hitbox.y +vy;
+        double y = hitbox.y + vy;
         double width = hitbox.width;
         double height = hitbox.height;
 
@@ -36,6 +36,7 @@ public class CollisionChecker {
         int topRow    = (int) (topY / GameCanvas.TILE_SIZE);
         int middleRow = (int) (middleY / GameCanvas.TILE_SIZE);
         int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE);
+
 
         if(rightCol <= 0 || leftCol >= (tilemap.length - 1) || topRow <= 0 || bottomRow >= (tilemap[0].length)) // Colliding with edges of the level
             return true;

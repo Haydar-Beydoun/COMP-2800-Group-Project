@@ -12,7 +12,7 @@ public class SpriteSheet {
     public BufferedImage[] images;
     public ImageIcon[] icons;
 
-    public SpriteSheet(String filePath, int rows, int columns, int cellSize) {
+    public SpriteSheet(String filePath, int rows, int columns, int cellWidth, int cellHeight) {
         try {
             this.sheet = ImageIO.read(new File(filePath));
         } catch (IOException e) {
@@ -26,7 +26,7 @@ public class SpriteSheet {
         int index = 0;
         for(int i = 0; i < rows; i++) {
             for(int j = 0; j < columns; j++) {
-                images[index] = sheet.getSubimage(j * cellSize, i * cellSize, cellSize, cellSize);
+                images[index] = sheet.getSubimage(j * cellWidth, i * cellHeight, cellWidth, cellHeight);
                 icons[index] = new ImageIcon(images[index]);
                 index++;
             }

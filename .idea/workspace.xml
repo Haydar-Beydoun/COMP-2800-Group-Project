@@ -4,31 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Rescaled tiles and level, full screen support, and more">
-      <change afterPath="$PROJECT_DIR$/src/Collectable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameObject.java" afterDir="false" />
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Finalized hitbox and polished code">
+      <change afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Animator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Animator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Camera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Camera.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/CollisionChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/CollisionChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Eagle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Eagle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Level$Stage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Level.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/LevelLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/LevelLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$State.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$State.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LevelLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/level1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1.png" afterDir="false" />
-    </list>
-    <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayya">
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/SpriteSheet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/SpriteSheet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/eagle-attack.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/eagle-attack.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Eagle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LevelLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SpriteSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpriteSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/eagle-attack.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/entities/spritesheets/eagle-attack.png" afterDir="false" />
+    </list>
+    <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayyan 3/31/2024">
+      <change beforePath="$PROJECT_DIR$/src/Animator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,62 +56,36 @@
     <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.desktop/java/awt/Graphics.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/GameCanvas.java">
+    <file path="$PROJECT_DIR$/src/Player.java">
       <ranges>
-        <range start1="0" end1="1" start2="0" end2="0" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="28" end1="29" start2="27" end2="29" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="84" end1="84" start2="84" end2="85" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="94" end1="94" start2="95" end2="98" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="2" end1="2" start2="2" end2="3" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="24" end1="24" start2="25" end2="26" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="37" end1="37" start2="39" end2="40" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="56" end1="57" start2="59" end2="60" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="66" end1="67" start2="69" end2="70" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="91" end1="92" start2="94" end2="95" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="94" end1="95" start2="97" end2="98" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="97" end1="99" start2="100" end2="102" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="121" end1="121" start2="124" end2="129" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="141" end1="141" start2="149" end2="152" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="145" end1="145" start2="156" end2="183" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/Entity.java">
       <ranges>
-        <range start1="11" end1="12" start2="11" end2="12" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="13" end1="17" start2="13" end2="13" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="19" end1="21" start2="15" end2="15" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="22" end1="23" start2="16" end2="16" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="25" end1="25" start2="18" end2="19" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="26" end1="29" start2="20" end2="20" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="33" end1="34" start2="24" end2="25" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="40" end1="45" start2="31" end2="33" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="50" end1="53" start2="38" end2="40" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="54" end1="68" start2="41" end2="41" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="69" end1="70" start2="42" end2="43" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="72" end1="79" start2="45" end2="45" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="84" end1="87" start2="50" end2="50" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="92" end1="95" start2="55" end2="55" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="104" end1="119" start2="64" end2="64" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="128" end1="128" start2="73" end2="77" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="132" end1="132" start2="81" end2="85" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="135" end1="135" start2="88" end2="96" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="18" end1="19" start2="18" end2="18" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="20" end1="20" start2="19" end2="20" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="42" end1="43" start2="42" end2="43" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="50" end1="51" start2="50" end2="50" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="55" end1="56" start2="54" end2="54" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="64" end1="65" start2="62" end2="62" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="89" end1="96" start2="86" end2="86" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/src/Player.java">
+    <file path="$PROJECT_DIR$/src/Animator.java">
       <ranges>
-        <range start1="55" end1="56" start2="55" end2="56" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="58" end1="58" start2="58" end2="61" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="95" end1="95" start2="98" end2="99" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="148" end1="149" start2="152" end2="153" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="164" end1="165" start2="168" end2="169" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="175" end1="175" start2="179" end2="182" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="176" end1="177" start2="183" end2="184" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="180" end1="181" start2="187" end2="188" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="184" end1="184" start2="191" end2="194" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/CollisionChecker.java">
-      <ranges>
-        <range start1="4" end1="5" start2="4" end2="4" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="6" end1="7" start2="5" end2="6" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="8" end1="9" start2="7" end2="7" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="11" end1="12" start2="9" end2="24" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="41" end1="41" start2="53" end2="54" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="54" end1="55" start2="67" end2="74" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="77" end1="79" start2="96" end2="96" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="82" end1="83" start2="99" end2="100" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="95" end1="96" start2="112" end2="113" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="101" end1="102" start2="118" end2="119" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="103" end1="104" start2="120" end2="121" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="9" end1="9" start2="9" end2="10" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="26" end1="26" start2="27" end2="31" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
       </ranges>
     </file>
   </component>
@@ -131,6 +111,11 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;derby&quot;
+    ]
   }
 }</component>
   <component name="RunManager">
@@ -175,6 +160,10 @@
       <workItem from="1711913999912" duration="187000" />
       <workItem from="1711914208151" duration="2000" />
       <workItem from="1711915238105" duration="8031000" />
+      <workItem from="1711923640769" duration="147000" />
+      <workItem from="1711929906773" duration="584000" />
+      <workItem from="1711979591625" duration="1552000" />
+      <workItem from="1711999145720" duration="10220000" />
     </task>
     <task id="LOCAL-00001" summary="Camera and more">
       <option name="closed" value="true" />
@@ -200,7 +189,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711564899760</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Finalized hitbox and polished code">
+      <option name="closed" value="true" />
+      <created>1711923697872</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711923697872</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changes by rayyan 3/31/2024">
+      <option name="closed" value="true" />
+      <created>1711923724525</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711923724525</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +226,8 @@
     <MESSAGE value="Camera and more" />
     <MESSAGE value="Changes by rayya" />
     <MESSAGE value="Rescaled tiles and level, full screen support, and more" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rescaled tiles and level, full screen support, and more" />
+    <MESSAGE value="Finalized hitbox and polished code" />
+    <MESSAGE value="Changes by rayyan 3/31/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by rayyan 3/31/2024" />
   </component>
 </project>

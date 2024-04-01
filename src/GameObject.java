@@ -1,4 +1,6 @@
-public class GameObject {
+import java.awt.*;
+
+public abstract class GameObject {
     double worldX;
     double worldY;
     int screenX;
@@ -60,4 +62,10 @@ public class GameObject {
     public double getWorldY() {
         return worldY;
     }
+
+    public void draw(Graphics2D g2d){}
+
+    public void draw(Graphics2D g2d, int offsetX, int offsetY){}
+
+    public void update(){}
 }
