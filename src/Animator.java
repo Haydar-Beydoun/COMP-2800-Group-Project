@@ -25,4 +25,8 @@ public class Animator {
         }
         currentFrame = frames[currentIndex];
     }
+
+    public boolean isAnimationComplete(){
+        return currentIndex == frames.length - 1;
+    }
 }

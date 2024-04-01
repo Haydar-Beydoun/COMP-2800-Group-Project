@@ -17,6 +17,7 @@ public abstract class Entity extends GameObject{
     int hitBoxLeftOffset = 0;
     int hitBoxRightOffset = 0;
     SpriteSheet spriteSheet;
+    Animator currentAnimator;
 
     /**
      * Constructor of the entity

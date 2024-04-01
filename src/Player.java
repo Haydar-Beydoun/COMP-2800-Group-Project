@@ -23,6 +23,7 @@ public class Player extends Entity{
     private boolean moving  = false;
     private boolean left    = false;
     private boolean right   = false;
+    private boolean iframe = false;
     private enum State{
         RIGHT,
         LEFT,
@@ -97,8 +98,8 @@ public class Player extends Entity{
             g2d.drawImage(currentAnimator.currentFrame, screenX, screenY, null);
         }
 
-        g2d.setColor(Color.MAGENTA);
-      // g2d.fillRect((int) screenX + hitBoxLeftOffset, (int) screenY + 32, (int) getHitBox().width, (int) getHitBox().height);
+//        g2d.setColor(Color.MAGENTA);
+//        g2d.fillRect((int) screenX + hitBoxLeftOffset, (int) screenY, (int) getHitBox().width, (int) getHitBox().height);
 
     }
 
