@@ -98,6 +98,26 @@ public class CollisionChecker {
         return true;
     }
 
+    public boolean isPathWalkable(Rectangle2D.Double hitbox , double vx, double vy){
+        double x = hitbox.x + vx;
+        double y = hitbox.y +vy;
+        double width = hitbox.width;
+        double height = hitbox.height;
+
+        double leftX = x;
+        double rightX=  x + width;
+        double bottomY =  (y + height);
+
+        int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
+        int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
+        int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE) + 1;
+
+        Tile bottomLeftTile  = tilemap[leftCol][bottomRow];
+        Tile bottomRightTile = tilemap[rightCol][bottomRow];
+
+        return !passable(bottomRightTile) && !passable(bottomLeftTile);
+    }
+
     public double getCollidingTileX(Rectangle2D.Double hitbox, double hitBoxLeftOffset, double vx){
         double leftX = hitbox.x + vx;
         double rightX=  hitbox.x + hitbox.width + vx;

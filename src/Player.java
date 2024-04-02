@@ -48,6 +48,9 @@ public class Player extends Entity{
     private Animator runAnimator;
     private Animator idleAnimator;
     private Animator currentAnimator;
+    private Animator hurtAnimator;
+    private long hurtStartTimer;
+    private long hurtDuration = 750_000_000L;
 
 
     /**
@@ -87,9 +90,25 @@ public class Player extends Entity{
             case RIGHT, LEFT:
                 currentAnimator = runAnimator;
                 break;
+            case HURT:
+                currentAnimator = hurtAnimator;
+                break;
             default:
                 currentAnimator = idleAnimator;
         }
+
+//        // Determining hit transparency
+//        Composite temp = g2d.getComposite();
+//        AlphaComposite alphaComposite;
+//        if(hurt){
+//            alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5F);
+//
+//        }
+//        else{
+//            alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0F);
+//        }
+//
+//        g2d.setComposite(alphaComposite);
 
         if(left){
             g2d.drawImage(currentAnimator.currentFrame, screenX + width, screenY, -currentAnimator.currentFrame.getWidth(), currentAnimator.currentFrame.getHeight(), null);
@@ -97,6 +116,7 @@ public class Player extends Entity{
         else{
             g2d.drawImage(currentAnimator.currentFrame, screenX, screenY, null);
         }
+//        g2d.setComposite(temp);
 
 //        g2d.setColor(Color.MAGENTA);
 //        g2d.fillRect((int) screenX + hitBoxLeftOffset, (int) screenY, (int) getHitBox().width, (int) getHitBox().height);
@@ -110,6 +130,7 @@ public class Player extends Entity{
         currentAnimator.update();
         move();
         setState();
+
     }
 
     /**
@@ -131,13 +152,14 @@ public class Player extends Entity{
      * Player move function
      */
     private void move(){
-        vx = 0;
+        if(!hurt)
+            vx = 0;
 
-        if(keyboard.isPressed(leftBinds)){
+        if(keyboard.isPressed(leftBinds) && !hurt){
             vx = -speed;
             left = true;
         }
-        if(keyboard.isPressed(rightBinds)){
+        if(keyboard.isPressed(rightBinds)  && !hurt){
             vx = speed;
             left = false;
         }
@@ -156,8 +178,12 @@ public class Player extends Entity{
     }
 
     public boolean isKillingEnemy(Rectangle2D.Double enemyHitBox){
-//        if(iframe)
-//            return false;
+        if(System.nanoTime() - hurtStartTimer < hurtDuration)
+            return false;
+        else{
+            hurt = false;
+        }
+
 
         if(getHitBox().intersects(enemyHitBox)){
             if(state == State.FALL && getHitBox().intersects(enemyHitBox.x, enemyHitBox.y, enemyHitBox.width, 1)){
@@ -165,16 +191,20 @@ public class Player extends Entity{
                 return true;
             }
             else{
-                if(state == State.JUMP && worldY >= enemyHitBox.y + enemyHitBox.height) {
-                    vy = 0;
+                if(state == State.JUMP) {
+                    vy = topCollisionFallSpeed;
                 }
-//                if(getWorldX() + width - hitBoxLeftOffset <= enemyHitBox.x || getWorldX() >=  enemyHitBox.x + enemyHitBox.width){
-//                    vx *=-1;
-//                }
+
+                if(vx > 0)
+                    vx = -3;
+                else
+                    vx = 3;
 
                 //player gets hurt
                 health -=10;
-               // iframe = true;
+                hurt = true;
+                hurtStartTimer = System.nanoTime();
+
                 return false;
             }
         }
@@ -235,7 +265,10 @@ public class Player extends Entity{
      * Set the state the player is in during movement
      */
     public void setState(){
-        if(Math.floor(vy) < 0){
+        if(hurt){
+            state = State.HURT;
+        }
+        else if(Math.floor(vy) < 0){
             state = State.JUMP;
         }
         else if(Math.floor(vy) > 0){

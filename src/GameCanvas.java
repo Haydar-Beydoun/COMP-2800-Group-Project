@@ -42,6 +42,7 @@ public class GameCanvas extends Canvas implements Runnable {
         enemies.add(new Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));
         enemies.add(new Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));
         enemies.add(new Eagle(500, 1800, 500, 1800, 104, 123, 1, 1, level.getTilemap()));
+        enemies.add(new Opossum(1100, 1890, 36 * 3, 28 * 3, 1, 1, level.getTilemap()));
 
         collectables.add(new Gem(500, 2100));
         collectables.add(new Cherry(300, 2100));
@@ -100,7 +101,7 @@ public class GameCanvas extends Canvas implements Runnable {
 
             enemy.update();
 
-            if(player.isKillingEnemy(enemy.getHitBox())){
+            if(!enemy.isKilled() &&  player.isKillingEnemy(enemy.getHitBox())){
                 enemy.death();
             }
             if(enemy.isDeathComplete()){
@@ -112,7 +113,10 @@ public class GameCanvas extends Canvas implements Runnable {
             Collectable collectable = collectables.get(i);
             collectable.update();
 
-            if(player.isCollectingCollectable(collectable.getHitBox())){
+            if(!collectable.isCollected() && player.isCollectingCollectable(collectable.getHitBox())){
+                collectable.collect();
+            }
+            if(collectable.isCollectComplete()){
                 collectables.remove(collectable);
             }
 
