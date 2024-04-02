@@ -3,8 +3,9 @@ import java.awt.*;
 public class Gem extends Collectable{
 
 
+
     public Gem(double worldX, double worldY) {
-        super(worldX, worldY, 100, 100);
+        super(worldX, worldY, 80, 80);
         initCollectable();
     }
 

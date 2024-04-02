@@ -169,4 +169,6 @@ public class CollisionChecker {
         return tile.getType() == Tile.Type.PASSABLE;
     }
 
+
+
 }

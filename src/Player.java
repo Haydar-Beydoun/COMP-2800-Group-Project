@@ -23,7 +23,7 @@ public class Player extends Entity{
     private boolean moving  = false;
     private boolean left    = false;
     private boolean right   = false;
-    private boolean iframe = false;
+    private boolean hurt = false;
     private enum State{
         RIGHT,
         LEFT,
@@ -76,6 +76,7 @@ public class Player extends Entity{
         runAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,6, 12), 0 , 5);
         jumpAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,30, 31), 0 , 20);
         fallAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,31, 32), 0 , 20);
+        hurtAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,24, 26), 0 , 15);
 
     }
 
@@ -163,14 +164,14 @@ public class Player extends Entity{
             vx = speed;
             left = false;
         }
-        if(keyboard.isPressed(jumpBinds)){
+        if(keyboard.isPressed(jumpBinds) && !hurt){
             jump();
         }
         if(keyboard.isPressed(KeyEvent.VK_ESCAPE)){ //TEMP FOR TESTING
             initPlayer();
         }
         if(keyboard.isPressed(KeyEvent.VK_I)){ //TEMP FOR TESTING
-            iframe = false;
+            hurt = false;
         }
 
         updateY();

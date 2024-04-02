@@ -9,7 +9,7 @@ public class Cherry extends Collectable{
 
     @Override
     public void initCollectable(){
-        spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/cherry2.png", 1, 8, 21, 21);
+        spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/cherry.png", 1, 8, 21, 21);
         currentAnimator = new Animator(spriteSheet.images, 0, 9);
     }
 
