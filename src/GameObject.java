@@ -68,4 +68,5 @@ public abstract class GameObject {
     public void draw(Graphics2D g2d, int offsetX, int offsetY){}
 
     public void update(){}
+
 }

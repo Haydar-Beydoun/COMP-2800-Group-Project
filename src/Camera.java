@@ -63,6 +63,10 @@ public class Camera {
         for(int i = 0; i < enemies.size(); i++){
             enemies.get(i).draw(g2d, offsetx, offsety);
         }
+
+        for(int i=0; i < collectables.size();i++){
+            collectables.get(i).draw(g2d, offsetx, offsety);
+        }
     }
 
 }

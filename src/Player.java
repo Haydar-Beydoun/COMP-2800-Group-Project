@@ -182,6 +182,10 @@ public class Player extends Entity{
         return false;
     }
 
+    public boolean isCollectingCollectable(Rectangle2D collectableHitBox){
+        return getHitBox().intersects(collectableHitBox);
+    }
+
     /**
      * Player update Y
      */

@@ -4,39 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Finalized hitbox and polished code">
-      <change afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Rescaled tiles and level, full screen support, and more">
+      <change afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/blobs/version" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Cherry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Gem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/entities/spritesheets/cherry2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Animator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Animator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Camera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Camera.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/CollisionChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/CollisionChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Eagle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Eagle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Collectable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Collectable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/LevelLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/LevelLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$State.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$State.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/SpriteSheet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/SpriteSheet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/eagle-attack.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/eagle-attack.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Eagle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Collectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collectable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LevelLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SpriteSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpriteSheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/eagle-attack.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/entities/spritesheets/eagle-attack.png" afterDir="false" />
-    </list>
-    <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayyan 3/31/2024">
-      <change beforePath="$PROJECT_DIR$/src/Animator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
+    <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayya" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,72 +38,56 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.desktop/java/awt/Graphics.java" root0="SKIP_INSPECTION" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Player.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="24" end1="24" start2="25" end2="26" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="37" end1="37" start2="39" end2="40" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="56" end1="57" start2="59" end2="60" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="66" end1="67" start2="69" end2="70" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="91" end1="92" start2="94" end2="95" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="94" end1="95" start2="97" end2="98" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="97" end1="99" start2="100" end2="102" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="121" end1="121" start2="124" end2="129" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="141" end1="141" start2="149" end2="152" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="145" end1="145" start2="156" end2="183" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Entity.java">
-      <ranges>
-        <range start1="18" end1="19" start2="18" end2="18" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="20" end1="20" start2="19" end2="20" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="42" end1="43" start2="42" end2="43" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="50" end1="51" start2="50" end2="50" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="55" end1="56" start2="54" end2="54" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="64" end1="65" start2="62" end2="62" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="89" end1="96" start2="86" end2="86" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Animator.java">
-      <ranges>
-        <range start1="9" end1="9" start2="9" end2="10" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="26" end1="26" start2="27" end2="31" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-      </ranges>
-    </file>
-  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Complex12345"
+  }
+}]]></component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: []
+}</component>
+  <component name="GitLabMergeRequestsSettings">{}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Haydar-Beydoun/COMP-2800-Group-Project.git",
+    "accountId": "e2cef875-6495-4076-bf9c-4b167f8c3cc1"
+  }
+}]]></component>
+  <component name="KubernetesApiProvider">{}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2eEk8dBeo02AM9hkgSSuCOLLhfb" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/A/IdeaProjects/COMP 2800/COMP 2800 LAB/COMP 2800 Group Project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;derby&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.GameLauncher.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/A/IdeaProjects/COMP 2800/COMP 2800 LAB/COMP 2800 Group Project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "inlay.hints",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="GameLauncher" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="GameLauncher" />
@@ -126,6 +96,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.158" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.158" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -164,6 +142,7 @@
       <workItem from="1711929906773" duration="584000" />
       <workItem from="1711979591625" duration="1552000" />
       <workItem from="1711999145720" duration="10220000" />
+      <workItem from="1712084478266" duration="4995000" />
     </task>
     <task id="LOCAL-00001" summary="Camera and more">
       <option name="closed" value="true" />
@@ -223,11 +202,10 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Camera and more" />
     <MESSAGE value="Changes by rayya" />
     <MESSAGE value="Rescaled tiles and level, full screen support, and more" />
-    <MESSAGE value="Finalized hitbox and polished code" />
-    <MESSAGE value="Changes by rayyan 3/31/2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by rayyan 3/31/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rescaled tiles and level, full screen support, and more" />
   </component>
 </project>
