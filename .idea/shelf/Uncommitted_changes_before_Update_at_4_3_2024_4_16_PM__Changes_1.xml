@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_4_3_2024_4_16_PM_[Changes]1" date="1712175431323" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_3_2024_4_16_PM_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 4/3/2024 4:16 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/COMP_2800_Group_Project/GameCanvas.class" />
+    <option name="AFTER_PATH" value="out/production/COMP_2800_Group_Project/GameCanvas.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_3_2024_4_16_PM_[Changes]1/GameCanvas.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/COMP_2800_Group_Project/Collectable.class" />
+    <option name="AFTER_PATH" value="out/production/COMP_2800_Group_Project/Collectable.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_3_2024_4_16_PM_[Changes]1/Collectable.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/COMP_2800_Group_Project/GameWindow.class" />
+    <option name="AFTER_PATH" value="out/production/COMP_2800_Group_Project/GameWindow.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_3_2024_4_16_PM_[Changes]1/GameWindow.class" />
+  </binary>
+</changelist>

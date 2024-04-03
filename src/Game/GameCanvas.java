@@ -5,12 +5,15 @@ import Entities.Enemies.Eagle;
 import Abstracts.Enemy;
 import Entities.Player;
 import Game.Level.Level;
-import Game.UI.Menu;
+import Game.UI.PauseMenu;
 import Utils.Keyboard;
 import Game.Level.LevelLoader;
+import Utils.Mouse;
 
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -19,11 +22,13 @@ public class GameCanvas extends Canvas implements Runnable {
     // Game.Game.Level.Level and loader
     private static LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
     private Level level = loader.getLevel();
-    private final Menu menu = new Menu();
+
 
     // Game States
     public enum GameState {
-        MENU,
+        PAUSE_MENU,
+        START_MENU,
+        LEVEL_SELECT_MENU,
         GAME,
         GAME_OVER,
         WIN
@@ -48,29 +53,24 @@ public class GameCanvas extends Canvas implements Runnable {
     private Graphics2D g2d;
 
     //Entities
-    private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, -1, 5, level.getTilemap());
+    private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, 10, 5, level.getTilemap());
     private ArrayList<Enemy> enemies = level.getEnemies();
     private ArrayList<Collectable> collectables = level.getCollectables();
 
     // Utilities
     public static Keyboard keyboard = new Keyboard();
+    public static Mouse mouse = new Mouse();
     private Camera camera = new Camera(level, player, enemies, collectables);
 
     public GameCanvas(){
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.addKeyListener(keyboard);
+        this.addMouseListener(mouse);
         this.setFocusable(true);
 
-//        enemies.add(new Enemies.Entities.Enemies.Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));
-//        enemies.add(new Enemies.Entities.Enemies.Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));
-        enemies.add(new Eagle(500, 1800, 600, 1800, 104, 123, 1, 1, level.getTilemap()));
-//        enemies.add(new Enemies.Entities.Enemies.Opossum(1100, 1890, 36 * 3, 28 * 3, 1, 1, level.getTilemap()));
-
-//        collectables.add(new Entities.Collectables.Gem(500, 2100));
-//        collectables.add(new Entities.Collectables.Cherry(300, 2100));
+        enemies.add(new Eagle(500, 1800, 500, 1900, 104, 123, 1, 1, level.getTilemap()));
 
         camera = new Camera(level, player, enemies, collectables);
-
         initGame();
     }
 
@@ -104,21 +104,37 @@ public class GameCanvas extends Canvas implements Runnable {
             prevTime = currentTime;
 
             if(delta >= 1){
-                if(GameState.GAME == gameState) update();
-                CheckState();
+                update();
                 delta--;
             }
 
             renderTempScreen();
             render();
-
         }
     }
 
     public void update(){
-        player.update();
+        System.out.println(player.health);
+        if(player.health <= 0){
+            player.death();
+        }
+        updateState();
 
-        // Updating entities
+        switch(gameState){
+            case GAME:
+                player.update();
+                updateCollectables();
+                updateEnemies();
+                break;
+            case PAUSE_MENU:
+                pauseMenu.update();
+                break;
+
+        }
+
+    }
+
+    private void updateEnemies(){
         for (int i = 0; i < enemies.size(); i++) {
             Enemy enemy = enemies.get(i);
 
@@ -132,8 +148,10 @@ public class GameCanvas extends Canvas implements Runnable {
                     enemies.remove(enemy);
                 }
             }
-
         }
+    }
+
+    private void updateCollectables(){
         for(int i=0; i < collectables.size();i++){
             Collectable collectable = collectables.get(i);
 
@@ -149,16 +167,11 @@ public class GameCanvas extends Canvas implements Runnable {
             }
 
         }
-
-
-
     }
 
-
-    public void CheckState(){
+    public void updateState(){
         if(keyboard.isPressed(KeyEvent.VK_1)){
-            gameState = GameState.MENU;
-            menu.draw(g2d);
+            gameState = GameState.PAUSE_MENU;
         }
         if(keyboard.isPressed(KeyEvent.VK_2)){
             gameState = GameState.GAME;
@@ -166,25 +179,25 @@ public class GameCanvas extends Canvas implements Runnable {
     }
 
     public void renderTempScreen(){
-        // Drawing plain white background
-        g2d.setColor(Color.WHITE);
-        g2d.fillRect(0, 0, WIDTH, HEIGHT);
-
-        // Drawing Game.Game.Level.Level, entities, collectables, and player
-        camera.draw(g2d);
-
+        switch(gameState){
+            case GAME:
+                camera.draw(g2d);
+                break;
+            case PAUSE_MENU:
+                camera.draw(g2d);
+                pauseMenu.draw(g2d);
+                break;
+        }
 
     }
 
     public void render(){
         Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
 
-        // Drawing temp Image (contains all components)
         g2d.drawImage(tempImage, 0, 0, WIDTH2, HEIGHT2, null);
 
         g2d.dispose();
         bufferStrategy.show();
-
     }
 
     public void setFullScreen(){

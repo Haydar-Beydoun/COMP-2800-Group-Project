@@ -1,0 +1,205 @@
+Index: src/Entities/Enemies/Eagle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Entities.Enemies;\r\n\r\nimport Game.CollisionChecker;\r\nimport Game.Level.Tile;\r\nimport Utils.Animator;\r\nimport Utils.SpriteSheet;\r\n\r\nimport java.awt.*;\r\nimport java.util.Arrays;\r\n\r\n\r\npublic class Eagle extends Enemy {\r\n    public Tile[][] tilemap;\r\n    private int startX;\r\n    private int startY;\r\n    private int endX;\r\n    private int endY;\r\n    private int dirX = 1;\r\n    private int dirY = 1;\r\n    private Animator idleAnimator;\r\n    private CollisionChecker collisionChecker;\r\n\r\n    public Eagle(int startX,int startY, int endX, int endY, int width,int height, int health, int speed, Tile[][] tileMap){\r\n        super(startX, startY, width, height, health, speed);\r\n        this.startX = startX;\r\n        this.startY = startY;\r\n        this.endX = endX;\r\n        this.endY = endY;\r\n        this.tilemap = tileMap;\r\n        this.spriteSheet = new SpriteSheet(\"src/resources/entities/spritesheets/eagle-attack.png\", 1,4,35, 41);\r\n\r\n        collisionChecker = new CollisionChecker(tileMap);\r\n\r\n        initEagle();\r\n    }\r\n\r\n    public void initEagle(){\r\n        idleAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 4), 0 , 7);\r\n        currentAnimator = idleAnimator;\r\n    }\r\n\r\n    @Override\r\n    public void update(){\r\n        if(!currentAnimator.equals(deathAnimator))\r\n            move();\r\n        currentAnimator.update();\r\n\r\n    }\r\n\r\n    public void move(){\r\n        // Movement in the x-dir\r\n        if(startX != endX) {\r\n            if (worldX > endX || worldX < startX || collisionChecker.isColliding(getHitBox(), vx, 0)) {\r\n                dirX *= -1;\r\n            }\r\n\r\n            vx = speed * dirX;\r\n        }\r\n\r\n        // Movement in the y-dir\r\n        if(startY != endY){\r\n            if(worldY > endY || worldY < startY || collisionChecker.isColliding(getHitBox(), 0, vy)){\r\n                dirY *= -1;\r\n            }\r\n\r\n            vy = speed * dirY;\r\n        }\r\n\r\n        worldX += vx;\r\n        worldY += vy;\r\n    }\r\n\r\n    public void draw(Graphics2D g2d, int offsetX, int offsetY){\r\n        g2d.drawImage(currentAnimator.currentFrame, (int) worldX + offsetX, (int) worldY + offsetY, width, height, null);\r\n//        g2d.setColor(Color.MAGENTA);\r\n//        g2d.drawRect((int)worldX + offsetX,(int)worldY + offsetY,width,height);\r\n    }\r\n\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Entities/Enemies/Eagle.java b/src/Entities/Enemies/Eagle.java
+--- a/src/Entities/Enemies/Eagle.java	(revision 29a41ab4adbc9d9c53a7b0fe6b203237e0e2a90e)
++++ b/src/Entities/Enemies/Eagle.java	(date 1712177172082)
+@@ -29,6 +29,19 @@
+         this.tilemap = tileMap;
+         this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/eagle-attack.png", 1,4,35, 41);
+ 
++        if(endX < startX){
++            int temp = endX;
++            this.endX = startX;
++            this.startX = temp;
++            worldX = startX;
++        }
++        if(endY < startY){
++            int temp = endY;
++            this.endY = startY;
++            this.startY = temp;
++            worldY = startY;
++        }
++
+         collisionChecker = new CollisionChecker(tileMap);
+ 
+         initEagle();
+Index: src/Game/GameWindow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Game;\r\n\r\nimport javax.swing.*;\r\n\r\npublic class GameWindow {\r\n    public static JFrame gameWindow = new JFrame(\"INSERT GAME NAME HERE\");        // FIX ME: CHANGE NAME\r\n    private GameCanvas canvas = new GameCanvas();\r\n\r\n    public GameWindow(){\r\n        gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n\r\n        gameWindow.setResizable(false);\r\n\r\n        addElements();\r\n\r\n        gameWindow.pack();\r\n\r\n        gameWindow.setLocationRelativeTo(null);\r\n\r\n        //canvas.setFullScreen();\r\n        gameWindow.setVisible(true);\r\n\r\n        canvas.start();\r\n\r\n    }\r\n\r\n    private void addElements(){\r\n        gameWindow.add(canvas);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Game/GameWindow.java b/src/Game/GameWindow.java
+--- a/src/Game/GameWindow.java	(revision 29a41ab4adbc9d9c53a7b0fe6b203237e0e2a90e)
++++ b/src/Game/GameWindow.java	(date 1712175598792)
+@@ -17,7 +17,7 @@
+ 
+         gameWindow.setLocationRelativeTo(null);
+ 
+-        //canvas.setFullScreen();
++        canvas.setFullScreen();
+         gameWindow.setVisible(true);
+ 
+         canvas.start();
+Index: src/Game/GameCanvas.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Game;\r\n\r\nimport Abstracts.Collectable;\r\nimport Entities.Enemies.Eagle;\r\nimport Entities.Enemies.Enemy;\r\nimport Entities.Player;\r\nimport Game.Level.Level;\r\nimport Utils.Keyboard;\r\nimport Game.Level.LevelLoader;\r\n\r\nimport java.awt.*;\r\nimport java.awt.event.KeyEvent;\r\nimport java.awt.image.BufferStrategy;\r\nimport java.awt.image.BufferedImage;\r\nimport java.util.ArrayList;\r\n\r\npublic class GameCanvas extends Canvas implements Runnable {\r\n    // Game.Game.Level.Level and loader\r\n    private static LevelLoader loader = new LevelLoader(\"src/resources/maps/level1.txt\");\r\n    private Level level = loader.getLevel();\r\n\r\n    // Game States\r\n    public enum GameState {\r\n        MENU,\r\n        GAME,\r\n        GAME_OVER,\r\n        WIN\r\n    }\r\n\r\n    // Helper values and more\r\n    static GameState gameState = GameState.GAME;\r\n    private Thread thread;\r\n    private final int UPS = 60;\r\n    private BufferStrategy bufferStrategy;\r\n    private static final int NUM_COLS = 20;\r\n    private static final int NUM_ROWS = 12;\r\n    public static final int TILE_SIZE = loader.getTileWidth();\r\n    public static  int WIDTH = NUM_COLS * TILE_SIZE; // 1280px\r\n    public static  int HEIGHT = NUM_ROWS * TILE_SIZE; // 768px\r\n\r\n    // Full Screen variables\r\n    // Reference for full screen functionality: https://www.youtube.com/watch?v=d5E_O2N73ZU\r\n    private int WIDTH2 = WIDTH;\r\n    private int HEIGHT2 = HEIGHT;\r\n    private BufferedImage tempImage;\r\n    private Graphics2D g2d;\r\n\r\n    //Entities\r\n    private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, -1, 5, level.getTilemap());\r\n    private ArrayList<Enemy> enemies = level.getEnemies();\r\n    private ArrayList<Collectable> collectables = level.getCollectables();\r\n\r\n    // Utilities\r\n    public static Keyboard keyboard = new Keyboard();\r\n    private Camera camera = new Camera(level, player, enemies, collectables);\r\n\r\n    public GameCanvas(){\r\n        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));\r\n        this.addKeyListener(keyboard);\r\n        this.setFocusable(true);\r\n\r\n//        enemies.add(new Enemies.Entities.Enemies.Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));\r\n//        enemies.add(new Enemies.Entities.Enemies.Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));\r\n        enemies.add(new Eagle(500, 1800, 600, 1800, 104, 123, 1, 1, level.getTilemap()));\r\n//        enemies.add(new Enemies.Entities.Enemies.Opossum(1100, 1890, 36 * 3, 28 * 3, 1, 1, level.getTilemap()));\r\n\r\n//        collectables.add(new Entities.Collectables.Gem(500, 2100));\r\n//        collectables.add(new Entities.Collectables.Cherry(300, 2100));\r\n\r\n        camera = new Camera(level, player, enemies, collectables);\r\n\r\n        initGame();\r\n    }\r\n\r\n    private void initGame(){\r\n        tempImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);\r\n        g2d = (Graphics2D) tempImage.getGraphics();\r\n    }\r\n\r\n    public void start(){\r\n        if(thread == null){\r\n            this.requestFocus();\r\n            this.createBufferStrategy(3);\r\n            bufferStrategy = this.getBufferStrategy();\r\n\r\n            thread = new Thread(this, \"canvas thread\");\r\n            thread.start();\r\n\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void run() {\r\n        double drawInterval = 1_000_000_000 / UPS;\r\n        double delta = 0;\r\n        long prevTime = System.nanoTime();\r\n        long currentTime;\r\n\r\n        while(thread != null){\r\n            currentTime = System.nanoTime();\r\n            delta += (currentTime - prevTime) / drawInterval;\r\n            prevTime = currentTime;\r\n\r\n            if(delta >= 1){\r\n                if(GameState.GAME == gameState) update();\r\n                CheckState();\r\n                delta--;\r\n            }\r\n\r\n            renderTempScreen();\r\n            render();\r\n\r\n        }\r\n    }\r\n\r\n    public void update(){\r\n        player.update();\r\n\r\n        // Updating entities\r\n        for (int i = 0; i < enemies.size(); i++) {\r\n            Enemy enemy = enemies.get(i);\r\n\r\n            if(Math.abs(enemy.worldX - player.worldX) < WIDTH && Math.abs(enemy.worldY - player.worldY) < HEIGHT) {\r\n                enemy.update();\r\n\r\n                if (!enemy.isKilled() && player.isKillingEnemy(enemy.getHitBox())) {\r\n                    enemy.death();\r\n                }\r\n                if (enemy.isDeathComplete()) {\r\n                    enemies.remove(enemy);\r\n                }\r\n            }\r\n\r\n        }\r\n        for(int i=0; i < collectables.size();i++){\r\n            Collectable collectable = collectables.get(i);\r\n\r\n            if(Math.abs(collectable.worldX - player.worldX) < WIDTH && Math.abs(collectable.worldY - player.worldY) < HEIGHT) {\r\n                collectable.update();\r\n\r\n                if (!collectable.isCollected() && player.isCollectingCollectable(collectable.getHitBox())) {\r\n                    collectable.collect();\r\n                }\r\n                if (collectable.isCollectComplete()) {\r\n                    collectables.remove(collectable);\r\n                }\r\n            }\r\n\r\n        }\r\n\r\n\r\n\r\n    }\r\n\r\n    public void CheckState(){\r\n        if(keyboard.isPressed(KeyEvent.VK_1)){\r\n            gameState = GameState.MENU;\r\n        }\r\n        if(keyboard.isPressed(KeyEvent.VK_2)){\r\n            gameState = GameState.GAME;\r\n        }\r\n    }\r\n\r\n    public void renderTempScreen(){\r\n        // Drawing plain white background\r\n        g2d.setColor(Color.WHITE);\r\n        g2d.fillRect(0, 0, WIDTH, HEIGHT);\r\n\r\n        // Drawing Game.Game.Level.Level, entities, collectables, and player\r\n        camera.draw(g2d);\r\n\r\n\r\n    }\r\n\r\n    public void render(){\r\n        Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();\r\n\r\n        // Drawing temp Image (contains all components)\r\n        g2d.drawImage(tempImage, 0, 0, WIDTH2, HEIGHT2, null);\r\n\r\n        g2d.dispose();\r\n        bufferStrategy.show();\r\n\r\n    }\r\n\r\n    public void setFullScreen(){\r\n        GameWindow.gameWindow.dispose();\r\n\r\n        GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();\r\n        GraphicsDevice gDev = gEnv.getDefaultScreenDevice();\r\n\r\n        GameWindow.gameWindow.setUndecorated(true);\r\n        gDev.setFullScreenWindow(GameWindow.gameWindow);\r\n\r\n        WIDTH2 = GameWindow.gameWindow.getWidth();\r\n        HEIGHT2 = GameWindow.gameWindow.getHeight();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Game/GameCanvas.java b/src/Game/GameCanvas.java
+--- a/src/Game/GameCanvas.java	(revision 29a41ab4adbc9d9c53a7b0fe6b203237e0e2a90e)
++++ b/src/Game/GameCanvas.java	(date 1712177017474)
+@@ -59,16 +59,9 @@
+         this.addKeyListener(keyboard);
+         this.setFocusable(true);
+ 
+-//        enemies.add(new Enemies.Entities.Enemies.Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));
+-//        enemies.add(new Enemies.Entities.Enemies.Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));
+-        enemies.add(new Eagle(500, 1800, 600, 1800, 104, 123, 1, 1, level.getTilemap()));
+-//        enemies.add(new Enemies.Entities.Enemies.Opossum(1100, 1890, 36 * 3, 28 * 3, 1, 1, level.getTilemap()));
+-
+-//        collectables.add(new Entities.Collectables.Gem(500, 2100));
+-//        collectables.add(new Entities.Collectables.Cherry(300, 2100));
++        enemies.add(new Eagle(500, 1800, 500, 1900, 104, 123, 1, 1, level.getTilemap()));
+ 
+         camera = new Camera(level, player, enemies, collectables);
+-
+         initGame();
+     }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"9840e3a1-1fbc-4660-9108-396ea3cc6f09\" name=\"Changes\" comment=\"Organized Files\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/Entities/Collectables/FinishLevelItem.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Game/UI/Menu.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Game/UI/NextLevel.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Game/UI/StartMenu.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Animator.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/CollisionChecker.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Eagle.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Enemy.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entity.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameLauncher.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameLauncher.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameObject.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/ImageLoader.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Keyboard.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$1.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/SpriteSheet.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Tile$Type.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Tile.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Abstracts/Collectable.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Abstracts/Collectable.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Abstracts/Entity.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Abstracts/Entity.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Abstracts/GameObject.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Abstracts/GameObject.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Entities/Collectables/Cherry.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Entities/Collectables/Cherry.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Entities/Collectables/Gem.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Entities/Collectables/Gem.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Game/Menu.java\" beforeDir=\"false\" />\r\n    </list>\r\n    <list id=\"7d8c43e3-96c5-4073-aada-3b0e525ad988\" name=\"Changes by rayya\" comment=\"Changes by rayyan 3/31/2024\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.desktop/java/awt/Graphics.java\" root0=\"SKIP_INSPECTION\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2eEk8dBeo02AM9hkgSSuCOLLhfb\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.GameLauncher.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"codeWithMe.voiceChat.enabledByDefault\": \"false\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"last_opened_file_path\": \"C:/Users/A/IdeaProjects/COMP 2800/COMP 2800 LAB/COMP 2800 Group Project\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"derby\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"GameLauncher\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"GameLauncher\" />\r\n      <module name=\"COMP_2800_Group_Project\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"9840e3a1-1fbc-4660-9108-396ea3cc6f09\" name=\"Changes\" comment=\"\" />\r\n      <created>1711476967119</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1711476967119</updated>\r\n      <workItem from=\"1711476968177\" duration=\"11452000\" />\r\n      <workItem from=\"1711488851415\" duration=\"72000\" />\r\n      <workItem from=\"1711492481076\" duration=\"5052000\" />\r\n      <workItem from=\"1711497667825\" duration=\"67000\" />\r\n      <workItem from=\"1711503055975\" duration=\"3628000\" />\r\n      <workItem from=\"1711506874737\" duration=\"30000\" />\r\n      <workItem from=\"1711540945438\" duration=\"1814000\" />\r\n      <workItem from=\"1711554403830\" duration=\"8018000\" />\r\n      <workItem from=\"1711563524553\" duration=\"2170000\" />\r\n      <workItem from=\"1711565745432\" duration=\"552000\" />\r\n      <workItem from=\"1711566469892\" duration=\"154000\" />\r\n      <workItem from=\"1711568195605\" duration=\"189000\" />\r\n      <workItem from=\"1711573461280\" duration=\"250000\" />\r\n      <workItem from=\"1711576033885\" duration=\"514000\" />\r\n      <workItem from=\"1711576745950\" duration=\"53000\" />\r\n      <workItem from=\"1711582903737\" duration=\"194000\" />\r\n      <workItem from=\"1711637565782\" duration=\"2967000\" />\r\n      <workItem from=\"1711666336599\" duration=\"396000\" />\r\n      <workItem from=\"1711731065994\" duration=\"266000\" />\r\n      <workItem from=\"1711904055783\" duration=\"230000\" />\r\n      <workItem from=\"1711904964461\" duration=\"35000\" />\r\n      <workItem from=\"1711908649854\" duration=\"108000\" />\r\n      <workItem from=\"1711913999912\" duration=\"187000\" />\r\n      <workItem from=\"1711914208151\" duration=\"2000\" />\r\n      <workItem from=\"1711915238105\" duration=\"8031000\" />\r\n      <workItem from=\"1711923640769\" duration=\"147000\" />\r\n      <workItem from=\"1711929906773\" duration=\"584000\" />\r\n      <workItem from=\"1711979591625\" duration=\"1552000\" />\r\n      <workItem from=\"1711999145720\" duration=\"10220000\" />\r\n      <workItem from=\"1712109344167\" duration=\"778000\" />\r\n      <workItem from=\"1712152332860\" duration=\"724000\" />\r\n      <workItem from=\"1712154541040\" duration=\"907000\" />\r\n      <workItem from=\"1712156247363\" duration=\"92000\" />\r\n      <workItem from=\"1712160965203\" duration=\"6286000\" />\r\n      <workItem from=\"1712167902958\" duration=\"1131000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Camera and more\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711488477757</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711488477757</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Changes by rayya\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711488504800</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711488504800</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Rescaled tiles and level, full screen support, and more\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711564899760</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711564899760</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Finalized hitbox and polished code\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711923697872</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711923697872</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Changes by rayyan 3/31/2024\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711923724525</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711923724525</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Added oppossum, hurt animation\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712098436656</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712098436656</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"resource modification\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712098489294</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712098489294</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Changes by rayyan 3/31/2024\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712098498470</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712098498470</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"enemy sprite sheets created\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712154614175</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712154614175</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"level loader now support enemy and collectable loading\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712167288515</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712167288515</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Organized Files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712172217639</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712172217639</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"12\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Camera and more\" />\r\n    <MESSAGE value=\"Changes by rayya\" />\r\n    <MESSAGE value=\"Rescaled tiles and level, full screen support, and more\" />\r\n    <MESSAGE value=\"Finalized hitbox and polished code\" />\r\n    <MESSAGE value=\"Added oppossum, hurt animation\" />\r\n    <MESSAGE value=\"resource modification\" />\r\n    <MESSAGE value=\"Changes by rayyan 3/31/2024\" />\r\n    <MESSAGE value=\"enemy sprite sheets created\" />\r\n    <MESSAGE value=\"level loader now support enemy and collectable loading\" />\r\n    <MESSAGE value=\"Organized Files\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Organized Files\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 29a41ab4adbc9d9c53a7b0fe6b203237e0e2a90e)
++++ b/.idea/workspace.xml	(date 1712176993462)
+@@ -4,31 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Organized Files">
+-      <change afterPath="$PROJECT_DIR$/src/Entities/Collectables/FinishLevelItem.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/Game/UI/Menu.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/Game/UI/NextLevel.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/Game/UI/StartMenu.java" afterDir="false" />
++    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="level loader now support enemy and collectable loading">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Animator.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/CollisionChecker.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Eagle.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Enemy.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entity.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameLauncher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameLauncher.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameObject.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/ImageLoader.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Keyboard.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$1.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/SpriteSheet.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Tile$Type.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Tile.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Abstracts/Collectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Collectable.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Abstracts/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Entity.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Abstracts/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/GameObject.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Entities/Collectables/Cherry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Collectables/Cherry.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Entities/Collectables/Gem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Collectables/Gem.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Game/Menu.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Entities/Enemies/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Enemies/Eagle.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Game/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameCanvas.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Game/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameWindow.java" afterDir="false" />
+     </list>
+     <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayyan 3/31/2024" />
+     <option name="SHOW_DIALOG" value="false" />
+@@ -61,27 +41,28 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.GameLauncher.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "codeWithMe.voiceChat.enabledByDefault": "false",
+-    "git-widget-placeholder": "master",
+-    "last_opened_file_path": "C:/Users/A/IdeaProjects/COMP 2800/COMP 2800 LAB/COMP 2800 Group Project",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.GameLauncher.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/A/IdeaProjects/COMP 2800/COMP 2800 LAB/COMP 2800 Group Project&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   },
+-  "keyToStringList": {
+-    "DatabaseDriversLRU": [
+-      "derby"
++  &quot;keyToStringList&quot;: {
++    &quot;DatabaseDriversLRU&quot;: [
++      &quot;derby&quot;
+     ]
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="GameLauncher" type="Application" factoryName="Application">
+       <option name="MAIN_CLASS_NAME" value="GameLauncher" />
+@@ -134,6 +115,7 @@
+       <workItem from="1712156247363" duration="92000" />
+       <workItem from="1712160965203" duration="6286000" />
+       <workItem from="1712167902958" duration="1131000" />
++      <workItem from="1712176002101" duration="982000" />
+     </task>
+     <task id="LOCAL-00001" summary="Camera and more">
+       <option name="closed" value="true" />
+@@ -215,15 +197,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1712167288515</updated>
+     </task>
+-    <task id="LOCAL-00011" summary="Organized Files">
+-      <option name="closed" value="true" />
+-      <created>1712172217639</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1712172217639</updated>
+-    </task>
+-    <option name="localTasksCounter" value="12" />
++    <option name="localTasksCounter" value="11" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -250,7 +224,6 @@
+     <MESSAGE value="Changes by rayyan 3/31/2024" />
+     <MESSAGE value="enemy sprite sheets created" />
+     <MESSAGE value="level loader now support enemy and collectable loading" />
+-    <MESSAGE value="Organized Files" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Organized Files" />
++    <option name="LAST_COMMIT_MESSAGE" value="level loader now support enemy and collectable loading" />
+   </component>
+ </project>
+\ No newline at end of file

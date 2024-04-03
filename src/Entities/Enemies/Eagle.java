@@ -1,7 +1,9 @@
 package Entities.Enemies;
 
 import Abstracts.Enemy;
+import Entities.Player;
 import Game.CollisionChecker;
+import Game.GameCanvas;
 import Game.Level.Tile;
 import Utils.Animator;
 import Utils.SpriteSheet;
@@ -29,6 +31,19 @@ public class Eagle extends Enemy {
         this.endY = endY;
         this.tilemap = tileMap;
         this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/eagle-attack.png", 1,4,35, 41);
+
+        if(endX < startX){
+            int temp = endX;
+            this.endX = startX;
+            this.startX = temp;
+            worldX = startX;
+        }
+        if(endY < startY){
+            int temp = endY;
+            this.endY = startY;
+            this.startY = temp;
+            worldY = startY;
+        }
 
         collisionChecker = new CollisionChecker(tileMap);
 
@@ -72,9 +87,7 @@ public class Eagle extends Enemy {
     }
 
     public void draw(Graphics2D g2d, int offsetX, int offsetY){
-        if(vx >= 0)
-            g2d.drawImage(currentAnimator.currentFrame, (int) worldX + offsetX + width, (int) worldY + offsetY, -width, height, null);
-        else g2d.drawImage(currentAnimator.currentFrame, (int) worldX + offsetX, (int) worldY + offsetY, width, height, null);
+        g2d.drawImage(currentAnimator.currentFrame, (int) worldX + offsetX, (int) worldY + offsetY, width, height, null);
 //        g2d.setColor(Color.MAGENTA);
 //        g2d.drawRect((int)worldX + offsetX,(int)worldY + offsetY,width,height);
     }

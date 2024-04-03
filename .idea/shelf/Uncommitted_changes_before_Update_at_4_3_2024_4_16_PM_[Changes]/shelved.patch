@@ -1,0 +1,56 @@
+Index: src/GameCanvas.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.awt.*;\r\nimport java.awt.image.BufferStrategy;\r\nimport java.awt.image.BufferedImage;\r\nimport java.util.ArrayList;\r\n\r\npublic class GameCanvas extends Canvas implements Runnable {\r\n    // Level and loader\r\n    private static LevelLoader loader = new LevelLoader(\"src/resources/maps/level1.txt\");\r\n    private Level level = loader.getLevel();\r\n\r\n    // Helper values and more\r\n    private Thread thread;\r\n    private final int UPS = 60;\r\n    private BufferStrategy bufferStrategy;\r\n    private static final int NUM_COLS = 20;\r\n    private static final int NUM_ROWS = 12;\r\n    public static final int TILE_SIZE = loader.getTileWidth();\r\n    public static  int WIDTH = NUM_COLS * TILE_SIZE; // 1280px\r\n    public static  int HEIGHT = NUM_ROWS * TILE_SIZE; // 768px\r\n\r\n    // Full Screen variables\r\n    // Reference for full screen functionality: https://www.youtube.com/watch?v=d5E_O2N73ZU\r\n    private int WIDTH2 = WIDTH;\r\n    private int HEIGHT2 = HEIGHT;\r\n    private BufferedImage tempImage;\r\n    private Graphics2D g2d;\r\n\r\n    //Entities\r\n    private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, -1, 5, level.getTilemap());\r\n    private ArrayList<Enemy> enemies = level.getEnemies();\r\n    private ArrayList<Collectable> collectables = level.getCollectables();\r\n\r\n    // Utilities\r\n    public static Keyboard keyboard = new Keyboard();\r\n    private Camera camera = new Camera(level, player, enemies, collectables);\r\n\r\n    public GameCanvas(){\r\n        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));\r\n        this.addKeyListener(keyboard);\r\n        this.setFocusable(true);\r\n\r\n//        enemies.add(new Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));\r\n//        enemies.add(new Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));\r\n        enemies.add(new Eagle(500, 1800, 600, 1800, 104, 123, 1, 1, level.getTilemap()));\r\n//        enemies.add(new Opossum(1100, 1890, 36 * 3, 28 * 3, 1, 1, level.getTilemap()));\r\n\r\n//        collectables.add(new Gem(500, 2100));\r\n//        collectables.add(new Cherry(300, 2100));\r\n\r\n        camera = new Camera(level, player, enemies, collectables);\r\n\r\n        initGame();\r\n    }\r\n\r\n    private void initGame(){\r\n        tempImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);\r\n        g2d = (Graphics2D) tempImage.getGraphics();\r\n    }\r\n\r\n    public void start(){\r\n        if(thread == null){\r\n            this.requestFocus();\r\n            this.createBufferStrategy(3);\r\n            bufferStrategy = this.getBufferStrategy();\r\n\r\n            thread = new Thread(this, \"canvas thread\");\r\n            thread.start();\r\n\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void run() {\r\n        double drawInterval = 1_000_000_000 / UPS;\r\n        double delta = 0;\r\n        long prevTime = System.nanoTime();\r\n        long currentTime;\r\n\r\n        while(thread != null){\r\n            currentTime = System.nanoTime();\r\n            delta += (currentTime - prevTime) / drawInterval;\r\n            prevTime = currentTime;\r\n\r\n            if(delta >= 1){\r\n                update();\r\n                delta--;\r\n            }\r\n\r\n            renderTempScreen();\r\n            render();\r\n\r\n        }\r\n    }\r\n\r\n    public void update(){\r\n        player.update();\r\n\r\n        // Updating entities\r\n        for (int i = 0; i < enemies.size(); i++) {\r\n            Enemy enemy = enemies.get(i);\r\n\r\n            if(Math.abs(enemy.worldX - player.worldX) < WIDTH && Math.abs(enemy.worldY - player.worldY) < HEIGHT) {\r\n                enemy.update();\r\n\r\n                if (!enemy.isKilled() && player.isKillingEnemy(enemy.getHitBox())) {\r\n                    enemy.death();\r\n                }\r\n                if (enemy.isDeathComplete()) {\r\n                    enemies.remove(enemy);\r\n                }\r\n            }\r\n\r\n        }\r\n        for(int i=0; i < collectables.size();i++){\r\n            Collectable collectable = collectables.get(i);\r\n\r\n            if(Math.abs(collectable.worldX - player.worldX) < WIDTH && Math.abs(collectable.worldY - player.worldY) < HEIGHT) {\r\n                collectable.update();\r\n\r\n                if (!collectable.isCollected() && player.isCollectingCollectable(collectable.getHitBox())) {\r\n                    collectable.collect();\r\n                }\r\n                if (collectable.isCollectComplete()) {\r\n                    collectables.remove(collectable);\r\n                }\r\n            }\r\n\r\n        }\r\n\r\n    }\r\n\r\n    public void renderTempScreen(){\r\n        // Drawing plain white background\r\n        g2d.setColor(Color.WHITE);\r\n        g2d.fillRect(0, 0, WIDTH, HEIGHT);\r\n\r\n        // Drawing Level, entities, collectables, and player\r\n        camera.draw(g2d);\r\n\r\n\r\n    }\r\n\r\n    public void render(){\r\n        Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();\r\n\r\n        // Drawing temp Image (contains all components)\r\n        g2d.drawImage(tempImage, 0, 0, WIDTH2, HEIGHT2, null);\r\n\r\n        g2d.dispose();\r\n        bufferStrategy.show();\r\n\r\n    }\r\n\r\n    public void setFullScreen(){\r\n        GameWindow.gameWindow.dispose();\r\n\r\n        GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();\r\n        GraphicsDevice gDev = gEnv.getDefaultScreenDevice();\r\n\r\n        GameWindow.gameWindow.setUndecorated(true);\r\n        gDev.setFullScreenWindow(GameWindow.gameWindow);\r\n\r\n        WIDTH2 = GameWindow.gameWindow.getWidth();\r\n        HEIGHT2 = GameWindow.gameWindow.getHeight();\r\n    }\r\n\r\n}\r\n
+===================================================================
+diff --git a/src/GameCanvas.java b/src/GameCanvas.java
+--- a/src/GameCanvas.java	
++++ b/src/GameCanvas.java	
+@@ -32,7 +32,7 @@
+ 
+     // Utilities
+     public static Keyboard keyboard = new Keyboard();
+-    private Camera camera = new Camera(level, player, enemies, collectables);
++    private Camera camera;
+ 
+     public GameCanvas(){
+         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+@@ -99,7 +99,7 @@
+         for (int i = 0; i < enemies.size(); i++) {
+             Enemy enemy = enemies.get(i);
+ 
+-            if(Math.abs(enemy.worldX - player.worldX) < WIDTH && Math.abs(enemy.worldY - player.worldY) < HEIGHT) {
++            if (Math.abs(enemy.worldX - player.worldX) < WIDTH && Math.abs(enemy.worldY - player.worldY) < HEIGHT) {
+                 enemy.update();
+ 
+                 if (!enemy.isKilled() && player.isKillingEnemy(enemy.getHitBox())) {
+@@ -111,10 +111,10 @@
+             }
+ 
+         }
+-        for(int i=0; i < collectables.size();i++){
++        for (int i=0; i < collectables.size();i++){
+             Collectable collectable = collectables.get(i);
+ 
+-            if(Math.abs(collectable.worldX - player.worldX) < WIDTH && Math.abs(collectable.worldY - player.worldY) < HEIGHT) {
++            if (Math.abs(collectable.worldX - player.worldX) < WIDTH && Math.abs(collectable.worldY - player.worldY) < HEIGHT) {
+                 collectable.update();
+ 
+                 if (!collectable.isCollected() && player.isCollectingCollectable(collectable.getHitBox())) {
+Index: src/GameWindow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.*;\r\n\r\npublic class GameWindow {\r\n    public static JFrame gameWindow = new JFrame(\"INSERT GAME NAME HERE\");        // FIX ME: CHANGE NAME\r\n    private GameCanvas canvas = new GameCanvas();\r\n\r\n    public GameWindow(){\r\n        gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n\r\n        gameWindow.setResizable(false);\r\n\r\n        addElements();\r\n\r\n        gameWindow.pack();\r\n\r\n        gameWindow.setLocationRelativeTo(null);\r\n\r\n        //canvas.setFullScreen();\r\n        gameWindow.setVisible(true);\r\n\r\n        canvas.start();\r\n\r\n    }\r\n\r\n    private void addElements(){\r\n        gameWindow.add(canvas);\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/GameWindow.java b/src/GameWindow.java
+--- a/src/GameWindow.java	
++++ b/src/GameWindow.java	
+@@ -15,7 +15,7 @@
+ 
+         gameWindow.setLocationRelativeTo(null);
+ 
+-        //canvas.setFullScreen();
++        canvas.setFullScreen();
+         gameWindow.setVisible(true);
+ 
+         canvas.start();

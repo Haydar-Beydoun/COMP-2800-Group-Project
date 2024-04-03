@@ -108,26 +108,12 @@ public class Player extends Entity {
                 currentAnimator = idleAnimator;
         }
 
-//        // Determining hit transparency
-//        Composite temp = g2d.getComposite();
-//        AlphaComposite alphaComposite;
-//        if(hurt){
-//            alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5F);
-//
-//        }
-//        else{
-//            alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0F);
-//        }
-//
-//        g2d.setComposite(alphaComposite);
-
         if(left){
             g2d.drawImage(currentAnimator.currentFrame, screenX + width, screenY, -currentAnimator.currentFrame.getWidth(), currentAnimator.currentFrame.getHeight(), null);
         }
         else{
             g2d.drawImage(currentAnimator.currentFrame, screenX, screenY, null);
         }
-//        g2d.setComposite(temp);
 
 //        g2d.setColor(Color.MAGENTA);
 //        g2d.fillRect((int) screenX + hitBoxLeftOffset, (int) screenY, (int) getHitBox().width, (int) getHitBox().height);

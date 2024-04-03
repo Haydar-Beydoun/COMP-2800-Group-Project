@@ -1,6 +1,9 @@
 package Game;
 
+import Game.UI.PauseMenu;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class GameWindow {
     public static JFrame gameWindow = new JFrame("INSERT GAME NAME HERE");        // FIX ME: CHANGE NAME
@@ -17,7 +20,8 @@ public class GameWindow {
 
         gameWindow.setLocationRelativeTo(null);
 
-        //canvas.setFullScreen();
+        canvas.setFullScreen();
+
         gameWindow.setVisible(true);
 
         canvas.start();

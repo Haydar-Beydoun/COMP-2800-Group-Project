@@ -4,19 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Comments and new classes">
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Organized Files">
+      <change afterPath="$PROJECT_DIR$/src/Game/UI/Button.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Utils/Mouse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/quitButton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/quitButtonHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/restartButton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/restartButtonHovered.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Abstracts/Collectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Collectable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entities/Enemies/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Enemies/Eagle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Enemies/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Enemies/Opossum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Enemies/Opossum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/UI/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/PauseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/UI/NextLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/LevelSelectMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/gem.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/entities/spritesheets/gem.png" afterDir="false" />
+    </list>
+    <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayyan 3/31/2024">
+      <change beforePath="$PROJECT_DIR$/src/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Level/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Level/Level.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Level/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Level/LevelLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/UI/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Keyboard.java" afterDir="false" />
     </list>
-    <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayyan 3/31/2024" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +43,36 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.desktop/java/awt/Graphics.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Game/GameCanvas.java">
+      <ranges>
+        <range start1="7" end1="8" start2="7" end2="8" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="10" end1="10" start2="10" end2="11" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="11" end1="11" start2="12" end2="13" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="13" end1="13" start2="15" end2="16" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="21" end1="22" start2="24" end2="25" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="25" end1="26" start2="28" end2="31" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="32" end1="33" start2="37" end2="38" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="56" end1="56" start2="61" end2="62" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="57" end1="57" start2="63" end2="65" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
+        <range start1="61" end1="61" start2="69" end2="70" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="63" end1="70" start2="72" end2="73" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="72" end1="73" start2="75" end2="75" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="106" end1="108" start2="108" end2="109" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="113" end1="114" start2="114" end2="114" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="118" end1="119" start2="118" end2="131" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="120" end1="121" start2="132" end2="135" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="134" end1="134" start2="148" end2="150" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="135" end1="136" start2="151" end2="152" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="151" end1="154" start2="167" end2="167" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="156" end1="158" start2="169" end2="170" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="159" end1="161" start2="171" end2="172" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="168" end1="175" start2="179" end2="188" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="181" end1="182" start2="194" end2="194" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="186" end1="187" start2="198" end2="198" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -55,12 +94,11 @@
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/A/IdeaProjects/COMP 2800/COMP 2800 LAB/COMP 2800 Group Project",
+    "last_opened_file_path": "C:/Users/A/IdeaProjects/COMP 2800/COMP_2800_Group_Project/src/resources/UI",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -69,6 +107,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\A\IdeaProjects\COMP 2800\COMP_2800_Group_Project\src\resources\UI" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="GameLauncher" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="GameLauncher" />
@@ -210,15 +253,7 @@
       <option name="project" value="LOCAL" />
       <updated>1712172217639</updated>
     </task>
-    <task id="LOCAL-00012" summary="Comments and new classes">
-      <option name="closed" value="true" />
-      <created>1712175442282</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1712175442283</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +281,6 @@
     <MESSAGE value="enemy sprite sheets created" />
     <MESSAGE value="level loader now support enemy and collectable loading" />
     <MESSAGE value="Organized Files" />
-    <MESSAGE value="Comments and new classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comments and new classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Organized Files" />
   </component>
 </project>
