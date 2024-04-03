@@ -196,7 +196,7 @@ public class Player extends Entity{
                     vy = topCollisionFallSpeed;
                 }
 
-                if(vx > 0)
+                if(vx > 0 || worldX < enemyHitBox.x)
                     vx = -3;
                 else
                     vx = 3;

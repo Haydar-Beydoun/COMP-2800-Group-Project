@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -8,7 +9,16 @@ public class GameCanvas extends Canvas implements Runnable {
     private static LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
     private Level level = loader.getLevel();
 
+    // Game States
+    public enum GameState {
+        MENU,
+        GAME,
+        GAME_OVER,
+        WIN
+    }
+
     // Helper values and more
+    static GameState gameState = GameState.GAME;
     private Thread thread;
     private final int UPS = 60;
     private BufferStrategy bufferStrategy;
@@ -82,7 +92,8 @@ public class GameCanvas extends Canvas implements Runnable {
             prevTime = currentTime;
 
             if(delta >= 1){
-                update();
+                if(GameState.GAME == gameState) update();
+                CheckState();
                 delta--;
             }
 
@@ -122,6 +133,17 @@ public class GameCanvas extends Canvas implements Runnable {
 
         }
 
+
+
+    }
+
+    public void CheckState(){
+        if(keyboard.isPressed(KeyEvent.VK_1)){
+            gameState = GameState.MENU;
+        }
+        if(keyboard.isPressed(KeyEvent.VK_2)){
+            gameState = GameState.GAME;
+        }
     }
 
     public void renderTempScreen(){
