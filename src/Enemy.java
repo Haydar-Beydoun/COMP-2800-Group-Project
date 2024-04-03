@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Enemy extends Entity{
+public abstract class Enemy extends Entity{
     Animator deathAnimator;
     private static int deathCloudWidth;
 
