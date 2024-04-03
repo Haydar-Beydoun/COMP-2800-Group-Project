@@ -1,3 +1,8 @@
+package Game.Level;
+
+import Abstracts.Collectable;
+import Entities.Enemies.Enemy;
+
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 

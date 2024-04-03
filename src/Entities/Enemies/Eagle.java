@@ -1,7 +1,16 @@
+package Entities.Enemies;
+
+import Game.CollisionChecker;
+import Game.Level.Tile;
+import Utils.Animator;
+import Utils.SpriteSheet;
+
 import java.awt.*;
 import java.util.Arrays;
 
-public class Eagle extends Enemy{
+
+public class Eagle extends Enemy {
+    public Tile[][] tilemap;
     private int startX;
     private int startY;
     private int endX;
@@ -17,6 +26,7 @@ public class Eagle extends Enemy{
         this.startY = startY;
         this.endX = endX;
         this.endY = endY;
+        this.tilemap = tileMap;
         this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/eagle-attack.png", 1,4,35, 41);
 
         collisionChecker = new CollisionChecker(tileMap);

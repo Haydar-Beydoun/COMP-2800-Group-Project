@@ -1,3 +1,13 @@
+package Entities;
+
+import Abstracts.Entity;
+import Game.CollisionChecker;
+import Game.GameCanvas;
+import Game.Level.Tile;
+import Utils.Animator;
+import Utils.Keyboard;
+import Utils.SpriteSheet;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
@@ -10,7 +20,7 @@ import java.util.Arrays;
  * @author Rayyan
  * @author Haydar
  */
-public class Player extends Entity{
+public class Player extends Entity {
     // Binds
     private int[] jumpBinds = {KeyEvent.VK_SPACE, KeyEvent.VK_W, KeyEvent.VK_UP};
     private int[] leftBinds = {KeyEvent.VK_LEFT, KeyEvent.VK_A};
@@ -135,7 +145,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Player jump
+     * Entities.Player jump
      */
     public void jump(){
         if(!inAir) {
@@ -150,7 +160,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Player move function
+     * Entities.Player move function
      */
     private void move(){
         if(!hurt)
@@ -218,7 +228,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Player update Y
+     * Entities.Player update Y
      */
     private void updateY(){
 
@@ -251,7 +261,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Player Update X
+     * Entities.Player Update X
      */
     private void updateX(){
         if(!collisionChecker.isColliding(getHitBox(), vx, 0)) {   // Moving in the x direction

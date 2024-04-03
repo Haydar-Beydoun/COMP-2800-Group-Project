@@ -1,6 +1,12 @@
+package Entities.Collectables;
+
+import Abstracts.Collectable;
+import Utils.Animator;
+import Utils.SpriteSheet;
+
 import java.awt.*;
 
-public class Cherry extends Collectable{
+public class Cherry extends Collectable {
 
     public Cherry(double worldX, double worldY) {
         super(worldX, worldY, 70, 70);

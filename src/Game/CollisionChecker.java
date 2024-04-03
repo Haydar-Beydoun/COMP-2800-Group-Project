@@ -1,7 +1,11 @@
+package Game;
+
+import Game.Level.Tile;
+
 import java.awt.geom.Rectangle2D;
 
 public class CollisionChecker {
-    private Tile[][] tilemap;
+    public Tile[][] tilemap;
 
     public CollisionChecker(Tile[][] tilemap){
         this.tilemap = tilemap;

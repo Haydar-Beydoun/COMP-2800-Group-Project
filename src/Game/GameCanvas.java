@@ -1,3 +1,13 @@
+package Game;
+
+import Abstracts.Collectable;
+import Entities.Enemies.Eagle;
+import Entities.Enemies.Enemy;
+import Entities.Player;
+import Game.Level.Level;
+import Utils.Keyboard;
+import Game.Level.LevelLoader;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
@@ -5,7 +15,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class GameCanvas extends Canvas implements Runnable {
-    // Level and loader
+    // Game.Game.Level.Level and loader
     private static LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
     private Level level = loader.getLevel();
 
@@ -49,13 +59,13 @@ public class GameCanvas extends Canvas implements Runnable {
         this.addKeyListener(keyboard);
         this.setFocusable(true);
 
-//        enemies.add(new Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));
-//        enemies.add(new Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));
+//        enemies.add(new Enemies.Entities.Enemies.Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));
+//        enemies.add(new Enemies.Entities.Enemies.Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));
         enemies.add(new Eagle(500, 1800, 600, 1800, 104, 123, 1, 1, level.getTilemap()));
-//        enemies.add(new Opossum(1100, 1890, 36 * 3, 28 * 3, 1, 1, level.getTilemap()));
+//        enemies.add(new Enemies.Entities.Enemies.Opossum(1100, 1890, 36 * 3, 28 * 3, 1, 1, level.getTilemap()));
 
-//        collectables.add(new Gem(500, 2100));
-//        collectables.add(new Cherry(300, 2100));
+//        collectables.add(new Entities.Collectables.Gem(500, 2100));
+//        collectables.add(new Entities.Collectables.Cherry(300, 2100));
 
         camera = new Camera(level, player, enemies, collectables);
 
@@ -156,7 +166,7 @@ public class GameCanvas extends Canvas implements Runnable {
         g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, WIDTH, HEIGHT);
 
-        // Drawing Level, entities, collectables, and player
+        // Drawing Game.Game.Level.Level, entities, collectables, and player
         camera.draw(g2d);
 
 

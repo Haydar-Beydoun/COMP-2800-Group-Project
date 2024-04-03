@@ -1,10 +1,14 @@
+package Abstracts;
+
 import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
+import Utils.Animator;
+import Utils.SpriteSheet;
 
-public abstract class Collectable extends GameObject{
-    SpriteSheet spriteSheet;
-    Animator currentAnimator;
-    Animator collectedAnimator;
+public abstract class Collectable extends GameObject {
+    public SpriteSheet spriteSheet;
+    public Animator currentAnimator;
+    public Animator collectedAnimator;
     private static int collectedCloudWidth;
     private static int collectedCloudHeight;
     private boolean isCollected = false;

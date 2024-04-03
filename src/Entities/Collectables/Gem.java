@@ -1,6 +1,12 @@
+package Entities.Collectables;
+
+import Abstracts.Collectable;
+import Utils.Animator;
+import Utils.SpriteSheet;
+
 import java.awt.*;
 
-public class Gem extends Collectable{
+public class Gem extends Collectable {
 
 
 

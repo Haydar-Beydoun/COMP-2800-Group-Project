@@ -1,6 +1,9 @@
-import java.awt.*;
+package Abstracts;
+
+import Utils.Animator;
+import Utils.SpriteSheet;
+
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 
 /**
  *
@@ -9,15 +12,15 @@ import java.awt.image.BufferedImage;
  * @author Haydar
  */
 
-public abstract class Entity extends GameObject{
-    int health;
-    double vx = 0;
-    double vy = 0;
-    int speed;
-    int hitBoxLeftOffset = 0;
-    int hitBoxRightOffset = 0;
-    SpriteSheet spriteSheet;
-    Animator currentAnimator;
+public abstract class Entity extends GameObject {
+    public int health;
+    public double vx = 0;
+    public double vy = 0;
+    public int speed;
+    public int hitBoxLeftOffset = 0;
+    public int hitBoxRightOffset = 0;
+    public SpriteSheet spriteSheet;
+    public Animator currentAnimator;
 
     /**
      * Constructor of the entity

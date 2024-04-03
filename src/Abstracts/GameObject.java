@@ -1,12 +1,14 @@
+package Abstracts;
+
 import java.awt.*;
 
 public abstract class GameObject {
-    double worldX;
-    double worldY;
-    int screenX;
-    int screenY;
-    int width;
-    int height;
+    public double worldX;
+    public double worldY;
+    public int screenX;
+    public int screenY;
+    public int width;
+    public int height;
 
     public GameObject(double worldX, double worldY, int width, int height){
         this.worldX = worldX;

@@ -1,6 +1,12 @@
+package Entities.Enemies;
+
+import Abstracts.Entity;
+import Utils.Animator;
+import Utils.SpriteSheet;
+
 import java.util.Arrays;
 
-public abstract class Enemy extends Entity{
+public abstract class Enemy extends Entity {
     Animator deathAnimator;
     private static int deathCloudWidth;
 

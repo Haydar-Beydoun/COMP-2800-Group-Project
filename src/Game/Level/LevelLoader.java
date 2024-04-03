@@ -1,15 +1,25 @@
+package Game.Level;
+
+import Abstracts.Collectable;
+import Entities.Collectables.Cherry;
+import Entities.Collectables.Gem;
+import Entities.Enemies.Eagle;
+import Entities.Enemies.Enemy;
+import Entities.Enemies.Opossum;
+import Utils.ImageLoader;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import Entities.*;
 
 /**
  *
- * Level loader class to render levels from save.
+ * Game.Game.Level.Level loader class to render levels from save.
  * @author Rayyan
  * @author Haydar
  */
@@ -33,8 +43,8 @@ public class LevelLoader {
 
     /**
      * <p><b>Config File Format (to be written in lowercase)</b>
-     * <br>            -Tile Width
-     * <br>            -Tile Height
+     * <br>            -Game.Level.Tile Width
+     * <br>            -Game.Level.Tile Height
      * <br>            -background path
      * <br>            -level pixel map path
      * <br>            -collectable pixel map path
@@ -55,8 +65,8 @@ public class LevelLoader {
                             Config File Format
                      (To be formatted in all lowercase)
             --------------------------------------------------
-            -Tile Width
-            -Tile Height
+            -Game.Level.Tile Width
+            -Game.Level.Tile Height
             -background path
             -level pixel map path
             -collectable pixel map path
@@ -97,7 +107,7 @@ public class LevelLoader {
 
 
     /**
-     * <p><b>Fill Level</b>
+     * <p><b>Fill Game.Game.Level.Level</b>
      * <br>Draws the file image
      * </p>
      *

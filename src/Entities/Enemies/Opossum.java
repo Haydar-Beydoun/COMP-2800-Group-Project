@@ -1,9 +1,16 @@
+package Entities.Enemies;
+
+import Game.CollisionChecker;
+import Game.Level.Tile;
+import Utils.Animator;
+import Utils.SpriteSheet;
+
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 
-public class Opossum extends Enemy{
-    private Tile[][] tilemap;
+
+public class Opossum extends Enemy {
+    public Tile[][] tilemap;
     private Animator animator;
     private int dirX = 1;
     private CollisionChecker collisionChecker;
@@ -109,12 +116,12 @@ public class Opossum extends Enemy{
 //        double rightX=  x + width;
 //        double bottomY =  (y + height);
 //
-//        int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
-//        int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
-//        int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE) + 1;
+//        int leftCol   = (int) (leftX / Game.GameCanvas.TILE_SIZE);
+//        int rightCol  = (int) (rightX / Game.GameCanvas.TILE_SIZE);
+//        int bottomRow = (int) (bottomY / Game.GameCanvas.TILE_SIZE) + 1;
 //
-//        Tile bottomLeftTile  = tilemap[leftCol][bottomRow];
-//        Tile bottomRightTile = tilemap[rightCol][bottomRow];
+//        Game.Level.Tile bottomLeftTile  = tilemap[leftCol][bottomRow];
+//        Game.Level.Tile bottomRightTile = tilemap[rightCol][bottomRow];
 //
 //        g2d.setColor(Color.RED);
 //        g2d.drawRect(bottomLeftTile.getX() + offsetX, bottomLeftTile.getY() + offsetY, 64,64);
