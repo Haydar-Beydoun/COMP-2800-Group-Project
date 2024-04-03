@@ -15,7 +15,7 @@ public class GameWindow {
 
         gameWindow.setLocationRelativeTo(null);
 
-        canvas.setFullScreen();
+        //canvas.setFullScreen();
         gameWindow.setVisible(true);
 
         canvas.start();

@@ -99,25 +99,30 @@ public class GameCanvas extends Canvas implements Runnable {
         for (int i = 0; i < enemies.size(); i++) {
             Enemy enemy = enemies.get(i);
 
-            enemy.update();
+            if(Math.abs(enemy.worldX - player.worldX) < WIDTH && Math.abs(enemy.worldY - player.worldY) < HEIGHT) {
+                enemy.update();
 
-            if(!enemy.isKilled() &&  player.isKillingEnemy(enemy.getHitBox())){
-                enemy.death();
-            }
-            if(enemy.isDeathComplete()){
-                enemies.remove(enemy);
+                if (!enemy.isKilled() && player.isKillingEnemy(enemy.getHitBox())) {
+                    enemy.death();
+                }
+                if (enemy.isDeathComplete()) {
+                    enemies.remove(enemy);
+                }
             }
 
         }
         for(int i=0; i < collectables.size();i++){
             Collectable collectable = collectables.get(i);
-            collectable.update();
 
-            if(!collectable.isCollected() && player.isCollectingCollectable(collectable.getHitBox())){
-                collectable.collect();
-            }
-            if(collectable.isCollectComplete()){
-                collectables.remove(collectable);
+            if(Math.abs(collectable.worldX - player.worldX) < WIDTH && Math.abs(collectable.worldY - player.worldY) < HEIGHT) {
+                collectable.update();
+
+                if (!collectable.isCollected() && player.isCollectingCollectable(collectable.getHitBox())) {
+                    collectable.collect();
+                }
+                if (collectable.isCollectComplete()) {
+                    collectables.remove(collectable);
+                }
             }
 
         }
