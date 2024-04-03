@@ -6,6 +6,7 @@ import Entities.Collectables.Gem;
 import Entities.Enemies.Eagle;
 import Abstracts.Enemy;
 import Entities.Enemies.Opossum;
+import Entities.Player;
 import Utils.ImageLoader;
 
 import java.awt.*;
@@ -23,6 +24,7 @@ import java.util.HashMap;
  * @author Haydar
  */
 public class LevelLoader {
+
     private Tile[][] tileMap;
     private ArrayList<Enemy> enemies = new ArrayList<>();
     private ArrayList<Collectable> collectables = new ArrayList<>();
@@ -34,6 +36,7 @@ public class LevelLoader {
     private HashMap<Integer, Tile.Type> tileTypes = new HashMap<>();    // <hex value pertaining to colour on pixel map, corresponding tile type>
 
     public LevelLoader(String filePath){
+
         loadConfig(filePath);
         fillLevel();
         fillCollectable();

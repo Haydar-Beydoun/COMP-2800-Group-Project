@@ -2,6 +2,7 @@ package Game;
 
 import Abstracts.Collectable;
 import Abstracts.Enemy;
+import Entities.Enemies.Eagle;
 import Entities.Player;
 import Game.Level.Level;
 
@@ -77,6 +78,7 @@ public class Camera {
 
             if(Math.abs(enemy.worldX - player.worldX) < GameCanvas.WIDTH && Math.abs(enemy.worldY - player.worldY) < GameCanvas.HEIGHT)
                 enemy.draw(g2d, offsetx, offsety);
+
         }
 
         // Drawing player

@@ -35,7 +35,7 @@ public class GameCanvas extends Canvas implements Runnable {
     }
 
     // Helper values and more
-    static GameState gameState = GameState.GAME;
+    public static GameState gameState = GameState.GAME;
     private Thread thread;
     private final int UPS = 60;
     private BufferStrategy bufferStrategy;
@@ -61,6 +61,8 @@ public class GameCanvas extends Canvas implements Runnable {
     public static Keyboard keyboard = new Keyboard();
     public static Mouse mouse = new Mouse();
     private Camera camera = new Camera(level, player, enemies, collectables);
+    private final PauseMenu pauseMenu = new PauseMenu();
+
 
     public GameCanvas(){
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));

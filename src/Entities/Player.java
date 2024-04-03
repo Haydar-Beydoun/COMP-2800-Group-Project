@@ -34,6 +34,7 @@ public class Player extends Entity {
     private boolean left    = false;
     private boolean right   = false;
     private boolean hurt = false;
+    private boolean iskilled = false;
     private enum State{
         RIGHT,
         LEFT,
@@ -89,6 +90,15 @@ public class Player extends Entity {
         hurtAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,24, 26), 0 , 15);
 
     }
+
+    public void death(){
+        state = State.HURT;
+        if(vy > 0) iskilled = true;
+        vy += gravity;
+        worldY += vy;
+
+    }
+
 
     public void draw(Graphics2D g2d){
         switch (state){
@@ -217,6 +227,8 @@ public class Player extends Entity {
      * Entities.Player update Y
      */
     private void updateY(){
+        if(iskilled) return;
+
 
         if(inAir){
             if(!collisionChecker.isColliding(getHitBox(), 0, vy)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
@@ -250,6 +262,8 @@ public class Player extends Entity {
      * Entities.Player Update X
      */
     private void updateX(){
+        if(iskilled) return;
+
         if(!collisionChecker.isColliding(getHitBox(), vx, 0)) {   // Moving in the x direction
             worldX += vx;
         }
@@ -262,7 +276,7 @@ public class Player extends Entity {
      * Set the state the player is in during movement
      */
     public void setState(){
-        if(hurt){
+        if(hurt || health <= 0){
             state = State.HURT;
         }
         else if(Math.floor(vy) < 0){

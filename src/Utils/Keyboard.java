@@ -1,9 +1,10 @@
 package Utils;
 
+import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Keyboard extends KeyAdapter {
+public class Keyboard extends KeyAdapter{
     private boolean[] keyPressed = new boolean[KeyEvent.KEY_LAST + 1];
 
     @Override
@@ -34,5 +35,6 @@ public class Keyboard extends KeyAdapter {
     private boolean isValidKeyCode(int keyCode){
         return keyCode >= 0 && keyCode < keyPressed.length;
     }
+
 
 }
