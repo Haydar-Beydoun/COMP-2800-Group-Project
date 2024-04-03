@@ -2,9 +2,10 @@ package Game;
 
 import Abstracts.Collectable;
 import Entities.Enemies.Eagle;
-import Entities.Enemies.Enemy;
+import Abstracts.Enemy;
 import Entities.Player;
 import Game.Level.Level;
+import Game.UI.Menu;
 import Utils.Keyboard;
 import Game.Level.LevelLoader;
 
@@ -18,6 +19,7 @@ public class GameCanvas extends Canvas implements Runnable {
     // Game.Game.Level.Level and loader
     private static LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
     private Level level = loader.getLevel();
+    private final Menu menu = new Menu();
 
     // Game States
     public enum GameState {
@@ -152,9 +154,11 @@ public class GameCanvas extends Canvas implements Runnable {
 
     }
 
+
     public void CheckState(){
         if(keyboard.isPressed(KeyEvent.VK_1)){
             gameState = GameState.MENU;
+            menu.draw(g2d);
         }
         if(keyboard.isPressed(KeyEvent.VK_2)){
             gameState = GameState.GAME;

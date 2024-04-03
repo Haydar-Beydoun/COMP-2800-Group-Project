@@ -1,5 +1,6 @@
 package Entities.Enemies;
 
+import Abstracts.Enemy;
 import Game.CollisionChecker;
 import Game.Level.Tile;
 import Utils.Animator;
@@ -71,7 +72,9 @@ public class Eagle extends Enemy {
     }
 
     public void draw(Graphics2D g2d, int offsetX, int offsetY){
-        g2d.drawImage(currentAnimator.currentFrame, (int) worldX + offsetX, (int) worldY + offsetY, width, height, null);
+        if(vx >= 0)
+            g2d.drawImage(currentAnimator.currentFrame, (int) worldX + offsetX + width, (int) worldY + offsetY, -width, height, null);
+        else g2d.drawImage(currentAnimator.currentFrame, (int) worldX + offsetX, (int) worldY + offsetY, width, height, null);
 //        g2d.setColor(Color.MAGENTA);
 //        g2d.drawRect((int)worldX + offsetX,(int)worldY + offsetY,width,height);
     }

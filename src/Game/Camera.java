@@ -1,7 +1,7 @@
 package Game;
 
 import Abstracts.Collectable;
-import Entities.Enemies.Enemy;
+import Abstracts.Enemy;
 import Entities.Player;
 import Game.Level.Level;
 

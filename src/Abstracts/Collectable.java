@@ -19,7 +19,13 @@ public abstract class Collectable extends GameObject {
     private static int collectedCloudHeight;
     private boolean isCollected = false;
 
-
+    /**
+     * Constructor of the collectable object.
+     * @param worldX X position on the canvas.
+     * @param worldY Y position on the canvas.
+     * @param width width of the hitBox.
+     * @param height height of the hitBox.
+     */
     public Collectable(double worldX, double worldY, int width, int height) {
         super(worldX, worldY, width, height);
     }

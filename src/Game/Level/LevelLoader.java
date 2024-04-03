@@ -4,7 +4,7 @@ import Abstracts.Collectable;
 import Entities.Collectables.Cherry;
 import Entities.Collectables.Gem;
 import Entities.Enemies.Eagle;
-import Entities.Enemies.Enemy;
+import Abstracts.Enemy;
 import Entities.Enemies.Opossum;
 import Utils.ImageLoader;
 
@@ -15,7 +15,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import Entities.*;
 
 /**
  *

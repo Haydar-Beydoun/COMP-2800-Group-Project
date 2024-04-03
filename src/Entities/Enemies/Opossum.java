@@ -1,5 +1,6 @@
 package Entities.Enemies;
 
+import Abstracts.Enemy;
 import Game.CollisionChecker;
 import Game.Level.Tile;
 import Utils.Animator;

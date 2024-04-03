@@ -4,31 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Organized Files">
-      <change afterPath="$PROJECT_DIR$/src/Entities/Collectables/FinishLevelItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/UI/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/UI/NextLevel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/UI/StartMenu.java" afterDir="false" />
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Comments and new classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Animator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/CollisionChecker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Eagle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Enemy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameLauncher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameLauncher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/ImageLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Keyboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/SpriteSheet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Tile$Type.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Tile.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Abstracts/Collectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Collectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Abstracts/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Abstracts/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Collectables/Cherry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Collectables/Cherry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Collectables/Gem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Collectables/Gem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Enemies/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Enemies/Eagle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Enemies/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Enemies/Opossum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Enemies/Opossum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Level/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Level/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Level/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Level/LevelLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/UI/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/Menu.java" afterDir="false" />
     </list>
     <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayyan 3/31/2024" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +60,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -223,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712172217639</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Comments and new classes">
+      <option name="closed" value="true" />
+      <created>1712175442282</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712175442283</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +246,7 @@
     <MESSAGE value="enemy sprite sheets created" />
     <MESSAGE value="level loader now support enemy and collectable loading" />
     <MESSAGE value="Organized Files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Organized Files" />
+    <MESSAGE value="Comments and new classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments and new classes" />
   </component>
 </project>
