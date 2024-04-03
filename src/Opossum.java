@@ -91,35 +91,35 @@ public class Opossum extends Enemy{
     }
 
     public void draw(Graphics2D g2d, int offsetX, int offsetY){
-        g2d.setColor(Color.MAGENTA);
-        g2d.drawRect((int)worldX + offsetX + hitBoxLeftOffset,(int) worldY + offsetY,width - hitBoxLeftOffset - hitBoxRightOffset,height);
+//        g2d.setColor(Color.MAGENTA);
+//        g2d.drawRect((int)worldX + offsetX + hitBoxLeftOffset,(int) worldY + offsetY,width - hitBoxLeftOffset - hitBoxRightOffset,height);
 
         if(vx > 0)
             g2d.drawImage(currentAnimator.currentFrame, (int) worldX + offsetX + width, (int) worldY + offsetY, -width, height, null);
         else
             g2d.drawImage(currentAnimator.currentFrame, (int) worldX + offsetX , (int) worldY + offsetY, width, height, null);
-
-        Rectangle2D.Double hitbox = getHitBox();
-        double x = hitbox.x + vx;
-        double y = hitbox.y +vy;
-        double width = hitbox.width;
-        double height = hitbox.height;
-
-        double leftX = x;
-        double rightX=  x + width;
-        double bottomY =  (y + height);
-
-        int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
-        int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
-        int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE) + 1;
-
-        Tile bottomLeftTile  = tilemap[leftCol][bottomRow];
-        Tile bottomRightTile = tilemap[rightCol][bottomRow];
-
-        g2d.setColor(Color.RED);
-        g2d.drawRect(bottomLeftTile.getX() + offsetX, bottomLeftTile.getY() + offsetY, 64,64);
-        g2d.setColor(Color.orange);
-        g2d.drawRect(bottomRightTile.getX() + offsetX,bottomRightTile.getY() + offsetY,64,64);
+//
+//        Rectangle2D.Double hitbox = getHitBox();
+//        double x = hitbox.x + vx;
+//        double y = hitbox.y +vy;
+//        double width = hitbox.width;
+//        double height = hitbox.height;
+//
+//        double leftX = x;
+//        double rightX=  x + width;
+//        double bottomY =  (y + height);
+//
+//        int leftCol   = (int) (leftX / GameCanvas.TILE_SIZE);
+//        int rightCol  = (int) (rightX / GameCanvas.TILE_SIZE);
+//        int bottomRow = (int) (bottomY / GameCanvas.TILE_SIZE) + 1;
+//
+//        Tile bottomLeftTile  = tilemap[leftCol][bottomRow];
+//        Tile bottomRightTile = tilemap[rightCol][bottomRow];
+//
+//        g2d.setColor(Color.RED);
+//        g2d.drawRect(bottomLeftTile.getX() + offsetX, bottomLeftTile.getY() + offsetY, 64,64);
+//        g2d.setColor(Color.orange);
+//        g2d.drawRect(bottomRightTile.getX() + offsetX,bottomRightTile.getY() + offsetY,64,64);
     }
 
 

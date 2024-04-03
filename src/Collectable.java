@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 
@@ -27,8 +26,14 @@ public abstract class Collectable extends GameObject{
         collectedAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 6), 0 , 5);
         currentAnimator = collectedAnimator;
 
-        collectedCloudWidth =  (int) (width * 2);
-        collectedCloudHeight =  (int) (width * 2);
+        if(width < height){
+            collectedCloudWidth = (int) (width * 2);
+            collectedCloudHeight = (int) (width * 2);
+        }
+        else{
+            collectedCloudWidth = (int) (height * 2);
+            collectedCloudHeight = (int) (height * 2);
+        }
 
         worldX -= Math.abs((width - collectedCloudWidth) / 2);
         worldY -= Math.abs((height - collectedCloudHeight) / 2);

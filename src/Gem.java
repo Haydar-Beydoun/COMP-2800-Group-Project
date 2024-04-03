@@ -5,7 +5,7 @@ public class Gem extends Collectable{
 
 
     public Gem(double worldX, double worldY) {
-        super(worldX, worldY, 80, 80);
+        super(worldX, worldY, 64, 64);
         initCollectable();
     }
 

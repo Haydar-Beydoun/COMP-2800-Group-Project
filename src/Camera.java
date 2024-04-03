@@ -56,17 +56,24 @@ public class Camera {
         // Drawing level
         g2d.drawImage(levelImage,  offsetx, offsety, levelImage.getWidth(), levelImage.getHeight(), null);
 
-        // Drawing player
-        player.draw(g2d);
+        // Drawing collectables
+        for(int i=0; i < collectables.size();i++){
+            Collectable collectable = collectables.get(i);
+
+            if(Math.abs(collectable.worldX - player.worldX) < GameCanvas.WIDTH && Math.abs(collectable.worldY - player.worldY) < GameCanvas.HEIGHT)
+                collectable.draw(g2d, offsetx, offsety);
+        }
 
         // Drawing entities
         for(int i = 0; i < enemies.size(); i++){
-            enemies.get(i).draw(g2d, offsetx, offsety);
+            Enemy enemy = enemies.get(i);
+
+            if(Math.abs(enemy.worldX - player.worldX) < GameCanvas.WIDTH && Math.abs(enemy.worldY - player.worldY) < GameCanvas.HEIGHT)
+                enemy.draw(g2d, offsetx, offsety);
         }
 
-        for(int i=0; i < collectables.size();i++){
-            collectables.get(i).draw(g2d, offsetx, offsety);
-        }
+        // Drawing player
+        player.draw(g2d);
     }
 
 }
