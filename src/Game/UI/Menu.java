@@ -1,8 +1,13 @@
-package Game;
+package Game.UI;
 
+import Utils.Animator;
+
+import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Menu {
+
 
     public Menu(){
 

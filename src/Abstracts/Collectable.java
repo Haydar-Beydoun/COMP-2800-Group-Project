@@ -5,6 +5,12 @@ import java.util.Arrays;
 import Utils.Animator;
 import Utils.SpriteSheet;
 
+
+/**
+ * Abstract class to initialize collectable objects.
+ * <br>
+ * Collectable objects are objects that can be collected by the player.
+ */
 public abstract class Collectable extends GameObject {
     public SpriteSheet spriteSheet;
     public Animator currentAnimator;
@@ -13,9 +19,11 @@ public abstract class Collectable extends GameObject {
     private static int collectedCloudHeight;
     private boolean isCollected = false;
 
+
     public Collectable(double worldX, double worldY, int width, int height) {
         super(worldX, worldY, width, height);
     }
+
 
     public abstract void initCollectable();
 
@@ -25,6 +33,11 @@ public abstract class Collectable extends GameObject {
         return new Rectangle2D.Double(worldX, worldY, width, height);
     }
 
+    /**
+     * Collects the collectable object.
+     * <br>
+     *
+     */
     public void collect(){
         spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/item-feedback.png",1,5,32,32);
         collectedAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 6), 0 , 5);
@@ -48,6 +61,10 @@ public abstract class Collectable extends GameObject {
         isCollected = true;
     }
 
+    /**
+     * Checks if the collectable object is collected.
+     * @return True if the collectable object is collected, false otherwise.
+     */
     public boolean isCollected() {
         return isCollected;
     }

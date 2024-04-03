@@ -7,9 +7,9 @@ import java.awt.geom.Rectangle2D;
 
 /**
  *
- * Abstract class to initialize entity objects.
- * @author Rayyan
- * @author Haydar
+ * Abstract class to initialize entities.
+ * <br>
+ * Entities are objects that can move and interact with the player.
  */
 
 public abstract class Entity extends GameObject {

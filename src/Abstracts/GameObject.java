@@ -2,6 +2,12 @@ package Abstracts;
 
 import java.awt.*;
 
+
+/**
+ * GameObject class is the base class for all objects in the game.
+ * <br>
+ * It contains the basic properties of an object in the game.
+ */
 public abstract class GameObject {
     public double worldX;
     public double worldY;
@@ -10,6 +16,13 @@ public abstract class GameObject {
     public int width;
     public int height;
 
+    /**
+     * Constructor of the GameObject
+     * @param worldX X position on the canvas.
+     * @param worldY Y position on the canvas.
+     * @param width width of the hitBox.
+     * @param height height of the hitBox.
+     */
     public GameObject(double worldX, double worldY, int width, int height){
         this.worldX = worldX;
         this.worldY = worldY;

@@ -6,10 +6,20 @@ import Utils.SpriteSheet;
 
 import java.awt.*;
 
+/**
+ * Gem class.
+ * <br>
+ * Gems are rare Collectables that the player can collect.
+ * @see Collectable
+ */
 public class Gem extends Collectable {
 
 
-
+    /**
+     * Constructor of the Gem class.
+     * @param worldX X position on the canvas.
+     * @param worldY Y position on the canvas.
+     */
     public Gem(double worldX, double worldY) {
         super(worldX, worldY, 64, 64);
         initCollectable();

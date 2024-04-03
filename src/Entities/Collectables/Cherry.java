@@ -6,6 +6,13 @@ import Utils.SpriteSheet;
 
 import java.awt.*;
 
+/**
+ * Cherry class to initialize the cherry collectable.
+ * <br>
+ * The cherry is a collectable that the player can collect to increase their score.
+ * The cherry is a subclass of the Collectable class.
+ * @see Collectable
+ */
 public class Cherry extends Collectable {
 
     public Cherry(double worldX, double worldY) {

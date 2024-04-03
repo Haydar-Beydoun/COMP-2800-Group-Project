@@ -4,32 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="level loader now support enemy and collectable loading">
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Organized Files">
+      <change afterPath="$PROJECT_DIR$/src/Entities/Collectables/FinishLevelItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/UI/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/UI/NextLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/UI/StartMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Collectable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Collectable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Animator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cherry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Collectables/Cherry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Collectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/CollisionChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Enemies/Eagle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Enemies/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Collectables/Gem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/ImageLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Keyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Level/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Level/LevelLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Opossum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Enemies/Opossum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SpriteSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/SpriteSheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Level/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Animator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/CollisionChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Eagle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Enemy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameLauncher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameLauncher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/ImageLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Keyboard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Player$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/SpriteSheet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Tile$Type.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Tile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abstracts/Collectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Collectable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abstracts/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abstracts/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Collectables/Cherry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Collectables/Cherry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Collectables/Gem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Collectables/Gem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Menu.java" beforeDir="false" />
     </list>
     <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayyan 3/31/2024" />
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712167288515</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Organized Files">
+      <option name="closed" value="true" />
+      <created>1712172217639</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712172217639</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +250,7 @@
     <MESSAGE value="Changes by rayyan 3/31/2024" />
     <MESSAGE value="enemy sprite sheets created" />
     <MESSAGE value="level loader now support enemy and collectable loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="level loader now support enemy and collectable loading" />
+    <MESSAGE value="Organized Files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Organized Files" />
   </component>
 </project>
