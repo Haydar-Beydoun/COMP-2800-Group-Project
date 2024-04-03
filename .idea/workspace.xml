@@ -4,22 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="resource modification">
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="enemy sprite sheets created">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/GameWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/LevelLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/LevelLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bear/bear-preview.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bear/bear.ase" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bear/walk/bear-walk1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bear/walk/bear-walk2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bear/walk/bear-walk3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bear/walk/bear-walk4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bunny/bunny-preview.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bunny/bunny.ase" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bunny/sprites/bunny1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bunny/sprites/bunny2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/bunny/sprites/bunny3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/pig/pig-preview.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/pig/pig.ase" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/pig/sprites/pig1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/pig/sprites/pig2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/pig/sprites/pig3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/pig/sprites/pig4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/bunny/bunny-preview.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/bunny/bunny.ase" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/bunny/sprites/bunny1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/bunny/sprites/bunny2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/bunny/sprites/bunny3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/pig/pig-preview.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/pig/pig.ase" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/pig/sprites/pig1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/pig/sprites/pig2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/pig/sprites/pig3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/pig/sprites/pig4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LevelLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Opossum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Opossum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/maps/level1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/maps/level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1.txt" afterDir="false" />
     </list>
     <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayyan 3/31/2024" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,6 +130,9 @@
       <workItem from="1711999145720" duration="10220000" />
       <workItem from="1712109344167" duration="778000" />
       <workItem from="1712152332860" duration="724000" />
+      <workItem from="1712154541040" duration="907000" />
+      <workItem from="1712156247363" duration="92000" />
+      <workItem from="1712160965203" duration="6031000" />
     </task>
     <task id="LOCAL-00001" summary="Camera and more">
       <option name="closed" value="true" />
@@ -182,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712098498470</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="enemy sprite sheets created">
+      <option name="closed" value="true" />
+      <created>1712154614175</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712154614175</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +231,7 @@
     <MESSAGE value="Added oppossum, hurt animation" />
     <MESSAGE value="resource modification" />
     <MESSAGE value="Changes by rayyan 3/31/2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by rayyan 3/31/2024" />
+    <MESSAGE value="enemy sprite sheets created" />
+    <option name="LAST_COMMIT_MESSAGE" value="enemy sprite sheets created" />
   </component>
 </project>

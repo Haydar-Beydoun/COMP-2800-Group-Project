@@ -27,8 +27,8 @@ public class GameCanvas extends Canvas implements Runnable {
 
     //Entities
     private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, -1, 5, level.getTilemap());
-    private ArrayList<Enemy> enemies = new ArrayList<>();
-    private ArrayList<Collectable> collectables = new ArrayList<>();
+    private ArrayList<Enemy> enemies = level.getEnemies();
+    private ArrayList<Collectable> collectables = level.getCollectables();
 
     // Utilities
     public static Keyboard keyboard = new Keyboard();
@@ -39,13 +39,13 @@ public class GameCanvas extends Canvas implements Runnable {
         this.addKeyListener(keyboard);
         this.setFocusable(true);
 
-        enemies.add(new Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));
-        enemies.add(new Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));
-        enemies.add(new Eagle(500, 1800, 500, 1800, 104, 123, 1, 1, level.getTilemap()));
-        enemies.add(new Opossum(1100, 1890, 36 * 3, 28 * 3, 1, 1, level.getTilemap()));
+//        enemies.add(new Eagle(150, 2000, 150, 2000, 104, 123, 1, 1, level.getTilemap()));
+//        enemies.add(new Eagle(300, 2000, 300, 2000, 104, 123, 1, 1, level.getTilemap()));
+        enemies.add(new Eagle(500, 1800, 600, 1800, 104, 123, 1, 1, level.getTilemap()));
+//        enemies.add(new Opossum(1100, 1890, 36 * 3, 28 * 3, 1, 1, level.getTilemap()));
 
-        collectables.add(new Gem(500, 2100));
-        collectables.add(new Cherry(300, 2100));
+//        collectables.add(new Gem(500, 2100));
+//        collectables.add(new Cherry(300, 2100));
 
         camera = new Camera(level, player, enemies, collectables);
 

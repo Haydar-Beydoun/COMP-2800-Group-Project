@@ -2,6 +2,9 @@
 64
 src/resources/background/back.png
 src/resources/maps/level1.png
+src/resources/maps/collectables.png
+src/resources/maps/enemies.png
+src/resources/maps/eagles.txt
 50
 src/resources/tiles/bottom-dirt-wall.png
 39242f
