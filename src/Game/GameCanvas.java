@@ -2,11 +2,15 @@ package Game;
 
 import Abstracts.Collectable;
 import Abstracts.Enemy;
+import Entities.Collectables.Cherry;
+import Entities.Collectables.Gem;
+import Entities.Collectables.GoldenGem;
 import Entities.Player;
 import Game.Level.Level;
 import Game.UI.*;
 import Utils.Keyboard;
 import Game.Level.LevelLoader;
+import Utils.SaveFileManager;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -74,6 +78,7 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
 
 
     public GameCanvas(){
+
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.addKeyListener(keyboard);
         this.addMouseListener(this);
@@ -86,6 +91,7 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     private void initGame(){
         tempImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
         g2d = (Graphics2D) tempImage.getGraphics();
+
     }
 
     public void start(){
@@ -194,9 +200,19 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
                 collectable.update();
 
                 if (!collectable.isCollected() && player.isCollectingCollectable(collectable.getHitBox())) {
+                    if(collectable instanceof Cherry) hud.increaseCherryCount();
+                    if(collectable instanceof Gem) hud.increaseGemCount();
+                    if(collectable instanceof GoldenGem){
+                        gameState = GameState.LEVEL_SELECT_MENU;
+                    }
+
+
                     collectable.collect();
+
                 }
                 if (collectable.isCollectComplete()) {
+
+
                     collectables.remove(collectable);
                 }
             }
@@ -217,6 +233,7 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         switch(gameState){
             case GAME:
                 camera.draw(g2d);
+                hud.draw(g2d);
                 break;
             case PAUSE_MENU:
                 camera.draw(g2d);

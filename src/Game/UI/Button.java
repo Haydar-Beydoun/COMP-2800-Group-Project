@@ -6,11 +6,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Button {
-    private int x;
-    private int y;
-    private int width;
-    private int height;
-    private BufferedImage button, buttonHovered, current;
+    private final int x;
+    private final int y;
+    private final int width;
+    private final int height;
+    private final BufferedImage button;
+    private final BufferedImage buttonHovered;
+    private BufferedImage current;
 
     public Button(int x, int y, int width, int height, BufferedImage button, BufferedImage buttonHovered){
         this.x = x;

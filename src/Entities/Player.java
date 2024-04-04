@@ -210,7 +210,7 @@ public class Player extends Entity {
                     vx = 3;
 
                 //player gets hurt
-                health -=10;
+                health -=1;
                 hurt = true;
                 hurtStartTimer = System.nanoTime();
 
