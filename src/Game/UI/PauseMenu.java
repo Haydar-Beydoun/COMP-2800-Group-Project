@@ -14,13 +14,10 @@ public class PauseMenu {
     private Button continueButton;
     private Button restartButton;
     private Button quitButton;
-    private BufferedImage background;
     private GameCanvas canvas;
 
     public PauseMenu(GameCanvas canvas){
-        background = ImageLoader.loadImage("src/resources/UI/pause-menu-background.png");
         this.canvas = canvas;
-
 
         initButtons();
         addGUIElements();
@@ -49,11 +46,11 @@ public class PauseMenu {
         // Drawing translucent background
         Composite temp = g2d.getComposite();
         AlphaComposite alphaComposite;
-        alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5F);
+        alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.6F);
         g2d.setComposite(alphaComposite);
 
         g2d.setColor(Color.BLACK);
-        g2d.drawImage(background, 0, 0, GameCanvas.WIDTH, GameCanvas.HEIGHT, null);
+        g2d.fillRect(0, 0, GameCanvas.WIDTH, GameCanvas.HEIGHT);
 
         g2d.setComposite(temp);
 
@@ -63,27 +60,23 @@ public class PauseMenu {
     }
 
     public void mousePressed(MouseEvent e) {
-        if(GameCanvas.gameState == GameCanvas.GameState.PAUSE_MENU){
-            Point point = new Point(e.getX(), e.getY());
-            if(continueButton.isOnButton(point)){
-                GameCanvas.gameState = GameCanvas.GameState.GAME;
-            }
-            else if(restartButton.isOnButton(point)){
-                GameCanvas.gameState = GameCanvas.GameState.GAME;
-                canvas.setMinScreen();
-            }
-            else if(quitButton.isOnButton(point)){
-                canvas.setFullScreen();
-            }
+        Point point = new Point(e.getX(), e.getY());
+        if(continueButton.isOnButton(point)){
+            GameCanvas.gameState = GameCanvas.GameState.GAME;
+        }
+        else if(restartButton.isOnButton(point)){
+            canvas.loadLevel(canvas.getCurrentLevelPath());
+            GameCanvas.gameState = GameCanvas.GameState.GAME;
+        }
+        else if(quitButton.isOnButton(point)){
+            GameCanvas.gameState = GameCanvas.GameState.START_MENU;
         }
     }
 
     public void mouseMoved(MouseEvent e) {
-        if(GameCanvas.gameState == GameCanvas.GameState.PAUSE_MENU){
-            continueButton.updateSprite(new Point(e.getX(), e.getY()));
-            restartButton.updateSprite(new Point(e.getX(), e.getY()));
-            quitButton.updateSprite(new Point(e.getX(), e.getY()));
-        }
+        continueButton.updateSprite(new Point(e.getX(), e.getY()));
+        restartButton.updateSprite(new Point(e.getX(), e.getY()));
+        quitButton.updateSprite(new Point(e.getX(), e.getY()));
     }
 
 }

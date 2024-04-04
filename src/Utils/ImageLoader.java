@@ -21,6 +21,8 @@ public class ImageLoader {
     }
 
     public static BufferedImage loadSubImage(String filePath, int tileSize, int row, int column){
+        row--;
+        column--;
         BufferedImage image = loadImage(filePath);
         image = image.getSubimage(column * tileSize, row * tileSize, tileSize, tileSize);
 

@@ -89,6 +89,8 @@ public class Player extends Entity {
         fallAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,31, 32), 0 , 20);
         hurtAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,24, 26), 0 , 15);
 
+        currentAnimator = idleAnimator;
+
     }
 
     public void death(){
@@ -221,6 +223,10 @@ public class Player extends Entity {
 
     public boolean isCollectingCollectable(Rectangle2D collectableHitBox){
         return getHitBox().intersects(collectableHitBox);
+    }
+
+    public boolean isOffScreen(){
+        return screenY> GameCanvas.HEIGHT + 200;
     }
 
     /**

@@ -3,6 +3,7 @@ package Game.Level;
 import Abstracts.Collectable;
 import Entities.Collectables.Cherry;
 import Entities.Collectables.Gem;
+import Entities.Collectables.GoldenGem;
 import Entities.Enemies.Eagle;
 import Abstracts.Enemy;
 import Entities.Enemies.Opossum;
@@ -163,6 +164,8 @@ public class LevelLoader {
                 }
             }
         }
+
+        collectables.add(new GoldenGem(100, 1000));
     }
 
     private void fillEnemy(){

@@ -4,12 +4,21 @@ import Game.UI.PauseMenu;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GameWindow {
-    public static JFrame gameWindow = new JFrame("INSERT GAME NAME HERE");        // FIX ME: CHANGE NAME
+    public static JFrame gameWindow = new JFrame("FLASH FOX");
     private GameCanvas canvas = new GameCanvas();
 
     public GameWindow(){
+        gameWindow.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                GameCanvas.save();
+            }
+        });
+
         gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         gameWindow.setResizable(false);
@@ -20,7 +29,9 @@ public class GameWindow {
 
         gameWindow.setLocationRelativeTo(null);
 
-        canvas.setFullScreen();
+       if(GameCanvas.isFullScreen){
+           canvas.setFullScreen();
+       }
 
         gameWindow.setVisible(true);
 

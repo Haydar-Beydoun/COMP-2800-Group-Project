@@ -4,18 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="added menus, and death">
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Pause menu finalized and can now transition between min screen and full screen">
+      <change afterPath="$PROJECT_DIR$/src/Game/UI/HUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/UI/SettingsMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Utils/SaveFileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/font/PixeloidSansBold-PKnYd.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Collectables/FinishLevelItem.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/CollisionChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/CollisionChecker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$GameState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/gem.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/gem.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/Level/LevelLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/Level/LevelLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/LevelSelectMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/LevelSelectMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/PauseMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/PauseMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/StartMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/StartMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Utils/ImageLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Utils/ImageLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/pause-menu-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Level/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Level/LevelLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/UI/LevelSelectMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/LevelSelectMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/UI/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/PauseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/UI/StartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/StartMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/UI/pause-menu-background.png" beforeDir="false" />
+    </list>
+    <list id="29544cb6-91e3-47bd-b282-de9fc2a65498" name="Changes by rayya" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Entities/Collectables/FinishLevelItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Collectables/GoldenGem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/UI/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/UI/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/PauseMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Mouse.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +59,56 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.desktop/java/awt/Graphics.java" root0="SKIP_INSPECTION" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Game/GameCanvas.java">
+      <ranges>
+        <range start1="3" end1="4" start2="3" end2="3" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="5" end1="5" start2="4" end2="7" changelist="29544cb6-91e3-47bd-b282-de9fc2a65498" />
+        <range start1="7" end1="8" start2="9" end2="10" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="10" end1="10" start2="12" end2="13" changelist="29544cb6-91e3-47bd-b282-de9fc2a65498" />
+        <range start1="11" end1="12" start2="14" end2="14" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="19" end1="23" start2="21" end2="33" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="30" end1="30" start2="40" end2="41" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="35" end1="36" start2="46" end2="47" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="41" end1="42" start2="52" end2="53" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="54" end1="57" start2="65" end2="68" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="60" end1="61" start2="71" end2="72" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="62" end1="62" start2="73" end2="77" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="65" end1="65" start2="80" end2="81" changelist="29544cb6-91e3-47bd-b282-de9fc2a65498" />
+        <range start1="71" end1="74" start2="87" end2="87" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="80" end1="80" start2="93" end2="94" changelist="29544cb6-91e3-47bd-b282-de9fc2a65498" />
+        <range start1="96" end1="97" start2="110" end2="111" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="98" end1="100" start2="112" end2="116" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="101" end1="105" start2="117" end2="121" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="106" end1="107" start2="122" end2="123" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="108" end1="108" start2="124" end2="125" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="111" end1="113" start2="128" end2="141" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="115" end1="115" start2="143" end2="144" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="118" end1="121" start2="147" end2="147" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="128" end1="128" start2="154" end2="160" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="132" end1="133" start2="164" end2="173" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="162" end1="162" start2="202" end2="209" changelist="29544cb6-91e3-47bd-b282-de9fc2a65498" />
+        <range start1="163" end1="163" start2="210" end2="211" changelist="29544cb6-91e3-47bd-b282-de9fc2a65498" />
+        <range start1="165" end1="165" start2="213" end2="215" changelist="29544cb6-91e3-47bd-b282-de9fc2a65498" />
+        <range start1="181" end1="182" start2="231" end2="232" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="185" end1="185" start2="235" end2="236" changelist="29544cb6-91e3-47bd-b282-de9fc2a65498" />
+        <range start1="190" end1="190" start2="241" end2="250" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="194" end1="195" start2="254" end2="255" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="237" end1="237" start2="297" end2="316" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="238" end1="241" start2="317" end2="317" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="242" end1="243" start2="318" end2="326" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="245" end1="245" start2="328" end2="343" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="248" end1="252" start2="346" end2="346" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="257" end1="260" start2="351" end2="352" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/Entities/Player.java">
+      <ranges>
+        <range start1="91" end1="91" start2="91" end2="93" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
+        <range start1="210" end1="211" start2="212" end2="213" changelist="29544cb6-91e3-47bd-b282-de9fc2a65498" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -47,30 +121,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GameLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/A/IdeaProjects/COMP 2800/COMP_2800_Group_Project/src/resources/UI&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GameLauncher.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/A/IdeaProjects/COMP 2800/COMP_2800_Group_Project/src/resources/font",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;derby&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "derby"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\A\IdeaProjects\COMP 2800\COMP_2800_Group_Project\src\resources\font" />
       <recent name="C:\Users\A\IdeaProjects\COMP 2800\COMP_2800_Group_Project\src\resources\UI" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\A\IdeaProjects\COMP 2800\COMP_2800_Group_Project\src\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -129,7 +207,8 @@
       <workItem from="1712187958964" duration="574000" />
       <workItem from="1712188780260" duration="163000" />
       <workItem from="1712189093768" duration="334000" />
-      <workItem from="1712191606798" duration="4861000" />
+      <workItem from="1712191606798" duration="6129000" />
+      <workItem from="1712244796956" duration="17440000" />
     </task>
     <task id="LOCAL-00001" summary="Camera and more">
       <option name="closed" value="true" />
@@ -235,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712186618781</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Pause menu finalized and can now transition between min screen and full screen">
+      <option name="closed" value="true" />
+      <created>1712198062368</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712198062368</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +351,7 @@
     <MESSAGE value="Organized Files" />
     <MESSAGE value="added menus, and death" />
     <MESSAGE value="Changes by rayyan 3/31/2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by rayyan 3/31/2024" />
+    <MESSAGE value="Pause menu finalized and can now transition between min screen and full screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pause menu finalized and can now transition between min screen and full screen" />
   </component>
 </project>

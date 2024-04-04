@@ -1,15 +1,13 @@
 package Game;
 
 import Abstracts.Collectable;
-import Entities.Enemies.Eagle;
 import Abstracts.Enemy;
 import Entities.Player;
 import Game.Level.Level;
-import Game.UI.PauseMenu;
+import Game.UI.*;
 import Utils.Keyboard;
 import Game.Level.LevelLoader;
 
-import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferStrategy;
@@ -17,10 +15,18 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class GameCanvas extends Canvas implements Runnable, MouseListener, MouseMotionListener {
-    // Game.Game.Level.Level and loader
-    private static LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
-    private Level level = loader.getLevel();
-
+    // Level and loader
+    private static LevelLoader loader;
+    private Level level;
+    private String currentLevelPath;
+    public static int currentLevel;
+    public static boolean isFullScreen;
+    static{
+        if(!SaveFileManager.loadFile()){ // No save file
+            currentLevel = 1;
+            isFullScreen = true;
+        }
+    }
 
     // Game States
     public enum GameState {
@@ -28,18 +34,19 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         START_MENU,
         LEVEL_SELECT_MENU,
         GAME,
+        SETTINGS_MENU,
         GAME_OVER,
         WIN
     }
 
     // Helper values and more
-    public static GameState gameState = GameState.GAME;
+    public static GameState gameState = GameState.START_MENU;
     private Thread thread;
     private final int UPS = 60;
     private BufferStrategy bufferStrategy;
     private static final int NUM_COLS = 20;
     private static final int NUM_ROWS = 12;
-    public static final int TILE_SIZE = loader.getTileWidth();
+    public static final int TILE_SIZE = 64;
     public static  int WIDTH = NUM_COLS * TILE_SIZE; // 1280px
     public static  int HEIGHT = NUM_ROWS * TILE_SIZE; // 768px
 
@@ -52,14 +59,18 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     private Graphics2D g2d;
 
     //Entities
-    private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, 30, 5, level.getTilemap());
-    private ArrayList<Enemy> enemies = level.getEnemies();
-    private ArrayList<Collectable> collectables = level.getCollectables();
+    private Player player;
+    private ArrayList<Enemy> enemies;
+    private ArrayList<Collectable> collectables;
 
     // Utilities
     public static Keyboard keyboard = new Keyboard();
-    private Camera camera = new Camera(level, player, enemies, collectables);
+    private Camera camera;
     private final PauseMenu pauseMenu = new PauseMenu(this);
+    private final StartMenu startMenu = new StartMenu();
+    private final LevelSelectMenu levelSelectMenu = new LevelSelectMenu(this);
+    private final SettingsMenu settingsMenu = new SettingsMenu(this);
+    private HUD hud;
 
 
     public GameCanvas(){
@@ -69,9 +80,6 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         this.addMouseMotionListener(this);
         this.setFocusable(true);
 
-        enemies.add(new Eagle(500, 1800, 500, 1900, 104, 123, 1, 1, level.getTilemap()));
-
-        camera = new Camera(level, player, enemies, collectables);
         initGame();
     }
 
@@ -94,31 +102,43 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
 
     @Override
     public void run() {
-        double drawInterval = 1_000_000_000 / UPS;
+        long lastTime = System.nanoTime();
         double delta = 0;
-        long prevTime = System.nanoTime();
-        long currentTime;
 
-        while(thread != null){
-            currentTime = System.nanoTime();
-            delta += (currentTime - prevTime) / drawInterval;
-            prevTime = currentTime;
+        int updates = 0;
+        int frames = 0;
+        long timerForTracking = System.currentTimeMillis();
 
-            if(delta >= 1){
+        while (thread != null) {
+            long now = System.nanoTime();
+            delta += (now - lastTime) / (double) (1000000000 / UPS);
+            lastTime = now;
+
+            while (delta >= 1) {
                 update();
+                updates++;
                 delta--;
             }
 
-            renderTempScreen();
-            render();
+            renderToImage();
+            renderToScreen();
+            frames++;
+
+
+            // Print UPS and FPS every second
+            if (System.currentTimeMillis() - timerForTracking > 1000) {
+//                System.out.print("Updates per second (UPS): " + updates);
+//                System.out.println("   Frames per second (FPS): " + frames);
+                updates = 0; // Reset the counters
+                frames = 0;
+                timerForTracking += 1000;
+            }
 
         }
+
     }
 
     public void update(){
-        if(player.health <= 0){
-            player.death();
-        }
         updateState();
 
         switch(gameState){
@@ -126,11 +146,25 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
                 player.update();
                 updateCollectables();
                 updateEnemies();
+                if(player.health <= 0){
+                    player.death();
+                    if(player.isOffScreen()){
+                        loadLevel(currentLevelPath);
+                    }
+                }
                 break;
             case PAUSE_MENU:
                 pauseMenu.update();
                 break;
-
+            case START_MENU:
+                startMenu.update();
+                break;
+            case LEVEL_SELECT_MENU:
+                levelSelectMenu.update();
+                break;
+            case SETTINGS_MENU:
+                settingsMenu.update();
+                break;
         }
 
     }
@@ -179,7 +213,7 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         }
     }
 
-    public void renderTempScreen(){
+    public void renderToImage(){
         switch(gameState){
             case GAME:
                 camera.draw(g2d);
@@ -188,11 +222,20 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
                 camera.draw(g2d);
                 pauseMenu.draw(g2d);
                 break;
+            case START_MENU:
+                startMenu.draw(g2d);
+                break;
+            case LEVEL_SELECT_MENU:
+                levelSelectMenu.draw(g2d);
+                break;
+            case SETTINGS_MENU:
+                settingsMenu.draw(g2d);
+                break;
         }
 
     }
 
-    public void render(){
+    public void renderToScreen(){
         Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
 
         g2d.drawImage(tempImage, 0, 0, WIDTH2, HEIGHT2, null);
@@ -235,29 +278,61 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
 
     }
 
+    public void loadLevel(String levelPath){
+        loader = new LevelLoader(levelPath);
+        level = loader.getLevel();
+        enemies = level.getEnemies();
+        collectables = level.getCollectables();
+        player = new Player(WIDTH /2, HEIGHT /2, 68, 87, 5, 5, level.getTilemap()); // FIX ME TO LATER PASS IN LEVEL COORD TO START AND HEALTH BACK WHEN CHANGING LEVELS
+        camera = new Camera(level, player, enemies, collectables);
+        currentLevelPath = levelPath;
+        hud = new HUD(level,player,collectables);
+    }
+
+    public String getCurrentLevelPath() {
+        return currentLevelPath;
+    }
+
+    public static void save(){
+        SaveFileManager.saveFile(isFullScreen, currentLevel);
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if(gameState == GameState.PAUSE_MENU)
+            pauseMenu.mousePressed(e);
+        else if(gameState == GameState.START_MENU)
+            startMenu.mousePressed(e);
+        else if(gameState == GameState.LEVEL_SELECT_MENU)
+            levelSelectMenu.mousePressed(e);
+        else if(gameState == GameState.SETTINGS_MENU)
+            settingsMenu.mousePressed(e);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        if(gameState == GameState.PAUSE_MENU)
+            pauseMenu.mouseMoved(e);
+        else if(gameState == GameState.START_MENU)
+            startMenu.mouseMoved(e);
+        else if(gameState == GameState.LEVEL_SELECT_MENU)
+            levelSelectMenu.mouseMoved(e);
+        else if(gameState == GameState.SETTINGS_MENU)
+            settingsMenu.mouseMoved(e);
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {}
 
     @Override
-    public void mousePressed(MouseEvent e) {
-        pauseMenu.mousePressed(e);
-    }
-
-    @Override
     public void mouseReleased(MouseEvent e) {}
 
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        pauseMenu.mouseMoved(e);
-    }
 
     @Override
     public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 
     @Override
     public void mouseDragged(MouseEvent e) {}
