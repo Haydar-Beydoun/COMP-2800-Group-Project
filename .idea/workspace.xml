@@ -4,27 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Organized Files">
-      <change afterPath="$PROJECT_DIR$/src/Game/UI/Button.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Mouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/UI/quitButton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/UI/quitButtonHovered.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/UI/restartButton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/UI/restartButtonHovered.png" afterDir="false" />
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="added menus, and death">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Enemies/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Enemies/Eagle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$GameState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/gem.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/entities/spritesheets/gem.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/UI/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/PauseMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/UI/NextLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/LevelSelectMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/entities/spritesheets/gem.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/entities/spritesheets/gem.png" afterDir="false" />
-    </list>
-    <list id="7d8c43e3-96c5-4073-aada-3b0e525ad988" name="Changes by rayya" comment="Changes by rayyan 3/31/2024">
-      <change beforePath="$PROJECT_DIR$/src/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Level/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Level/LevelLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Keyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/UI/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/UI/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/PauseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Mouse.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,36 +35,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.desktop/java/awt/Graphics.java" root0="SKIP_INSPECTION" />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Game/GameCanvas.java">
-      <ranges>
-        <range start1="7" end1="8" start2="7" end2="8" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="10" end1="10" start2="10" end2="11" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="11" end1="11" start2="12" end2="13" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="13" end1="13" start2="15" end2="16" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="21" end1="22" start2="24" end2="25" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="25" end1="26" start2="28" end2="31" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="32" end1="33" start2="37" end2="38" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="56" end1="56" start2="61" end2="62" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="57" end1="57" start2="63" end2="65" changelist="7d8c43e3-96c5-4073-aada-3b0e525ad988" />
-        <range start1="61" end1="61" start2="69" end2="70" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="63" end1="70" start2="72" end2="73" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="72" end1="73" start2="75" end2="75" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="106" end1="108" start2="108" end2="109" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="113" end1="114" start2="114" end2="114" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="118" end1="119" start2="118" end2="131" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="120" end1="121" start2="132" end2="135" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="134" end1="134" start2="148" end2="150" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="135" end1="136" start2="151" end2="152" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="151" end1="154" start2="167" end2="167" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="156" end1="158" start2="169" end2="170" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="159" end1="161" start2="171" end2="172" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="168" end1="175" start2="179" end2="188" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="181" end1="182" start2="194" end2="194" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-        <range start1="186" end1="187" start2="198" end2="198" changelist="9840e3a1-1fbc-4660-9108-396ea3cc6f09" />
-      </ranges>
-    </file>
-  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -86,27 +47,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameLauncher.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/A/IdeaProjects/COMP 2800/COMP_2800_Group_Project/src/resources/UI",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameLauncher.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/A/IdeaProjects/COMP 2800/COMP_2800_Group_Project/src/resources/UI&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "derby"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;derby&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\A\IdeaProjects\COMP 2800\COMP_2800_Group_Project\src\resources\UI" />
@@ -164,6 +125,11 @@
       <workItem from="1712156247363" duration="92000" />
       <workItem from="1712160965203" duration="6286000" />
       <workItem from="1712167902958" duration="1131000" />
+      <workItem from="1712186971132" duration="259000" />
+      <workItem from="1712187958964" duration="574000" />
+      <workItem from="1712188780260" duration="163000" />
+      <workItem from="1712189093768" duration="334000" />
+      <workItem from="1712191606798" duration="4861000" />
     </task>
     <task id="LOCAL-00001" summary="Camera and more">
       <option name="closed" value="true" />
@@ -253,7 +219,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712172217639</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added menus, and death">
+      <option name="closed" value="true" />
+      <created>1712186594772</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712186594772</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Changes by rayyan 3/31/2024">
+      <option name="closed" value="true" />
+      <created>1712186618781</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712186618781</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,10 +259,11 @@
     <MESSAGE value="Finalized hitbox and polished code" />
     <MESSAGE value="Added oppossum, hurt animation" />
     <MESSAGE value="resource modification" />
-    <MESSAGE value="Changes by rayyan 3/31/2024" />
     <MESSAGE value="enemy sprite sheets created" />
     <MESSAGE value="level loader now support enemy and collectable loading" />
     <MESSAGE value="Organized Files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Organized Files" />
+    <MESSAGE value="added menus, and death" />
+    <MESSAGE value="Changes by rayyan 3/31/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by rayyan 3/31/2024" />
   </component>
 </project>

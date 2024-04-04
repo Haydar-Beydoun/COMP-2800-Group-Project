@@ -1,5 +1,7 @@
 package Game.UI;
 
+import Game.GameCanvas;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -8,7 +10,7 @@ public class Button {
     private int y;
     private int width;
     private int height;
-    private BufferedImage button, buttonHovered;
+    private BufferedImage button, buttonHovered, current;
 
     public Button(int x, int y, int width, int height, BufferedImage button, BufferedImage buttonHovered){
         this.x = x;
@@ -17,23 +19,28 @@ public class Button {
         this.height = height;
         this.button = button;
         this.buttonHovered = buttonHovered;
+        current = button;
 
     }
 
     public boolean isOnButton(Point point){
-        return new Rectangle(x, y, width, height).contains(point);
+        return new Rectangle((int)(x * GameCanvas.gameScaleWidth), (int) (y  * GameCanvas.gameScaleHeight), (int) (width * GameCanvas.gameScaleWidth), (int) (height * GameCanvas.gameScaleHeight)).contains(point);
     }
 
     public void update(){
 
     }
 
+    public void updateSprite(Point point){
+        if(isOnButton(point)){
+            current = buttonHovered;
+        }
+        else{
+            current = button;
+        }
+    }
+
     public void draw(Graphics2D g2d){
-//        if(isOnButton(point)){
-//            g2d.drawImage(buttonHovered, x, y, width, height, null);
-//        }
-//        else{
-            g2d.drawImage(button, x, y, width, height, null);
-//        }
+            g2d.drawImage(current, x, y, width, height, null);
     }
 }

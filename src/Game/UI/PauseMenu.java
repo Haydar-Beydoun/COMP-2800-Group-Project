@@ -2,12 +2,12 @@ package Game.UI;
 
 import Game.GameCanvas;
 import Utils.ImageLoader;
-import Utils.Mouse;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 public class PauseMenu {
@@ -15,9 +15,12 @@ public class PauseMenu {
     private Button restartButton;
     private Button quitButton;
     private BufferedImage background;
+    private GameCanvas canvas;
 
-    public PauseMenu(){
+    public PauseMenu(GameCanvas canvas){
         background = ImageLoader.loadImage("src/resources/UI/pause-menu-background.png");
+        this.canvas = canvas;
+
 
         initButtons();
         addGUIElements();
@@ -58,5 +61,29 @@ public class PauseMenu {
         restartButton.draw(g2d);
         quitButton.draw(g2d);
     }
-    
+
+    public void mousePressed(MouseEvent e) {
+        if(GameCanvas.gameState == GameCanvas.GameState.PAUSE_MENU){
+            Point point = new Point(e.getX(), e.getY());
+            if(continueButton.isOnButton(point)){
+                GameCanvas.gameState = GameCanvas.GameState.GAME;
+            }
+            else if(restartButton.isOnButton(point)){
+                GameCanvas.gameState = GameCanvas.GameState.GAME;
+                canvas.setMinScreen();
+            }
+            else if(quitButton.isOnButton(point)){
+                canvas.setFullScreen();
+            }
+        }
+    }
+
+    public void mouseMoved(MouseEvent e) {
+        if(GameCanvas.gameState == GameCanvas.GameState.PAUSE_MENU){
+            continueButton.updateSprite(new Point(e.getX(), e.getY()));
+            restartButton.updateSprite(new Point(e.getX(), e.getY()));
+            quitButton.updateSprite(new Point(e.getX(), e.getY()));
+        }
+    }
+
 }

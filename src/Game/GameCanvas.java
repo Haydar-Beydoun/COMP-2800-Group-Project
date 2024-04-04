@@ -8,17 +8,15 @@ import Game.Level.Level;
 import Game.UI.PauseMenu;
 import Utils.Keyboard;
 import Game.Level.LevelLoader;
-import Utils.Mouse;
 
 import javax.swing.text.JTextComponent;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
+import java.awt.event.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class GameCanvas extends Canvas implements Runnable {
+public class GameCanvas extends Canvas implements Runnable, MouseListener, MouseMotionListener {
     // Game.Game.Level.Level and loader
     private static LevelLoader loader = new LevelLoader("src/resources/maps/level1.txt");
     private Level level = loader.getLevel();
@@ -45,29 +43,30 @@ public class GameCanvas extends Canvas implements Runnable {
     public static  int WIDTH = NUM_COLS * TILE_SIZE; // 1280px
     public static  int HEIGHT = NUM_ROWS * TILE_SIZE; // 768px
 
-    // Full Screen variables
-    // Reference for full screen functionality: https://www.youtube.com/watch?v=d5E_O2N73ZU
+    // Screen Variables
     private int WIDTH2 = WIDTH;
     private int HEIGHT2 = HEIGHT;
+    public static double gameScaleWidth = 1;
+    public static double gameScaleHeight = 1;
     private BufferedImage tempImage;
     private Graphics2D g2d;
 
     //Entities
-    private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, 10, 5, level.getTilemap());
+    private Player player = new Player(WIDTH /2, HEIGHT /2, 68, 87, 30, 5, level.getTilemap());
     private ArrayList<Enemy> enemies = level.getEnemies();
     private ArrayList<Collectable> collectables = level.getCollectables();
 
     // Utilities
     public static Keyboard keyboard = new Keyboard();
-    public static Mouse mouse = new Mouse();
     private Camera camera = new Camera(level, player, enemies, collectables);
-    private final PauseMenu pauseMenu = new PauseMenu();
+    private final PauseMenu pauseMenu = new PauseMenu(this);
 
 
     public GameCanvas(){
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.addKeyListener(keyboard);
-        this.addMouseListener(mouse);
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
         this.setFocusable(true);
 
         enemies.add(new Eagle(500, 1800, 500, 1900, 104, 123, 1, 1, level.getTilemap()));
@@ -112,11 +111,11 @@ public class GameCanvas extends Canvas implements Runnable {
 
             renderTempScreen();
             render();
+
         }
     }
 
     public void update(){
-        System.out.println(player.health);
         if(player.health <= 0){
             player.death();
         }
@@ -203,6 +202,7 @@ public class GameCanvas extends Canvas implements Runnable {
     }
 
     public void setFullScreen(){
+        // Reference for full screen functionality: https://www.youtube.com/watch?v=d5E_O2N73ZU
         GameWindow.gameWindow.dispose();
 
         GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -213,6 +213,53 @@ public class GameCanvas extends Canvas implements Runnable {
 
         WIDTH2 = GameWindow.gameWindow.getWidth();
         HEIGHT2 = GameWindow.gameWindow.getHeight();
+
+        gameScaleWidth = (double) WIDTH2 / WIDTH;
+        gameScaleHeight = (double) HEIGHT2 / HEIGHT;
+
     }
+
+    public void setMinScreen(){
+        GameWindow.gameWindow.dispose();
+
+        WIDTH2 = WIDTH;
+        HEIGHT2 = HEIGHT;
+
+        GameWindow.gameWindow.setUndecorated(false);
+        GameWindow.gameWindow.pack();
+
+        GameWindow.gameWindow.setVisible(true);
+
+        gameScaleWidth = 1;
+        gameScaleHeight = 1;
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {}
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        pauseMenu.mousePressed(e);
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        pauseMenu.mouseMoved(e);
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {}
 
 }
