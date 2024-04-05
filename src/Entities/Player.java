@@ -6,6 +6,7 @@ import Game.GameCanvas;
 import Game.Level.Tile;
 import Utils.Animator;
 import Utils.Keyboard;
+import Utils.Sound;
 import Utils.SpriteSheet;
 
 import java.awt.*;
@@ -63,6 +64,11 @@ public class Player extends Entity {
     private long hurtStartTimer;
     private long hurtDuration = 750_000_000L;
 
+    // Sounds
+    private Sound hurtSound = new Sound("src/resources/sound_effects/playerHurt.wav");
+    private Sound deathSound = new Sound("src/resources/sound_effects/death.wav");
+    private Sound jumpSound = new Sound("src/resources/sound_effects/jump.wav");
+
 
     /**
      * Constructs a new player.
@@ -80,9 +86,6 @@ public class Player extends Entity {
     }
 
     private void initPlayer(){
-        this.worldX = 200;
-        this.worldY = GameCanvas.HEIGHT;
-
         idleAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 4), 0 , 7);
         runAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,6, 12), 0 , 5);
         jumpAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,30, 31), 0 , 20);
@@ -139,7 +142,6 @@ public class Player extends Entity {
         currentAnimator.update();
         move();
         setState();
-
     }
 
     /**
@@ -149,6 +151,7 @@ public class Player extends Entity {
         if(!inAir) {
             vy = jumpSpeed;
             inAir = true;
+            jumpSound.play();
         }
     }
 
@@ -174,12 +177,6 @@ public class Player extends Entity {
         }
         if(keyboard.isPressed(jumpBinds) && !hurt){
             jump();
-        }
-        if(keyboard.isPressed(KeyEvent.VK_ESCAPE)){ //TEMP FOR TESTING
-            initPlayer();
-        }
-        if(keyboard.isPressed(KeyEvent.VK_I)){ //TEMP FOR TESTING
-            hurt = false;
         }
 
         updateY();
@@ -213,6 +210,11 @@ public class Player extends Entity {
                 health -=1;
                 hurt = true;
                 hurtStartTimer = System.nanoTime();
+
+                if(health > 0)
+                    hurtSound.play();
+                else
+                    deathSound.play();
 
                 return false;
             }

@@ -2,6 +2,7 @@ package Entities.Collectables;
 
 import Abstracts.Collectable;
 import Utils.Animator;
+import Utils.Sound;
 import Utils.SpriteSheet;
 
 import java.awt.*;
@@ -22,6 +23,8 @@ public class Gem extends Collectable {
      */
     public Gem(double worldX, double worldY) {
         super(worldX, worldY, 64, 64);
+
+        collectSound = new Sound("src/resources/sound_effects/gemCollection.wav");
         initCollectable();
     }
 

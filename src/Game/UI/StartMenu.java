@@ -35,7 +35,6 @@ public class StartMenu {
     }
 
     public void draw(Graphics2D g2d) {
-        g2d.setColor(Color.CYAN);
         g2d.drawImage(background, 0, 0, GameCanvas.WIDTH, GameCanvas.HEIGHT, null);
 
         playButton.draw(g2d);
@@ -47,11 +46,14 @@ public class StartMenu {
         Point point = new Point(e.getX(), e.getY());
         if(playButton.isOnButton(point)){
             GameCanvas.gameState = GameCanvas.GameState.LEVEL_SELECT_MENU;
+            playButton.playClick();
         }
         else if(optionMenu.isOnButton(point)){
             GameCanvas.gameState = GameCanvas.GameState.SETTINGS_MENU;
+            playButton.playClick();
         }
         else if(quitButton.isOnButton(point)){
+            playButton.playClick();
             GameCanvas.save();
             System.exit(0);
         }

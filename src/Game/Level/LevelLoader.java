@@ -25,7 +25,8 @@ import java.util.HashMap;
  * @author Haydar
  */
 public class LevelLoader {
-
+    private int playerX;
+    private int playerY;
     private Tile[][] tileMap;
     private ArrayList<Enemy> enemies = new ArrayList<>();
     private ArrayList<Collectable> collectables = new ArrayList<>();
@@ -35,6 +36,7 @@ public class LevelLoader {
     private int numTiles;
     private HashMap<Integer, Image> tileImages = new HashMap<>();       // <hex value pertaining to colour on pixel map, corresponding image>
     private HashMap<Integer, Tile.Type> tileTypes = new HashMap<>();    // <hex value pertaining to colour on pixel map, corresponding tile type>
+    private String musicPath;
 
     public LevelLoader(String filePath){
 
@@ -48,6 +50,7 @@ public class LevelLoader {
      * <p><b>Config File Format (to be written in lowercase)</b>
      * <br>            -Game.Level.Tile Width
      * <br>            -Game.Level.Tile Height
+     * <br>            -music path
      * <br>            -background path
      * <br>            -level pixel map path
      * <br>            -collectable pixel map path
@@ -70,6 +73,7 @@ public class LevelLoader {
             --------------------------------------------------
             -Game.Level.Tile Width
             -Game.Level.Tile Height
+            -Music path
             -background path
             -level pixel map path
             -collectable pixel map path
@@ -87,6 +91,7 @@ public class LevelLoader {
 
             tileWidth  = Integer.parseInt(br.readLine());
             tileHeight = Integer.parseInt(br.readLine());
+            musicPath = br.readLine();
             background = ImageLoader.loadImage(br.readLine());
             levelPixelMap = ImageLoader.loadImage(br.readLine());
             collectablePixelMap = ImageLoader.loadImage(br.readLine());
@@ -122,6 +127,8 @@ public class LevelLoader {
         levelImage = new BufferedImage(width * tileWidth, height * tileHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics buffG = levelImage.getGraphics();
 
+        buffG.fillRect(0, 0, width * tileWidth, height * tileHeight);
+
         buffG.drawImage(background, 0, 0, background.getWidth(), background.getHeight(), null);
 
         tileMap = new Tile[width][height];
@@ -140,6 +147,13 @@ public class LevelLoader {
                     tileMap[x][y] = new Tile(x * tileWidth, y * tileHeight, tileWidth, tileHeight, tileTypes.get(colour));
                 }
                 else{
+                    // Checking if player
+                    if(colour == 0xb5422d){
+                        playerX = x * tileWidth;
+                        playerY = y * tileHeight;
+                    }
+
+                    // Blank tile
                     tileMap[x][y] = new Tile(x * tileWidth, y * tileHeight, tileWidth, tileHeight, Tile.Type.PASSABLE);
                 }
             }
@@ -162,10 +176,13 @@ public class LevelLoader {
                 else if(colour == 0xbb58cc){
                     collectables.add(new Gem(x * tileWidth, y * tileHeight));
                 }
+                else if(colour == 0x913e0b){
+                    collectables.add(new GoldenGem(x * tileWidth, y * tileHeight));
+                }
             }
         }
 
-        collectables.add(new GoldenGem(100, 1000));
+        collectables.add(new GoldenGem(100, 1900));
     }
 
     private void fillEnemy(){
@@ -199,7 +216,7 @@ public class LevelLoader {
     }
 
     public Level getLevel(){
-        return new Level(tileMap, levelImage, enemies, collectables);
+        return new Level(tileMap, levelImage, enemies, collectables, playerX, playerY, musicPath);
     }
 
     public int getTileHeight() {

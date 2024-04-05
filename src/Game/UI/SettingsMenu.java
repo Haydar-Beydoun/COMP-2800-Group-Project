@@ -10,8 +10,9 @@ import java.awt.image.BufferedImage;
 public class SettingsMenu {
     private Button fullScreenOnButton;
     private Button fullScreenOffButton;
-    private Button deleteSaveButton;
+    private Button newSaveButton;
     private Button backButton;
+    private Button controlsButton;
     private BufferedImage background;
     private GameCanvas canvas;
 
@@ -29,11 +30,15 @@ public class SettingsMenu {
         fullScreenOffButton = new Button((GameCanvas.WIDTH - 488)/2, GameCanvas.HEIGHT / 2 - 150, 488, 120
                 , ImageLoader.loadImage("src/resources/UI/fullScreenButtonOff.png"), ImageLoader.loadImage("src/resources/UI/fullScreenButtonOffHovered.png"));
 
-        deleteSaveButton = new Button((GameCanvas.WIDTH - 248)/2, GameCanvas.HEIGHT / 2, 248, 120
-                , ImageLoader.loadImage("src/resources/UI/level2.png"), ImageLoader.loadImage("src/resources/UI/level2Hovered.png"));
+        newSaveButton = new Button((GameCanvas.WIDTH - 364)/2, GameCanvas.HEIGHT / 2, 364, 120
+                , ImageLoader.loadImage("src/resources/UI/newSave.png"), ImageLoader.loadImage("src/resources/UI/newSaveHovered.png"));
+
+        controlsButton = new Button((GameCanvas.WIDTH - 372)/2, GameCanvas.HEIGHT / 2 + 150, 372, 120
+                , ImageLoader.loadImage("src/resources/UI/controls.png"), ImageLoader.loadImage("src/resources/UI/controlsHovered.png"));
 
         backButton = new Button(20, GameCanvas.HEIGHT - 80, 124, 60
                 , ImageLoader.loadImage("src/resources/UI/backButton.png"), ImageLoader.loadImage("src/resources/UI/backButtonHovered.png"));
+
 
     }
 
@@ -42,7 +47,6 @@ public class SettingsMenu {
     }
 
     public void draw(Graphics2D g2d) {
-        g2d.setColor(Color.CYAN);
         g2d.drawImage(background, 0, 0, GameCanvas.WIDTH, GameCanvas.HEIGHT, null);
 
         if(!GameCanvas.isFullScreen)
@@ -50,13 +54,15 @@ public class SettingsMenu {
         else
             fullScreenOffButton.draw(g2d);
 
-        deleteSaveButton.draw(g2d);
+        newSaveButton.draw(g2d);
         backButton.draw(g2d);
+        controlsButton.draw(g2d);
     }
 
     public void mousePressed(MouseEvent e) {
         Point point = new Point(e.getX(), e.getY());
         if(fullScreenOnButton.isOnButton(point)){
+            fullScreenOnButton.playClick();
             if(GameCanvas.isFullScreen) {
                 canvas.setMinScreen();
                 GameCanvas.isFullScreen = false;
@@ -66,10 +72,16 @@ public class SettingsMenu {
                 GameCanvas.isFullScreen = true;
             }
         }
-        else if(deleteSaveButton.isOnButton(point)){
-
+        else if(newSaveButton.isOnButton(point)){
+            newSaveButton.playClick();
+            GameCanvas.currentLevelProgress = 1;
+        }
+        else if(controlsButton.isOnButton(point)){
+            controlsButton.playClick();
+            GameCanvas.gameState = GameCanvas.GameState.CONTROLS_MENU;
         }
         else if(backButton.isOnButton(point)){
+            backButton.playClick();
             GameCanvas.gameState = GameCanvas.GameState.START_MENU;
         }
     }
@@ -77,7 +89,8 @@ public class SettingsMenu {
     public void mouseMoved(MouseEvent e) {
         fullScreenOnButton.updateSprite(new Point(e.getX(), e.getY()));
         fullScreenOffButton.updateSprite(new Point(e.getX(), e.getY()));
-        deleteSaveButton.updateSprite(new Point(e.getX(), e.getY()));
+        newSaveButton.updateSprite(new Point(e.getX(), e.getY()));
+        controlsButton.updateSprite(new Point(e.getX(), e.getY()));
         backButton.updateSprite(new Point(e.getX(), e.getY()));
     }
 

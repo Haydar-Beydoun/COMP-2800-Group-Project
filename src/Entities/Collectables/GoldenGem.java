@@ -2,6 +2,7 @@ package Entities.Collectables;
 
 import Abstracts.Collectable;
 import Utils.Animator;
+import Utils.Sound;
 import Utils.SpriteSheet;
 
 import java.awt.*;
@@ -11,6 +12,9 @@ public class GoldenGem extends Collectable {
 
     public GoldenGem(double worldX, double worldY) {
         super(worldX, worldY, 70, 70);
+
+        collectSound = new Sound("src/resources/sound_effects/goldengemCollection.wav");
+
         initCollectable();
     }
 

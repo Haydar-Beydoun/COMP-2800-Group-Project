@@ -1,6 +1,7 @@
 package Game.UI;
 
 import Game.GameCanvas;
+import Utils.Sound;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,9 +11,10 @@ public class Button {
     private final int y;
     private final int width;
     private final int height;
-    private final BufferedImage button;
-    private final BufferedImage buttonHovered;
+    private BufferedImage button;
+    private BufferedImage buttonHovered;
     private BufferedImage current;
+    private Sound clickSound = new Sound("src/resources/sound_effects/mouseClick.wav");
 
     public Button(int x, int y, int width, int height, BufferedImage button, BufferedImage buttonHovered){
         this.x = x;
@@ -31,6 +33,20 @@ public class Button {
 
     public void update(){
 
+    }
+
+    public void setButton(BufferedImage button) {
+        this.button = button;
+        current = button;
+    }
+
+    public void setButtonHovered(BufferedImage buttonHovered) {
+        this.buttonHovered = buttonHovered;
+        current = button;
+    }
+
+    public void playClick(){
+        clickSound.play();
     }
 
     public void updateSprite(Point point){

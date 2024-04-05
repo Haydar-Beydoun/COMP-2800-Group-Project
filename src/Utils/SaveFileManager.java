@@ -28,7 +28,7 @@ public class SaveFileManager {
             GameCanvas.isFullScreen = Boolean.parseBoolean(line);
 
             line = reader.readLine();
-            GameCanvas.currentLevel = Integer.parseInt(line);
+            GameCanvas.currentLevelProgress = Integer.parseInt(line);
 
             reader.close();
 

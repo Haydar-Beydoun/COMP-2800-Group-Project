@@ -2,6 +2,7 @@ package Entities.Collectables;
 
 import Abstracts.Collectable;
 import Utils.Animator;
+import Utils.Sound;
 import Utils.SpriteSheet;
 
 import java.awt.*;
@@ -17,6 +18,9 @@ public class Cherry extends Collectable {
 
     public Cherry(double worldX, double worldY) {
         super(worldX, worldY, 70, 70);
+
+        collectSound = new Sound("src/resources/sound_effects/cherryCollection.wav");
+
         initCollectable();
     }
 

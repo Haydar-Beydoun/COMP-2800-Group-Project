@@ -3,6 +3,7 @@ package Abstracts;
 import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 import Utils.Animator;
+import Utils.Sound;
 import Utils.SpriteSheet;
 
 
@@ -18,6 +19,7 @@ public abstract class Collectable extends GameObject {
     private static int collectedCloudWidth;
     private static int collectedCloudHeight;
     private boolean isCollected = false;
+    protected Sound collectSound = new Sound("src/resources/sound_effects/cherryCollection.wav");
 
     /**
      * Constructor of the collectable object.
@@ -45,6 +47,8 @@ public abstract class Collectable extends GameObject {
      *
      */
     public void collect(){
+        collectSound.play();
+
         spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/item-feedback.png",1,5,32,32);
         collectedAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 6), 0 , 5);
         currentAnimator = collectedAnimator;

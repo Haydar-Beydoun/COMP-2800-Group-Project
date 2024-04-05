@@ -11,6 +11,7 @@ import Game.UI.*;
 import Utils.Keyboard;
 import Game.Level.LevelLoader;
 import Utils.SaveFileManager;
+import Utils.Sound;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -23,11 +24,12 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     private static LevelLoader loader;
     private Level level;
     private String currentLevelPath;
+    public static int currentLevelProgress;
     public static int currentLevel;
     public static boolean isFullScreen;
     static{
         if(!SaveFileManager.loadFile()){ // No save file
-            currentLevel = 1;
+            currentLevelProgress = 1;
             isFullScreen = true;
         }
     }
@@ -39,6 +41,7 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         LEVEL_SELECT_MENU,
         GAME,
         SETTINGS_MENU,
+        CONTROLS_MENU,
         GAME_OVER,
         WIN
     }
@@ -74,7 +77,11 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     private final StartMenu startMenu = new StartMenu();
     private final LevelSelectMenu levelSelectMenu = new LevelSelectMenu(this);
     private final SettingsMenu settingsMenu = new SettingsMenu(this);
+    private final ControlsMenu controlsMenu = new ControlsMenu();
     private HUD hud;
+
+    //Sounds
+    Sound homeMusic = new Sound("src/resources/music/summer nights.wav");
 
 
     public GameCanvas(){
@@ -86,6 +93,7 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         this.setFocusable(true);
 
         initGame();
+        playHomeMusic();
     }
 
     private void initGame(){
@@ -153,6 +161,7 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
                 updateCollectables();
                 updateEnemies();
                 if(player.health <= 0){
+                    level.stopMusic();
                     player.death();
                     if(player.isOffScreen()){
                         loadLevel(currentLevelPath);
@@ -170,6 +179,9 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
                 break;
             case SETTINGS_MENU:
                 settingsMenu.update();
+                break;
+            case CONTROLS_MENU:
+                controlsMenu.update();
                 break;
         }
 
@@ -203,6 +215,9 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
                     if(collectable instanceof Cherry) hud.increaseCherryCount();
                     if(collectable instanceof Gem) hud.increaseGemCount();
                     if(collectable instanceof GoldenGem){
+                        level.stopMusic();
+                        changeCurrentLevelProgress();
+                        playHomeMusic();
                         gameState = GameState.LEVEL_SELECT_MENU;
                     }
 
@@ -221,11 +236,8 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     }
 
     public void updateState(){
-        if(keyboard.isPressed(KeyEvent.VK_1)){
+        if(gameState == GameState.GAME &&  keyboard.isPressed(KeyEvent.VK_ESCAPE)){
             gameState = GameState.PAUSE_MENU;
-        }
-        if(keyboard.isPressed(KeyEvent.VK_2)){
-            gameState = GameState.GAME;
         }
     }
 
@@ -247,6 +259,9 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
                 break;
             case SETTINGS_MENU:
                 settingsMenu.draw(g2d);
+                break;
+            case CONTROLS_MENU:
+                controlsMenu.draw(g2d);
                 break;
         }
 
@@ -296,22 +311,52 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     }
 
     public void loadLevel(String levelPath){
+        if(level != null)
+            level.stopMusic();
+
         loader = new LevelLoader(levelPath);
         level = loader.getLevel();
         enemies = level.getEnemies();
         collectables = level.getCollectables();
-        player = new Player(WIDTH /2, HEIGHT /2, 68, 87, 5, 5, level.getTilemap()); // FIX ME TO LATER PASS IN LEVEL COORD TO START AND HEALTH BACK WHEN CHANGING LEVELS
+        player = new Player(level.getPlayerStartingX(), level.getPlayerStartingY(), 68, 87, 5, 5, level.getTilemap()); // FIX ME TO LATER PASS IN LEVEL COORD TO START AND HEALTH BACK WHEN CHANGING LEVELS
         camera = new Camera(level, player, enemies, collectables);
         currentLevelPath = levelPath;
         hud = new HUD(level,player,collectables);
+        level.playMusic();
+    }
+
+    public void playHomeMusic(){
+        homeMusic = new Sound("src/resources/music/summer nights.wav");
+        homeMusic.play();
+        homeMusic.loop();
+    }
+
+    public void stopHomeMusic(){
+        homeMusic.stop();
+    }
+
+    private void changeCurrentLevelProgress(){
+        if(currentLevelProgress == 1 && currentLevel == 1){
+            currentLevelProgress = 2;
+        }
+        else if(currentLevelProgress == 2  && currentLevel == 2){
+            currentLevelProgress = 3;
+        }
+        else if(currentLevelProgress == 3  && currentLevel == 3){
+            currentLevelProgress = 4;
+        }
     }
 
     public String getCurrentLevelPath() {
         return currentLevelPath;
     }
 
+    public Level getLevel(){
+        return level;
+    }
+
     public static void save(){
-        SaveFileManager.saveFile(isFullScreen, currentLevel);
+        SaveFileManager.saveFile(isFullScreen, currentLevelProgress);
     }
 
     @Override
@@ -324,6 +369,8 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
             levelSelectMenu.mousePressed(e);
         else if(gameState == GameState.SETTINGS_MENU)
             settingsMenu.mousePressed(e);
+        else if(gameState == GameState.CONTROLS_MENU)
+            controlsMenu.mousePressed(e);
     }
 
     @Override
@@ -336,6 +383,8 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
             levelSelectMenu.mouseMoved(e);
         else if(gameState == GameState.SETTINGS_MENU)
             settingsMenu.mouseMoved(e);
+        else if(gameState == GameState.CONTROLS_MENU)
+            controlsMenu.mouseMoved(e);
     }
 
     @Override
@@ -343,7 +392,6 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
 
     @Override
     public void mouseReleased(MouseEvent e) {}
-
 
     @Override
     public void mouseEntered(MouseEvent e) {}

@@ -62,13 +62,18 @@ public class PauseMenu {
     public void mousePressed(MouseEvent e) {
         Point point = new Point(e.getX(), e.getY());
         if(continueButton.isOnButton(point)){
+            continueButton.playClick();
             GameCanvas.gameState = GameCanvas.GameState.GAME;
         }
         else if(restartButton.isOnButton(point)){
+            restartButton.playClick();
             canvas.loadLevel(canvas.getCurrentLevelPath());
             GameCanvas.gameState = GameCanvas.GameState.GAME;
         }
         else if(quitButton.isOnButton(point)){
+            quitButton.playClick();
+            canvas.getLevel().stopMusic();
+            canvas.playHomeMusic();
             GameCanvas.gameState = GameCanvas.GameState.START_MENU;
         }
     }
