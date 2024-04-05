@@ -4,12 +4,94 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Added menus, save features, HUD, and more">
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Added audio, modified level loader, and more">
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/ControlsMenu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/controlMenuBackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/controls.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/controlsHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level1complete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level1completeHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level2complete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level2completeHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level2locked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level2lockedHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level3complete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level3completeHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level3locked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/level3lockedHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/newSave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/UI/newSaveHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/entity hex legend.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level1/collectables.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level1/level1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level1/level1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/collectables.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/eagles.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/tile hex legend.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/Going Up.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/Hurt_and_heart.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/Maniac.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/dark-happy-world.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/happywalking.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/magic cliffs.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/summer nights.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/under the rainbow.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/up_and_right.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/music/walkyandtalky.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/sound_effects/cherryCollection.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/sound_effects/cherryCollection2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/sound_effects/enemyDefeat.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/sound_effects/gemCollection.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/sound_effects/goldengemCollection.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/sound_effects/jump.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/sound_effects/levelLocked.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Game/UI/ControlsMenu.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Utils/Sound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/controlMenuBackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/controls.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/controlsHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level1complete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level1completeHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level2complete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level2completeHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level2locked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level2lockedHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level3complete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level3completeHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level3locked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/level3lockedHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/newSave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/UI/newSaveHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/background/back2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/entity hex legend.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/level1/collectables.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/level1/eagles.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/level1/enemies.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/resources/maps/level1/level1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/level2/collectables.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/level2/eagles.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/level2/enemies.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/level2/level2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/level2/level2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/maps/tile hex legend.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/cherryCollection.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/cherryCollection2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/death.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/enemyDefeat.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/gemCollection.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/goldengemCollection.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/jump.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/levelLocked.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/mouseClick.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/sound_effects/playerHurt.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Abstracts/Collectable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Abstracts/Collectable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Abstracts/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Abstracts/Enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Collectables/Cherry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Collectables/Cherry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Collectables/Gem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Collectables/Gem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Collectables/GoldenGem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Collectables/GoldenGem.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player$State.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player$State.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Entities/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/GameCanvas$GameState.class" afterDir="false" />
@@ -17,7 +99,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/Level/Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/Level/Level.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/Level/LevelLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/Level/LevelLoader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/HUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/HUD.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/LevelSelectMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/LevelSelectMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/PauseMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/PauseMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/SettingsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/SettingsMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/StartMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/StartMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Utils/SaveFileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Utils/SaveFileManager.class" afterDir="false" />
@@ -46,14 +130,14 @@
       <change beforePath="$PROJECT_DIR$/src/Game/UI/StartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/StartMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/SaveFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/SaveFileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/entities/entity hex legend.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/collectables.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1/collectables.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/eagles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1/eagles.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/enemies.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1/enemies.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/maps/collectables.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/enemies.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/maps/eagles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level1/eagles.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/maps/enemies.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level1/enemies.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/maps/hex legend.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/maps/level1.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/maps/level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1/level1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/music/mixkit-arcade-game-explosion-2759.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/save.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/save.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/sound_effects/Mouse Click - Sound Effect (HD).wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/sound_effects/cartoon-jump-6462.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/sound_effects/collect-points-190037.wav" beforeDir="false" />
@@ -182,7 +266,7 @@
       <workItem from="1712244796956" duration="20112000" />
       <workItem from="1712273049502" duration="292000" />
       <workItem from="1712273458518" duration="112000" />
-      <workItem from="1712328513556" duration="17351000" />
+      <workItem from="1712328513556" duration="18079000" />
     </task>
     <task id="LOCAL-00001" summary="Camera and more">
       <option name="closed" value="true" />
@@ -312,7 +396,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712271268160</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added audio, modified level loader, and more">
+      <option name="closed" value="true" />
+      <created>1712349046223</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1712349046223</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,6 +436,7 @@
     <MESSAGE value="Pause menu finalized and can now transition between min screen and full screen" />
     <MESSAGE value="Added menus, save features, HUD, and more" />
     <MESSAGE value="Changes by rayyan" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by rayyan" />
+    <MESSAGE value="Added audio, modified level loader, and more" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added audio, modified level loader, and more" />
   </component>
 </project>
