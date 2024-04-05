@@ -1,6 +1,6 @@
 64
 64
-src/resources/music/Hurt_and_heart.wav
+src/resources/music/under the rainbow.wav
 src/resources/background/back2.png
 src/resources/maps/level2/level2.png
 src/resources/maps/level2/collectables.png

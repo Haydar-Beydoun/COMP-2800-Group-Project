@@ -131,8 +131,8 @@ public class HUD {
         g2d.drawImage(gem, GameCanvas.WIDTH - 200, 19, null);
         g2d.drawString("X " + gemCount + "/" + gemMax,GameCanvas.WIDTH - 120,60);
 
-        g2d.drawImage(cherry, GameCanvas.WIDTH - 430, 14, null);
-        g2d.drawString("X " + cherryCount + "/" + cherryMax,GameCanvas.WIDTH - 350,60);
+        g2d.drawImage(cherry, GameCanvas.WIDTH - 480, 14, null);
+        g2d.drawString("X " + cherryCount + "/" + cherryMax,GameCanvas.WIDTH - 400,60);
 
     }
 
