@@ -7,6 +7,13 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * Start Menu class to create start menu.
+ * <br>
+ * Create start menu with images.
+ * <br>
+ * Includes buttons to play, go to options menu, and quit.
+ */
 public class StartMenu {
     private Button playButton;
     private Button optionMenu;
@@ -15,6 +22,10 @@ public class StartMenu {
     private ImageLoader imageLoader = new ImageLoader();
     private GameCanvas canvas;
 
+    /**
+     * Constructor of the Start Menu class.
+     * @param canvas The canvas of the game (Used for saving the game).
+     */
     public StartMenu(GameCanvas canvas){
         background = imageLoader.loadImage("/resources/UI/startMenuBackground.png");
         this.canvas = canvas;

@@ -7,6 +7,11 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * Settings Menu class to create settings menu.
+ * <br>
+ * Create settings menu with images.
+ */
 public class SettingsMenu {
     private Button fullScreenOnButton;
     private Button fullScreenOffButton;
@@ -17,6 +22,10 @@ public class SettingsMenu {
     private GameCanvas canvas;
     private ImageLoader imageLoader = new ImageLoader();
 
+    /**
+     * Constructor of the Settings Menu class.
+     * @param canvas The canvas of the game (Used for setting the window size).
+     */
     public SettingsMenu(GameCanvas canvas){
         background = imageLoader.loadImage("/resources/UI/optionMenuBackground.png");
         this.canvas = canvas;

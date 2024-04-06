@@ -71,7 +71,14 @@ public class Player extends Entity {
 
 
     /**
-     * Constructs a new player.
+     * Constructor of the player class.
+     * @param x X position on the canvas.
+     * @param y Y position on the canvas.
+     * @param width Width of the hitBox.
+     * @param height Height of the hitBox.
+     * @param health Health of the player.
+     * @param speed Speed of the player.
+     * @param tileMap Tile map of the level (used to initialize the CollisionChecker).
      * @see Entity
      */
     public Player(int x,int y, int width,int height, int health, int speed, Tile[][] tileMap){
@@ -145,7 +152,7 @@ public class Player extends Entity {
     }
 
     /**
-     * Entities.Player jump
+     * Player jump
      */
     public void jump(){
         if(!inAir) {
@@ -155,6 +162,9 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Player bounce if player jumps on enemy
+     */
     public void bounce(){
         vy = bounceSpeed;
         inAir = true;
@@ -183,6 +193,11 @@ public class Player extends Entity {
         updateX();
     }
 
+    /**
+     * Check if player is killing enemy
+     * @param enemyHitBox
+     * @return boolean
+     */
     public boolean isKillingEnemy(Rectangle2D.Double enemyHitBox){
         if(System.nanoTime() - hurtStartTimer < hurtDuration)
             return false;
@@ -223,23 +238,34 @@ public class Player extends Entity {
         return false;
     }
 
+    /**
+     * Check if player is collecting a collectable object
+     * @param collectableHitBox
+     * @return boolean
+     */
     public boolean isCollectingCollectable(Rectangle2D collectableHitBox){
         return getHitBox().intersects(collectableHitBox);
     }
 
+    /**
+     * Check if player is off-screen.
+     * <br>
+     * Used for the death animation.
+     * @return boolean
+     */
     public boolean isOffScreen(){
         return screenY> GameCanvas.HEIGHT + 200;
     }
 
     /**
-     * Entities.Player update Y
+     * Player update Y
      */
     private void updateY(){
+        //if the player is killed it stops collision to let player free fall
         if(iskilled) return;
 
-
         if(inAir){
-            if(!collisionChecker.isColliding(getHitBox(), 0, vy)) {   // Moving in the y direction //FIX ME: take in hitbox dims instead
+            if(!collisionChecker.isColliding(getHitBox(), 0, vy)) {
                 vy += gravity;
                 worldY += vy;
             }
@@ -267,9 +293,10 @@ public class Player extends Entity {
     }
 
     /**
-     * Entities.Player Update X
+     * Player Update X
      */
     private void updateX(){
+        //if the player is killed it stops collision to let player free fall
         if(iskilled) return;
 
         if(!collisionChecker.isColliding(getHitBox(), vx, 0)) {   // Moving in the x direction

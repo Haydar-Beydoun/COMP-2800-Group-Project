@@ -17,10 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
- * Game.Game.Level.Level loader class to render levels from save.
- * @author Rayyan
- * @author Haydar
+ * Level loader class to build levels from configuration file.
  */
 public class LevelLoader {
     private int playerX;
@@ -37,6 +34,11 @@ public class LevelLoader {
     private String musicPath;
     private ImageLoader imageLoader = new ImageLoader();
 
+    /**
+     * Constructor of the LevelLoader class.
+     *
+     * @param filePath The path to the configuration file.
+     */
     public LevelLoader(String filePath){
 
         loadConfig(filePath);
@@ -46,22 +48,11 @@ public class LevelLoader {
     }
 
     /**
-     * <p><b>Config File Format (to be written in lowercase)</b>
-     * <br>            -Game.Level.Tile Width
-     * <br>            -Game.Level.Tile Height
-     * <br>            -music path
-     * <br>            -background path
-     * <br>            -level pixel map path
-     * <br>            -collectable pixel map path
-     * <br>            -enemy pixel map path
-     * <br>            -eagles txt path
-     * <br>            -Num tiles
-     * <br>            -corresponding tile
-     * <br>            -Colour hex value
-     * <br>            -tile type(wall,platform, etc.)
-     * <br>            -...
+     * <p><b>Load Config</b>
+     * <br>Loads the configuration file
      * </p>
-     * @param filePath String of the file path.
+     *
+     * @param filePath
      */
     private void loadConfig(String filePath){
 
@@ -114,9 +105,11 @@ public class LevelLoader {
 
 
     /**
-     * <p><b>Fill Game.Game.Level.Level</b>
-     * <br>Draws the file image
-     * </p>
+     * Fill Level
+     * <br>
+     * Fills the level with tiles
+     * <br>
+     * Uses colour hex decimals to determine tile type
      *
      */
     private void fillLevel(){
@@ -159,6 +152,13 @@ public class LevelLoader {
         }
     }
 
+    /**
+     * Fill Collectable
+     * <br>
+     * Fills the level with collectables
+     * <br>
+     * Uses colour hex decimals to determine collectable type
+     */
     private void fillCollectable(){
         int width  = collectablePixelMap.getWidth();
         int height = collectablePixelMap.getHeight();
@@ -182,6 +182,13 @@ public class LevelLoader {
         }
     }
 
+    /**
+     * Fill Enemy
+     * <br>
+     * Fills the level with enemies
+     * <br>
+     * Uses colour hex decimals to determine enemy type
+     */
     private void fillEnemy(){
         try {
             int width  = enemyPixelMap.getWidth();
@@ -212,6 +219,12 @@ public class LevelLoader {
         }
     }
 
+    /**
+     * Get Level
+     * <br>
+     * Returns the level
+     * @return Level
+     */
     public Level getLevel(){
         return new Level(tileMap, levelImage, enemies, collectables, playerX, playerY, musicPath);
     }

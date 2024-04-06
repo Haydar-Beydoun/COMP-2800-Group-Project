@@ -10,6 +10,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
+/**
+ * Create a pause menu.
+ * <br>
+ * Creates a pause menu with images.
+ */
 public class PauseMenu {
     private Button continueButton;
     private Button restartButton;
@@ -17,6 +22,10 @@ public class PauseMenu {
     private GameCanvas canvas;
     private ImageLoader imageLoader = new ImageLoader();
 
+    /**
+     * Constructor of the Pause Menu class.
+     * @param canvas
+     */
     public PauseMenu(GameCanvas canvas){
         this.canvas = canvas;
 
@@ -24,6 +33,9 @@ public class PauseMenu {
         addGUIElements();
     }
 
+    /**
+     * Creates buttons for the pause menu using an image.
+     */
     private void initButtons(){
         continueButton = new Button((GameCanvas.WIDTH - 376)/2, GameCanvas.HEIGHT / 2 - 150, 376, 120
                                     , imageLoader.loadImage("/resources/UI/continueButton.png"), imageLoader.loadImage("/resources/UI/continueButtonHovered.png"));

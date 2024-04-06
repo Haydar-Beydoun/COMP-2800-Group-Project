@@ -6,8 +6,6 @@ import java.awt.*;
 /**
  *
  * Class to initialize tiles.
- * @author Rayyan
- * @author Haydar
  */
 public class Tile {
     private int x;
@@ -35,6 +33,14 @@ public class Tile {
     }
 
 
+    /**
+     * Constructor of the Tile class.
+     * @param x X position on the canvas.
+     * @param y Y position on the canvas.
+     * @param width width of the tile.
+     * @param height height of the tile.
+     * @param type The type of the tile.
+     */
     public Tile(int x, int y, int width, int height, Type type){
         this.x = x;
         this.y = y;

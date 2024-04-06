@@ -1,12 +1,16 @@
 package Game;
 
-import Game.UI.PauseMenu;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * Game Window class to create game window.
+ * <br>
+ * Create game window with canvas.
+ * <br>
+ * Includes window listener to save the game when the window is closing.
+ */
 public class GameWindow {
     public static JFrame gameWindow = new JFrame("FLASH FOX");
     private GameCanvas canvas = new GameCanvas();

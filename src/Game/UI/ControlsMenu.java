@@ -7,13 +7,20 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * Controls Menu class to create controls menu.
+ * <br>
+ * Create controls menu with images.
+ */
 public class ControlsMenu {
 
     private Button backButton;
     private BufferedImage background;
     private ImageLoader imageLoader = new ImageLoader();
 
-
+    /**
+     * Constructor of the Controls Menu class.
+     */
     public ControlsMenu(){
         background = imageLoader.loadImage("/resources/UI/controlMenuBackground.png");
 

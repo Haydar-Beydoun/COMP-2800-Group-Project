@@ -4,9 +4,18 @@ import Game.Level.Tile;
 
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Collision Checker class to check for collisions.
+ * <br>
+ * Checks for collisions between the player/Entities and the tiles.
+ */
 public class CollisionChecker {
     public Tile[][] tilemap;
 
+    /**
+     * Constructor of the CollisionChecker class.
+     * @param tilemap The tileSet of the level.
+     */
     public CollisionChecker(Tile[][] tilemap){
         this.tilemap = tilemap;
     }
@@ -15,9 +24,9 @@ public class CollisionChecker {
     /**
      * Checks whether the tiles the player is colliding with is passable or not.
      *
-     * @param hitbox
-     * @param vx
-     * @param vy
+     * @param hitbox The hitbox of the player.
+     * @param vx The x velocity of the player.
+     * @param vy The y velocity of the player.
      * @return Boolean
      */
     public boolean isColliding(Rectangle2D.Double hitbox, double vx, double vy){
@@ -70,6 +79,14 @@ public class CollisionChecker {
         return true;
     }
 
+    /**
+     * Checks whether the player is colliding with the top of the tile for the player to stand on top of it.
+     *
+     * @param hitbox The hitbox of the player.
+     * @param vx The x velocity of the player.
+     * @param vy The y velocity of the player.
+     * @return Boolean
+     */
     public boolean isBottomColliding(Rectangle2D.Double hitbox , double vx, double vy){
 
         double x = hitbox.x + vx;
@@ -102,6 +119,14 @@ public class CollisionChecker {
         return true;
     }
 
+    /**
+     * Checks whether the Entities are at the edge of the tile to switch direction.
+     *
+     * @param hitbox The hitbox of the Entity.
+     * @param vx The x velocity of the Entity.
+     * @param vy The y velocity of the Entity.
+     * @return Boolean
+     */
     public boolean isPathWalkable(Rectangle2D.Double hitbox , double vx, double vy){
         double x = hitbox.x + vx;
         double y = hitbox.y +vy;
@@ -122,6 +147,14 @@ public class CollisionChecker {
         return !passable(bottomRightTile) && !passable(bottomLeftTile);
     }
 
+    /**
+     * Calculates the corrected X position of the Player/Entities when colliding with the tile to prevent phasing/clipping.
+     *
+     * @param hitbox The hitbox of the Player/Entities.
+     * @param hitBoxLeftOffset The offset of the hitBox (Used to align the hitBox with the Entities texture).
+     * @param vx The x velocity of the Player/Entity.
+     * @return Double
+     */
     public double getCollidingTileX(Rectangle2D.Double hitbox, double hitBoxLeftOffset, double vx){
         double leftX = hitbox.x + vx;
         double rightX=  hitbox.x + hitbox.width + vx;
@@ -145,6 +178,13 @@ public class CollisionChecker {
         }
     }
 
+    /**
+     * Calculates the corrected Y position of the Player/Entities when colliding with the tile to prevent phasing/clipping.
+     *
+     * @param hitbox The hitbox of the Player/Entities.
+     * @param vy The y velocity of the Player/Entity.
+     * @return Double
+     */
     public double getCollidingTileY(Rectangle2D.Double hitbox, double vy){
         double leftX = hitbox.x;
         double bottomY =  hitbox.y + hitbox.height + vy;
@@ -167,8 +207,14 @@ public class CollisionChecker {
             return tile.getY() + tile.getHeight();
         }
 
-    }//FIX ME TO ACCOUNT FOR OUT OF BOUNDS
+    }
 
+    /**
+     * Checks whether the tile is passable or not.
+     *
+     * @param tile The tile to be checked.
+     * @return Boolean
+     */
     private boolean passable(Tile tile){
         return tile.getType() == Tile.Type.PASSABLE;
     }

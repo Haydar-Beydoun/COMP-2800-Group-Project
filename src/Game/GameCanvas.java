@@ -19,6 +19,11 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+/**
+ * GameCanvas class to create the game canvas.
+ * <br>
+ * The main class of the game to run/control it.
+ */
 public class GameCanvas extends Canvas implements Runnable, MouseListener, MouseMotionListener {
     // Level and loader
     private static LevelLoader loader;
@@ -63,7 +68,7 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     private int HEIGHT2 = HEIGHT;
     public static double gameScaleWidth = 1;
     public static double gameScaleHeight = 1;
-    private BufferedImage tempImage;
+    private BufferedImage GameScreen;
     private Graphics2D g2d;
 
     //Entities
@@ -85,6 +90,9 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     Sound homeMusic = new Sound("/resources/music/summer-nights.wav");
 
 
+    /**
+     * Constructor of the Game Canvas class.
+     */
     public GameCanvas(){
 
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -97,12 +105,18 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         playHomeMusic();
     }
 
+    /**
+     * Initializes the game's Graphics and an GameScreen used help adjust the size of the game.
+     */
     private void initGame(){
-        tempImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
-        g2d = (Graphics2D) tempImage.getGraphics();
+        GameScreen = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
+        g2d = (Graphics2D) GameScreen.getGraphics();
 
     }
 
+    /**
+     * Starts the game thread.
+     */
     public void start(){
         if(thread == null){
             this.requestFocus();
@@ -153,6 +167,9 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
 
     }
 
+    /**
+     * Updates the game deciding which window is to be shown based on the gameState.
+     */
     public void update(){
         updateState();
 
@@ -188,6 +205,13 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
 
     }
 
+    /**
+     * Updates the enemies in the game.
+     * <br>
+     * Checks if the enemy is killed and plays its animation
+     * <br>
+     * If the enemy is killed, it is removed from the ArrayList.
+     */
     private void updateEnemies(){
         for (int i = 0; i < enemies.size(); i++) {
             Enemy enemy = enemies.get(i);
@@ -205,6 +229,13 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         }
     }
 
+    /**
+     * Updates the collectables in the game.
+     * <br>
+     * Checks if the collectable is collected and plays its animation
+     * <br>
+     * If the collectable is collected, it is removed from the ArrayList.
+     */
     private void updateCollectables(){
         for(int i=0; i < collectables.size();i++){
             Collectable collectable = collectables.get(i);
@@ -236,12 +267,18 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         }
     }
 
+    /**
+     * Pauses the game.
+     */
     public void updateState(){
         if(gameState == GameState.GAME &&  keyboard.isPressed(KeyEvent.VK_ESCAPE)){
             gameState = GameState.PAUSE_MENU;
         }
     }
 
+    /**
+     * Renders the respective screen based on the gameState.
+     */
     public void renderToImage(){
         switch(gameState){
             case GAME:
@@ -268,15 +305,21 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
 
     }
 
+    /**
+     * Renders the screen image to the JFrame.
+     */
     public void renderToScreen(){
         Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
 
-        g2d.drawImage(tempImage, 0, 0, WIDTH2, HEIGHT2, null);
+        g2d.drawImage(GameScreen, 0, 0, WIDTH2, HEIGHT2, null);
 
         g2d.dispose();
         bufferStrategy.show();
     }
 
+    /**
+     * Changes the window to full screen.
+     */
     public void setFullScreen(){
         // Reference for full screen functionality: https://www.youtube.com/watch?v=d5E_O2N73ZU
         GameWindow.gameWindow.dispose();
@@ -295,6 +338,9 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
 
     }
 
+    /**
+     * Changes the window back to normal size.
+     */
     public void setMinScreen(){
         GameWindow.gameWindow.dispose();
 
@@ -311,6 +357,10 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
 
     }
 
+    /**
+     * Loads the level based on the level path.
+     * @param levelPath The path of the level in the source code to be loaded.
+     */
     public void loadLevel(String levelPath){
         if(level != null)
             level.stopMusic();
@@ -326,16 +376,25 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         level.playMusic();
     }
 
+    /**
+     * Plays the menu music.
+     */
     public void playHomeMusic(){
         homeMusic = new Sound("/resources/music/summer-nights.wav");
         homeMusic.play();
         homeMusic.loop();
     }
 
+    /**
+     * Stops the menu music.
+     */
     public void stopHomeMusic(){
         homeMusic.stop();
     }
 
+    /**
+     * Changes the current level progress.
+     */
     private void changeCurrentLevelProgress(){
         if(currentLevelProgress == 1 && currentLevel == 1){
             currentLevelProgress = 2;
@@ -348,14 +407,25 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         }
     }
 
+    /**
+     * Gets the current level progress.
+     * @return The level progress.
+     */
     public String getCurrentLevelPath() {
         return currentLevelPath;
     }
 
+    /**
+     * Gets the level
+     * @return Level
+     */
     public Level getLevel(){
         return level;
     }
 
+    /**
+     * Saves the game based on the player's progress.
+     */
     public void save(){
         saveFileManager.saveFile(isFullScreen, currentLevelProgress);
     }

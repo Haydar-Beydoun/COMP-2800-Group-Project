@@ -16,6 +16,11 @@ import java.awt.*;
  */
 public class Cherry extends Collectable {
 
+    /**
+     * Constructor of the Cherry class.
+     * @param worldX X position on the canvas.
+     * @param worldY Y position on the canvas.
+     */
     public Cherry(double worldX, double worldY) {
         super(worldX, worldY, 70, 70);
 

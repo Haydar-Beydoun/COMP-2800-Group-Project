@@ -11,7 +11,9 @@ import Utils.SpriteSheet;
 import java.awt.*;
 import java.util.Arrays;
 
-
+/**
+ * Class to initialize the Eagle enemy.
+ */
 public class Eagle extends Enemy {
     public Tile[][] tilemap;
     private int startX;
@@ -23,6 +25,19 @@ public class Eagle extends Enemy {
     private Animator idleAnimator;
     private CollisionChecker collisionChecker;
 
+    /**
+     * Constructor of the Eagle enemy.
+     * @param startX X position on the canvas.
+     * @param startY Y position on the canvas.
+     * @param endX End X position on the canvas.
+     * @param endY End Y position on the canvas.
+     * @param width Width of the hitBox.
+     * @param height Height of the hitBox.
+     * @param health Health of the enemy.
+     * @param speed Speed of the enemy.
+     * @param tileMap Tile map of the level.
+     * @see Enemy
+     */
     public Eagle(int startX,int startY, int endX, int endY, int width,int height, int health, int speed, Tile[][] tileMap){
         super(startX, startY, width, height, health, speed);
         this.startX = startX;
@@ -63,6 +78,15 @@ public class Eagle extends Enemy {
 
     }
 
+    /**
+     * Moves the Eagle enemy.
+     * <br>
+     * The Eagle moves in a straight line from startX to endX and startY to endY.
+     * <br>
+     * If the Eagle reaches the end of its path, it will change direction.
+     * <br>
+     * The eagle can only move in the x or y direction.
+     */
     public void move(){
         // Movement in the x-dir
         if(startX != endX) {

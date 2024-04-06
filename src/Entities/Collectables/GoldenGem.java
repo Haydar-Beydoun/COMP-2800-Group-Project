@@ -10,6 +10,14 @@ import java.awt.*;
 public class GoldenGem extends Collectable {
 
 
+    /**
+     * Constructor of the Golden Gem class.
+     * @param worldX X position on the canvas.
+     * @param worldY Y position on the canvas.
+     *
+     * @param worldX
+     * @param worldY
+     */
     public GoldenGem(double worldX, double worldY) {
         super(worldX, worldY, 70, 70);
 

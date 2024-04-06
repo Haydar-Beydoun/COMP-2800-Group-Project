@@ -2,7 +2,6 @@ package Game;
 
 import Abstracts.Collectable;
 import Abstracts.Enemy;
-import Entities.Enemies.Eagle;
 import Entities.Player;
 import Game.Level.Level;
 
@@ -10,6 +9,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+/**
+ * Camera class to create camera to follow player.
+ */
 public class Camera {
     private int offsetx = 0;
     private int offsety = 0;
@@ -19,6 +21,13 @@ public class Camera {
     ArrayList<Enemy> enemies;
     ArrayList<Collectable> collectables;
 
+    /**
+     * Constructor of the Camera class.
+     * @param level Used for getting the image background.
+     * @param player Used for getting the player's position.
+     * @param enemies Used for getting the enemies position.
+     * @param collectables Used for getting the collectable positions.
+     */
     public Camera(Level level, Player player, ArrayList<Enemy> enemies, ArrayList<Collectable> collectables){
         this.level = level;
         this.player = player;
@@ -27,7 +36,9 @@ public class Camera {
         this.levelImage = level.getLevelImage();
     }
 
-
+    /**
+     * Moves the camera on the X-axis.
+     */
     public void cameraX(){
         if(player.getWorldX() <= (GameCanvas.WIDTH / 2)){
             offsetx = 0;
@@ -42,6 +53,9 @@ public class Camera {
         }
     }
 
+    /**
+     * Moves the camera on the Y-axis.
+     */
     public void cameraY(){
         if(player.getWorldY() <= (GameCanvas.HEIGHT / 2)){
             offsety = 0;

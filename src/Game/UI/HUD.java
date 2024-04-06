@@ -14,7 +14,13 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.io.*;
 
-
+/**
+ * Class to initialize the HUD.
+ * <br>
+ * Create HUD with images.
+ * <br>
+ * Includes a Health Bar, Cherry and Gem counter.
+ */
 public class HUD {
     private final Level level;
     private Player player;
@@ -36,6 +42,12 @@ public class HUD {
     private ImageLoader imageLoader = new ImageLoader();
 
 
+    /**
+     * Constructor of the HUD class.
+     * @param level
+     * @param player
+     * @param collectableArrayList
+     */
     public HUD(Level level, Player player, ArrayList<Collectable> collectableArrayList){
         this.level = level;
         this.player = player;
@@ -77,10 +89,15 @@ public class HUD {
 
 
     }
-
+    /**
+     * Increase cherry count.
+     */
     public void increaseCherryCount(){
         cherryCount++;
     }
+    /**
+     * Increase gem count.
+     */
     public void increaseGemCount(){
         gemCount++;
     }

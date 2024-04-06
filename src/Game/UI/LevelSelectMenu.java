@@ -8,6 +8,11 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * A menu to select which level to play
+ * <br>
+ * Creates a level select menu with images.
+ */
 public class LevelSelectMenu {
     private Button levelOneButton;
     private Button levelTwoButton;
@@ -19,6 +24,10 @@ public class LevelSelectMenu {
     private Sound levelLockedSound = new Sound("/resources/sound_effects/levelLocked.wav");
     private ImageLoader imageLoader = new ImageLoader();
 
+    /**
+     * Constructor of the LevelSelectMenu class.
+     * @param canvas The canvas of the game (Used for level loading).
+     */
     public LevelSelectMenu(GameCanvas canvas){
         background = imageLoader.loadImage("/resources/UI/levelSelectMenuBackground.png");
         this.canvas = canvas;
@@ -26,6 +35,9 @@ public class LevelSelectMenu {
         initButtons();
     }
 
+    /**
+     * Creates buttons for the level select menu.
+     */
     private void initButtons(){
         levelOneButton = new Button((GameCanvas.WIDTH - 248)/2, GameCanvas.HEIGHT / 2 - 150, 248, 120
                 , imageLoader.loadImage("/resources/UI/level1.png"), imageLoader.loadImage("/resources/UI/level1Hovered.png"));
@@ -50,6 +62,17 @@ public class LevelSelectMenu {
         }
     }
 
+    /**
+     * Changes to locked to unlocked buttons based on the current level progress.
+     * <br>
+     * Checks if the level is completed or not.
+     * <br>
+     * Red = locked
+     * <br>
+     * Green = unlocked and uncompleted
+     * <br>
+     * Blue = unlocked and completed
+     */
     public void updateButtons(){
         if(GameCanvas.currentLevelProgress == 1){
             // Level 1 incomplete

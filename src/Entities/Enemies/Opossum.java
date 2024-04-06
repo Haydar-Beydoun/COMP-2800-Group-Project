@@ -9,7 +9,9 @@ import Utils.SpriteSheet;
 import java.awt.*;
 import java.util.Arrays;
 
-
+/**
+ * Class to initialize the Opossum enemy.
+ */
 public class Opossum extends Enemy {
     public Tile[][] tilemap;
     private Animator animator;
@@ -19,6 +21,17 @@ public class Opossum extends Enemy {
     private double gravity = 0.3;
 
 
+    /**
+     * Constructor of the Opossum enemy.
+     * @param worldX X position on the canvas.
+     * @param worldY Y position on the canvas.
+     * @param width Width of the hitBox.
+     * @param height Height of the hitBox.
+     * @param health Health of the enemy.
+     * @param speed Speed of the enemy.
+     * @param tileMap Tile map of the level.
+     * @see Enemy
+     */
     public Opossum(double worldX, double worldY, int width, int height, int health, int speed, Tile[][] tileMap) {
         super(worldX, worldY, width, height, health, speed);
         this.worldX = worldX;
@@ -57,6 +70,9 @@ public class Opossum extends Enemy {
         updateX();
         updateY();
     }
+    /**
+     * Opposum Update Y
+     */
     private void updateY(){
 
         if(inAir){
