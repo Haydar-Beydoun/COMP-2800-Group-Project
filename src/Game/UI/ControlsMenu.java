@@ -11,17 +11,18 @@ public class ControlsMenu {
 
     private Button backButton;
     private BufferedImage background;
+    private ImageLoader imageLoader = new ImageLoader();
 
 
     public ControlsMenu(){
-        background = ImageLoader.loadImage("src/resources/UI/controlMenuBackground.png");
+        background = imageLoader.loadImage("/resources/UI/controlMenuBackground.png");
 
         initButtons();
     }
 
     private void initButtons(){
         backButton = new Button(20, GameCanvas.HEIGHT - 80, 124, 60
-                , ImageLoader.loadImage("src/resources/UI/backButton.png"), ImageLoader.loadImage("src/resources/UI/backButtonHovered.png"));
+                , imageLoader.loadImage("/resources/UI/backButton.png"), imageLoader.loadImage("/resources/UI/backButtonHovered.png"));
 
 
     }

@@ -13,7 +13,7 @@ public class GoldenGem extends Collectable {
     public GoldenGem(double worldX, double worldY) {
         super(worldX, worldY, 70, 70);
 
-        collectSound = new Sound("src/resources/sound_effects/goldengemCollection.wav");
+        collectSound = new Sound("/resources/sound_effects/goldengemCollection.wav");
 
         initCollectable();
     }
@@ -21,7 +21,7 @@ public class GoldenGem extends Collectable {
 
     @Override
     public void initCollectable() {
-        spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/golden-gem.png", 1, 5, 15, 13);
+        spriteSheet = new SpriteSheet("/resources/entities/spritesheets/golden-gem.png", 1, 5, 15, 13);
         currentAnimator = new Animator(spriteSheet.images, 0, 7);
     }
 

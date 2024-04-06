@@ -7,11 +7,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class ImageLoader {
-    public static BufferedImage loadImage(String filePath){
+    public BufferedImage loadImage(String filePath){
         BufferedImage image = null;
 
         try{
-            image = ImageIO.read(new File(filePath));
+            image = ImageIO.read(this.getClass().getResource(filePath));
         }
         catch(IOException e){
             e.printStackTrace();
@@ -20,7 +20,7 @@ public class ImageLoader {
         return image;
     }
 
-    public static BufferedImage loadSubImage(String filePath, int tileSize, int row, int column){
+    public BufferedImage loadSubImage(String filePath, int tileSize, int row, int column){
         row--;
         column--;
         BufferedImage image = loadImage(filePath);

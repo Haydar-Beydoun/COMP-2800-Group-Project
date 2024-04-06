@@ -19,14 +19,14 @@ public class Cherry extends Collectable {
     public Cherry(double worldX, double worldY) {
         super(worldX, worldY, 70, 70);
 
-        collectSound = new Sound("src/resources/sound_effects/cherryCollection.wav");
+        collectSound = new Sound("/resources/sound_effects/cherryCollection.wav");
 
         initCollectable();
     }
 
     @Override
     public void initCollectable(){
-        spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/cherry.png", 1, 8, 21, 21);
+        spriteSheet = new SpriteSheet("/resources/entities/spritesheets/cherry.png", 1, 8, 21, 21);
         currentAnimator = new Animator(spriteSheet.images, 0, 9);
     }
 

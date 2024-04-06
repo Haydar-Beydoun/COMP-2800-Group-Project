@@ -15,6 +15,7 @@ public class PauseMenu {
     private Button restartButton;
     private Button quitButton;
     private GameCanvas canvas;
+    private ImageLoader imageLoader = new ImageLoader();
 
     public PauseMenu(GameCanvas canvas){
         this.canvas = canvas;
@@ -25,13 +26,13 @@ public class PauseMenu {
 
     private void initButtons(){
         continueButton = new Button((GameCanvas.WIDTH - 376)/2, GameCanvas.HEIGHT / 2 - 150, 376, 120
-                                    , ImageLoader.loadImage("src/resources/UI/continueButton.png"), ImageLoader.loadImage("src/resources/UI/continueButtonHovered.png"));
+                                    , imageLoader.loadImage("/resources/UI/continueButton.png"), imageLoader.loadImage("/resources/UI/continueButtonHovered.png"));
 
         restartButton = new Button((GameCanvas.WIDTH - 312)/2, GameCanvas.HEIGHT / 2, 312, 120
-                , ImageLoader.loadImage("src/resources/UI/restartButton.png"), ImageLoader.loadImage("src/resources/UI/restartButtonHovered.png"));
+                , imageLoader.loadImage("/resources/UI/restartButton.png"), imageLoader.loadImage("/resources/UI/restartButtonHovered.png"));
 
         quitButton = new Button((GameCanvas.WIDTH - 244)/2, GameCanvas.HEIGHT / 2 + 150, 244, 120
-                , ImageLoader.loadImage("src/resources/UI/quitButton.png"), ImageLoader.loadImage("src/resources/UI/quitButtonHovered.png"));
+                , imageLoader.loadImage("/resources/UI/quitButton.png"), imageLoader.loadImage("/resources/UI/quitButtonHovered.png"));
     }
 
     private void addGUIElements(){

@@ -1,32 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="COMP_2800_Group_Project:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Added audio, modified level loader, and more p2">
+    <list default="true" id="9840e3a1-1fbc-4660-9108-396ea3cc6f09" name="Changes" comment="Level 3 added with built JAR">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/HUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/Game/UI/HUD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/background/back2.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/background/back2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level1/collectables.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level1/collectables.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level1/level1.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level1/level1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/collectables.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/collectables.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/eagles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/eagles.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/enemies.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/enemies.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/level2.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/level2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/level2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/maps/level2/level2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP_2800_Group_Project/resources/save.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/UI/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/UI/HUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/background/back2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/background/back2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/level1/collectables.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1/collectables.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/level1/level1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level1/level1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/level2/collectables.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level2/collectables.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/level2/eagles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level2/eagles.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/level2/enemies.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level2/enemies.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/level2/level2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level2/level2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/maps/level2/level2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/maps/level2/level2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/save.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP_2800_Group_Project_jar/COMP_2800_Group_Project.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP_2800_Group_Project_jar/COMP_2800_Group_Project.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/save.txt" afterDir="false" />
     </list>
     <list id="29544cb6-91e3-47bd-b282-de9fc2a65498" name="Changes by rayya" comment="Changes by rayyan" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +32,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.desktop/java/awt/Graphics.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/Program Files/Java/jdk-17/lib/src.zip!/java.desktop/java/awt/Graphics.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -72,6 +59,9 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.30229884&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -150,7 +140,19 @@
       <workItem from="1712244796956" duration="20112000" />
       <workItem from="1712273049502" duration="292000" />
       <workItem from="1712273458518" duration="112000" />
-      <workItem from="1712328513556" duration="23580000" />
+      <workItem from="1712328513556" duration="24481000" />
+      <workItem from="1712355627881" duration="9000" />
+      <workItem from="1712359561459" duration="323000" />
+      <workItem from="1712359966943" duration="7000" />
+      <workItem from="1712365475197" duration="2000" />
+      <workItem from="1712371522678" duration="41000" />
+      <workItem from="1712371963336" duration="1074000" />
+      <workItem from="1712373139590" duration="732000" />
+      <workItem from="1712416188275" duration="795000" />
+      <workItem from="1712418259130" duration="6000" />
+      <workItem from="1712421845182" duration="4603000" />
+      <workItem from="1712430017741" duration="81000" />
+      <workItem from="1712436030592" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="Camera and more">
       <option name="closed" value="true" />
@@ -296,7 +298,39 @@
       <option name="project" value="LOCAL" />
       <updated>1712349072656</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Level modifications">
+      <option name="closed" value="true" />
+      <created>1712354875688</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1712354875688</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Jar support added">
+      <option name="closed" value="true" />
+      <created>1712373656754</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1712373656754</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Level 3 added">
+      <option name="closed" value="true" />
+      <created>1712429464256</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1712429464256</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Level 3 added with built JAR">
+      <option name="closed" value="true" />
+      <created>1712429563540</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1712429563540</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +364,10 @@
     <MESSAGE value="Changes by rayyan" />
     <MESSAGE value="Added audio, modified level loader, and more" />
     <MESSAGE value="Added audio, modified level loader, and more p2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added audio, modified level loader, and more p2" />
+    <MESSAGE value="Level modifications" />
+    <MESSAGE value="Jar support added" />
+    <MESSAGE value="Level 3 added" />
+    <MESSAGE value="Level 3 added with built JAR" />
+    <option name="LAST_COMMIT_MESSAGE" value="Level 3 added with built JAR" />
   </component>
 </project>

@@ -12,9 +12,7 @@ import Utils.ImageLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,6 +35,7 @@ public class LevelLoader {
     private HashMap<Integer, Image> tileImages = new HashMap<>();       // <hex value pertaining to colour on pixel map, corresponding image>
     private HashMap<Integer, Tile.Type> tileTypes = new HashMap<>();    // <hex value pertaining to colour on pixel map, corresponding tile type>
     private String musicPath;
+    private ImageLoader imageLoader = new ImageLoader();
 
     public LevelLoader(String filePath){
 
@@ -87,15 +86,15 @@ public class LevelLoader {
         */
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filePath)));
 
             tileWidth  = Integer.parseInt(br.readLine());
             tileHeight = Integer.parseInt(br.readLine());
             musicPath = br.readLine();
-            background = ImageLoader.loadImage(br.readLine());
-            levelPixelMap = ImageLoader.loadImage(br.readLine());
-            collectablePixelMap = ImageLoader.loadImage(br.readLine());
-            enemyPixelMap = ImageLoader.loadImage(br.readLine());
+            background = imageLoader.loadImage(br.readLine());
+            levelPixelMap = imageLoader.loadImage(br.readLine());
+            collectablePixelMap = imageLoader.loadImage(br.readLine());
+            enemyPixelMap = imageLoader.loadImage(br.readLine());
             eaglesFilePath = br.readLine();
             numTiles = Integer.parseInt(br.readLine());
 
@@ -104,7 +103,7 @@ public class LevelLoader {
                 int colour =  Integer.parseInt(br.readLine(), 16);
                 String tileType = br.readLine();
 
-                tileImages.put(colour, ImageLoader.loadImage(tilePath));
+                tileImages.put(colour, imageLoader.loadImage(tilePath));
                 tileTypes.put(colour, Tile.Type.getType(tileType));
 
             }
@@ -181,15 +180,13 @@ public class LevelLoader {
                 }
             }
         }
-
-        collectables.add(new GoldenGem(100, 1900));
     }
 
     private void fillEnemy(){
         try {
             int width  = enemyPixelMap.getWidth();
             int height = enemyPixelMap.getHeight();
-            BufferedReader br = new BufferedReader(new FileReader(eaglesFilePath));
+            BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(eaglesFilePath)));
 
             //Traversing pixel map
             for(int x=0; x<width; x++){

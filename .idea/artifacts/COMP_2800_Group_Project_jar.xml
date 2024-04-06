@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="COMP_2800_Group_Project:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/COMP_2800_Group_Project_jar</output-path>
+    <root id="archive" name="COMP_2800_Group_Project.jar">
+      <element id="module-output" name="COMP_2800_Group_Project" />
+    </root>
+  </artifact>
+</component>

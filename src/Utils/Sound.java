@@ -3,8 +3,7 @@ package Utils;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import java.io.File;
-import java.net.URL;
+import java.io.BufferedInputStream;
 
 public class Sound {
     String filePath;
@@ -15,7 +14,7 @@ public class Sound {
     }
     public void play(){
         try{
-            AudioInputStream sound = AudioSystem.getAudioInputStream(new File(filePath));
+            AudioInputStream sound = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream(filePath)));
             audioClip = AudioSystem.getClip();
             audioClip.open(sound);
             audioClip.start();
@@ -25,10 +24,22 @@ public class Sound {
         }
     }
     public void stop(){
-        audioClip.stop();
+        try{
+            audioClip.stop();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
     public void loop(){
-        audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+        try{
+            audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 }

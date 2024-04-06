@@ -16,10 +16,11 @@ public class LevelSelectMenu {
     private BufferedImage background;
     private GameCanvas canvas;
     private int currLevel = GameCanvas.currentLevelProgress;
-    private Sound levelLockedSound = new Sound("src/resources/sound_effects/levelLocked.wav");
+    private Sound levelLockedSound = new Sound("/resources/sound_effects/levelLocked.wav");
+    private ImageLoader imageLoader = new ImageLoader();
 
     public LevelSelectMenu(GameCanvas canvas){
-        background = ImageLoader.loadImage("src/resources/UI/levelSelectMenuBackground.png");
+        background = imageLoader.loadImage("/resources/UI/levelSelectMenuBackground.png");
         this.canvas = canvas;
 
         initButtons();
@@ -27,16 +28,16 @@ public class LevelSelectMenu {
 
     private void initButtons(){
         levelOneButton = new Button((GameCanvas.WIDTH - 248)/2, GameCanvas.HEIGHT / 2 - 150, 248, 120
-                , ImageLoader.loadImage("src/resources/UI/level1.png"), ImageLoader.loadImage("src/resources/UI/level1Hovered.png"));
+                , imageLoader.loadImage("/resources/UI/level1.png"), imageLoader.loadImage("/resources/UI/level1Hovered.png"));
 
         levelTwoButton = new Button((GameCanvas.WIDTH - 248)/2, GameCanvas.HEIGHT / 2, 248, 120
-                , ImageLoader.loadImage("src/resources/UI/level2.png"), ImageLoader.loadImage("src/resources/UI/level2Hovered.png"));
+                , imageLoader.loadImage("/resources/UI/level2.png"), imageLoader.loadImage("/resources/UI/level2Hovered.png"));
 
         levelThreeButton = new Button((GameCanvas.WIDTH - 248)/2, GameCanvas.HEIGHT / 2 + 150, 248, 120
-                , ImageLoader.loadImage("src/resources/UI/level3.png"), ImageLoader.loadImage("src/resources/UI/level3Hovered.png"));
+                , imageLoader.loadImage("/resources/UI/level3.png"), imageLoader.loadImage("/resources/UI/level3Hovered.png"));
 
         backButton = new Button(20, GameCanvas.HEIGHT - 80, 124, 60
-                                , ImageLoader.loadImage("src/resources/UI/backButton.png"), ImageLoader.loadImage("src/resources/UI/backButtonHovered.png"));
+                                , imageLoader.loadImage("/resources/UI/backButton.png"), imageLoader.loadImage("/resources/UI/backButtonHovered.png"));
 
         updateButtons();
 
@@ -52,53 +53,53 @@ public class LevelSelectMenu {
     public void updateButtons(){
         if(GameCanvas.currentLevelProgress == 1){
             // Level 1 incomplete
-            levelOneButton.setButton(ImageLoader.loadImage("src/resources/UI/level1.png"));
-            levelOneButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level1Hovered.png"));
+            levelOneButton.setButton(imageLoader.loadImage("/resources/UI/level1.png"));
+            levelOneButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level1Hovered.png"));
 
             // Level 2 locked
-            levelTwoButton.setButton(ImageLoader.loadImage("src/resources/UI/level2locked.png"));
-            levelTwoButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level2lockedHovered.png"));
+            levelTwoButton.setButton(imageLoader.loadImage("/resources/UI/level2locked.png"));
+            levelTwoButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level2lockedHovered.png"));
 
             // Level 3 locked
-            levelThreeButton.setButton(ImageLoader.loadImage("src/resources/UI/level3locked.png"));
-            levelThreeButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level3lockedHovered.png"));
+            levelThreeButton.setButton(imageLoader.loadImage("/resources/UI/level3locked.png"));
+            levelThreeButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level3lockedHovered.png"));
         }
         else if(GameCanvas.currentLevelProgress == 2){
             // Level 1 complete
-            levelOneButton.setButton(ImageLoader.loadImage("src/resources/UI/level1complete.png"));
-            levelOneButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level1completeHovered.png"));
+            levelOneButton.setButton(imageLoader.loadImage("/resources/UI/level1complete.png"));
+            levelOneButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level1completeHovered.png"));
 
             // Level 2 incomplete
-            levelTwoButton.setButton(ImageLoader.loadImage("src/resources/UI/level2.png"));
-            levelTwoButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level2Hovered.png"));
+            levelTwoButton.setButton(imageLoader.loadImage("/resources/UI/level2.png"));
+            levelTwoButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level2Hovered.png"));
 
             // Level 3 locked
-            levelThreeButton.setButton(ImageLoader.loadImage("src/resources/UI/level3locked.png"));
-            levelThreeButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level3lockedHovered.png"));
+            levelThreeButton.setButton(imageLoader.loadImage("/resources/UI/level3locked.png"));
+            levelThreeButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level3lockedHovered.png"));
         }
         else if(GameCanvas.currentLevelProgress == 3){
             // Level 1 complete
-            levelOneButton.setButton(ImageLoader.loadImage("src/resources/UI/level1complete.png"));
-            levelOneButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level1completeHovered.png"));
+            levelOneButton.setButton(imageLoader.loadImage("/resources/UI/level1complete.png"));
+            levelOneButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level1completeHovered.png"));
 
             // Level 2 complete
-            levelTwoButton.setButton(ImageLoader.loadImage("src/resources/UI/level2complete.png"));
-            levelTwoButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level2completeHovered.png"));
+            levelTwoButton.setButton(imageLoader.loadImage("/resources/UI/level2complete.png"));
+            levelTwoButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level2completeHovered.png"));
 
             // Level 3 incomplete
-            levelThreeButton.setButton(ImageLoader.loadImage("src/resources/UI/level3.png"));
-            levelThreeButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level3Hovered.png"));
+            levelThreeButton.setButton(imageLoader.loadImage("/resources/UI/level3.png"));
+            levelThreeButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level3Hovered.png"));
         }
         else{
             // All levels completed
-            levelOneButton.setButton(ImageLoader.loadImage("src/resources/UI/level1complete.png"));
-            levelOneButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level1completeHovered.png"));
+            levelOneButton.setButton(imageLoader.loadImage("/resources/UI/level1complete.png"));
+            levelOneButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level1completeHovered.png"));
 
-            levelTwoButton.setButton(ImageLoader.loadImage("src/resources/UI/level2complete.png"));
-            levelTwoButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level2completeHovered.png"));
+            levelTwoButton.setButton(imageLoader.loadImage("/resources/UI/level2complete.png"));
+            levelTwoButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level2completeHovered.png"));
 
-            levelThreeButton.setButton(ImageLoader.loadImage("src/resources/UI/level3complete.png"));
-            levelThreeButton.setButtonHovered(ImageLoader.loadImage("src/resources/UI/level3completeHovered.png"));
+            levelThreeButton.setButton(imageLoader.loadImage("/resources/UI/level3complete.png"));
+            levelThreeButton.setButtonHovered(imageLoader.loadImage("/resources/UI/level3completeHovered.png"));
         }
     }
 
@@ -117,7 +118,7 @@ public class LevelSelectMenu {
             levelOneButton.playClick();
             canvas.stopHomeMusic();
 
-            canvas.loadLevel("src/resources/maps/level1/level1.txt");
+            canvas.loadLevel("/resources/maps/level1/level1.txt");
             GameCanvas.currentLevel = 1;
             GameCanvas.gameState = GameCanvas.GameState.GAME;
         }
@@ -126,7 +127,7 @@ public class LevelSelectMenu {
                 levelTwoButton.playClick();
                 canvas.stopHomeMusic();
 
-                canvas.loadLevel("src/resources/maps/level2/level2.txt");
+                canvas.loadLevel("/resources/maps/level2/level2.txt");
                 GameCanvas.currentLevel = 2;
                 GameCanvas.gameState = GameCanvas.GameState.GAME;
             }
@@ -140,7 +141,7 @@ public class LevelSelectMenu {
                 levelThreeButton.playClick();
                 canvas.stopHomeMusic();
 
-                canvas.loadLevel("src/resources/maps/level1/level1.txt");
+                canvas.loadLevel("/resources/maps/level3/level3.txt");
                 GameCanvas.currentLevel = 3;
                 GameCanvas.gameState = GameCanvas.GameState.GAME;
             }

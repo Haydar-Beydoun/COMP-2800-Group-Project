@@ -12,7 +12,7 @@ public abstract class Enemy extends Entity {
 
     private static int deathCloudHeight;
     private boolean isKilled = false;
-    private Sound deathSound = new Sound("src/resources/sound_effects/enemyDefeat.wav");
+    private Sound deathSound = new Sound("/resources/sound_effects/enemyDefeat.wav");
 
     public Enemy(double worldX, double worldY, int width, int height, int health, int speed){
         super(worldX, worldY,width, height, health, speed);
@@ -21,7 +21,7 @@ public abstract class Enemy extends Entity {
     public void death(){
         deathSound.play();
 
-        spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/enemy-deadth.png",1,4,40,41);
+        spriteSheet = new SpriteSheet("/resources/entities/spritesheets/enemy-deadth.png",1,4,40,41);
         deathAnimator = new Animator(Arrays.copyOfRange(spriteSheet.images ,0, 4), 0 , 8);
         currentAnimator = deathAnimator;
 

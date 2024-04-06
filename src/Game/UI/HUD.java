@@ -29,10 +29,11 @@ public class HUD {
 
 
     File fontFile;
-    FileInputStream fontStream;
+    InputStream fontStream;
     Font customFont;
     GraphicsEnvironment ge;
     private int fontSize = 30;
+    private ImageLoader imageLoader = new ImageLoader();
 
 
     public HUD(Level level, Player player, ArrayList<Collectable> collectableArrayList){
@@ -41,15 +42,15 @@ public class HUD {
         this.maxHealth = player.getHealth();
 
         //1445 x 490
-        this.healthBar = ImageLoader.loadImage("src/resources/UI/healthbar.png");
+        this.healthBar = imageLoader.loadImage("/resources/UI/healthbar.png");
         this.healthBar = ImageLoader.scaleImage(healthBar,1445/5,490/5);
 
 
-        this.cherry = new SpriteSheet("src/resources/entities/spritesheets/cherry.png", 1, 8, 21, 21).images[0];
+        this.cherry = new SpriteSheet("/resources/entities/spritesheets/cherry.png", 1, 8, 21, 21).images[0];
         this.cherry = ImageLoader.scaleImage(cherry,75,75);
 
 
-        this.gem = new SpriteSheet("src/resources/entities/spritesheets/gem.png", 1, 5, 15, 13).images[0];
+        this.gem = new SpriteSheet("/resources/entities/spritesheets/gem.png", 1, 5, 15, 13).images[0];
         this.gem = ImageLoader.scaleImage(gem, 60,60);
 
 
@@ -63,8 +64,8 @@ public class HUD {
 
     private void initResources(){
         try {
-            fontFile = new File("src/resources/font/PixeloidSansBold-PKnYd.ttf");
-            fontStream = new FileInputStream(fontFile);
+            fontFile = new File("/resources/font/PixeloidSansBold-PKnYd.ttf");
+            fontStream = getClass().getResourceAsStream("/resources/font/PixeloidSansBold-PKnYd.ttf");
             customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
             ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(customFont);
@@ -112,19 +113,14 @@ public class HUD {
 
         g2d.drawImage(healthBar, 0, 0, null);
 
-        // Drawing gem count and Cheery Count
-
 
         try {
             g2d.setFont(customFont.deriveFont(24F));
         }
         catch(Exception e){
             e.printStackTrace();
-            //g2d.setFont(new Font("Arial", Font.BOLD));
-
         }
 
-        //g2d.setFont(new Font("Arial", Font.BOLD, customFont));
 
         g2d.setColor(new Color(0, 0, 0));
 

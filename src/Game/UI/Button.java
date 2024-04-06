@@ -14,7 +14,7 @@ public class Button {
     private BufferedImage button;
     private BufferedImage buttonHovered;
     private BufferedImage current;
-    private Sound clickSound = new Sound("src/resources/sound_effects/mouseClick.wav");
+    private Sound clickSound = new Sound("/resources/sound_effects/mouseClick.wav");
 
     public Button(int x, int y, int width, int height, BufferedImage button, BufferedImage buttonHovered){
         this.x = x;

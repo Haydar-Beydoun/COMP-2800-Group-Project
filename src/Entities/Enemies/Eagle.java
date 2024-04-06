@@ -30,7 +30,7 @@ public class Eagle extends Enemy {
         this.endX = endX;
         this.endY = endY;
         this.tilemap = tileMap;
-        this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/eagle-attack.png", 1,4,35, 41);
+        this.spriteSheet = new SpriteSheet("/resources/entities/spritesheets/eagle-attack.png", 1,4,35, 41);
 
         if(endX < startX){
             int temp = endX;

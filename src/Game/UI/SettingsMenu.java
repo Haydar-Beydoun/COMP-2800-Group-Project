@@ -15,9 +15,10 @@ public class SettingsMenu {
     private Button controlsButton;
     private BufferedImage background;
     private GameCanvas canvas;
+    private ImageLoader imageLoader = new ImageLoader();
 
     public SettingsMenu(GameCanvas canvas){
-        background = ImageLoader.loadImage("src/resources/UI/optionMenuBackground.png");
+        background = imageLoader.loadImage("/resources/UI/optionMenuBackground.png");
         this.canvas = canvas;
 
         initButtons();
@@ -25,19 +26,19 @@ public class SettingsMenu {
 
     private void initButtons(){
         fullScreenOnButton = new Button((GameCanvas.WIDTH - 488)/2, GameCanvas.HEIGHT / 2 - 150, 488, 120
-                , ImageLoader.loadImage("src/resources/UI/fullScreenButton.png"), ImageLoader.loadImage("src/resources/UI/fullScreenButtonHovered.png"));
+                , imageLoader.loadImage("/resources/UI/fullScreenButton.png"), imageLoader.loadImage("/resources/UI/fullScreenButtonHovered.png"));
 
         fullScreenOffButton = new Button((GameCanvas.WIDTH - 488)/2, GameCanvas.HEIGHT / 2 - 150, 488, 120
-                , ImageLoader.loadImage("src/resources/UI/fullScreenButtonOff.png"), ImageLoader.loadImage("src/resources/UI/fullScreenButtonOffHovered.png"));
+                , imageLoader.loadImage("/resources/UI/fullScreenButtonOff.png"), imageLoader.loadImage("/resources/UI/fullScreenButtonOffHovered.png"));
 
         newSaveButton = new Button((GameCanvas.WIDTH - 364)/2, GameCanvas.HEIGHT / 2, 364, 120
-                , ImageLoader.loadImage("src/resources/UI/newSave.png"), ImageLoader.loadImage("src/resources/UI/newSaveHovered.png"));
+                , imageLoader.loadImage("/resources/UI/newSave.png"), imageLoader.loadImage("/resources/UI/newSaveHovered.png"));
 
         controlsButton = new Button((GameCanvas.WIDTH - 372)/2, GameCanvas.HEIGHT / 2 + 150, 372, 120
-                , ImageLoader.loadImage("src/resources/UI/controls.png"), ImageLoader.loadImage("src/resources/UI/controlsHovered.png"));
+                , imageLoader.loadImage("/resources/UI/controls.png"), imageLoader.loadImage("/resources/UI/controlsHovered.png"));
 
         backButton = new Button(20, GameCanvas.HEIGHT - 80, 124, 60
-                , ImageLoader.loadImage("src/resources/UI/backButton.png"), ImageLoader.loadImage("src/resources/UI/backButtonHovered.png"));
+                , imageLoader.loadImage("/resources/UI/backButton.png"), imageLoader.loadImage("/resources/UI/backButtonHovered.png"));
 
 
     }

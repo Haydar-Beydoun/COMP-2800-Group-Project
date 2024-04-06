@@ -15,7 +15,7 @@ public class GameWindow {
         gameWindow.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                GameCanvas.save();
+                canvas.save();
             }
         });
 

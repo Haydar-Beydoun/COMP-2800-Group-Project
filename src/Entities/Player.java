@@ -65,9 +65,9 @@ public class Player extends Entity {
     private long hurtDuration = 750_000_000L;
 
     // Sounds
-    private Sound hurtSound = new Sound("src/resources/sound_effects/playerHurt.wav");
-    private Sound deathSound = new Sound("src/resources/sound_effects/death.wav");
-    private Sound jumpSound = new Sound("src/resources/sound_effects/jump.wav");
+    private Sound hurtSound = new Sound("/resources/sound_effects/playerHurt.wav");
+    private Sound deathSound = new Sound("/resources/sound_effects/death.wav");
+    private Sound jumpSound = new Sound("/resources/sound_effects/jump.wav");
 
 
     /**
@@ -77,7 +77,7 @@ public class Player extends Entity {
     public Player(int x,int y, int width,int height, int health, int speed, Tile[][] tileMap){
         super(x, y, width, height, health, speed);
         this.collisionChecker = new CollisionChecker(tileMap);
-        this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/player.png", 6,6,128, 128);
+        this.spriteSheet = new SpriteSheet("/resources/entities/spritesheets/player.png", 6,6,128, 128);
 
         setHitBoxLeftOffset(10);
         setHitBoxRightOffset(8);

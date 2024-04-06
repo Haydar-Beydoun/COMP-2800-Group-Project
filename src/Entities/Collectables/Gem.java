@@ -24,13 +24,13 @@ public class Gem extends Collectable {
     public Gem(double worldX, double worldY) {
         super(worldX, worldY, 64, 64);
 
-        collectSound = new Sound("src/resources/sound_effects/gemCollection.wav");
+        collectSound = new Sound("/resources/sound_effects/gemCollection.wav");
         initCollectable();
     }
 
     @Override
     public void initCollectable(){
-        spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/gem.png", 1, 5, 15, 13);
+        spriteSheet = new SpriteSheet("/resources/entities/spritesheets/gem.png", 1, 5, 15, 13);
         currentAnimator = new Animator(spriteSheet.images, 0, 7);
     }
 

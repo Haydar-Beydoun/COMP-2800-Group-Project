@@ -5,7 +5,7 @@ import Game.GameCanvas;
 import java.io.*;
 
 public class SaveFileManager {
-    private static String saveFilePath = "src/resources/save.txt";
+    private static String saveFilePath = "./save.txt";
 
 
 
@@ -16,11 +16,7 @@ public class SaveFileManager {
         fullscreen (true/false)
         current level
      */
-    public static boolean loadFile(){
-        if(!saveExists()){
-            return false;
-        }
-
+    public boolean loadFile(){
         try {
             BufferedReader reader = new BufferedReader(new FileReader(saveFilePath));
 
@@ -34,15 +30,17 @@ public class SaveFileManager {
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
 
         return true;
 
     }
 
-    public static void saveFile(boolean isFullScreen, int currentLevel){
+    public  void saveFile(boolean isFullScreen, int currentLevel){
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(saveFilePath));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(saveFilePath)));
+
             writer.write("" + isFullScreen);
             writer.write("\n" + currentLevel);
 
@@ -53,9 +51,4 @@ public class SaveFileManager {
         }
     }
 
-    public static boolean saveExists(){
-        File file = new File(saveFilePath);
-
-        return file.exists();
-    }
 }

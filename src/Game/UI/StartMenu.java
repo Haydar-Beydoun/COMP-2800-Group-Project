@@ -12,22 +12,25 @@ public class StartMenu {
     private Button optionMenu;
     private Button quitButton;
     private BufferedImage background;
+    private ImageLoader imageLoader = new ImageLoader();
+    private GameCanvas canvas;
 
-    public StartMenu(){
-        background = ImageLoader.loadImage("src/resources/UI/startMenuBackground.png");
+    public StartMenu(GameCanvas canvas){
+        background = imageLoader.loadImage("/resources/UI/startMenuBackground.png");
+        this.canvas = canvas;
 
         initButtons();
     }
 
     private void initButtons(){
         playButton = new Button((GameCanvas.WIDTH - 248)/2, GameCanvas.HEIGHT / 2 - 150, 248, 120
-                , ImageLoader.loadImage("src/resources/UI/playButton.png"), ImageLoader.loadImage("src/resources/UI/playButtonHovered.png"));
+                , imageLoader.loadImage("/resources/UI/playButton.png"), imageLoader.loadImage("/resources/UI/playButtonHovered.png"));
 
         optionMenu = new Button((GameCanvas.WIDTH - 312)/2, GameCanvas.HEIGHT / 2, 312, 120
-                , ImageLoader.loadImage("src/resources/UI/optionMenu.png"), ImageLoader.loadImage("src/resources/UI/optionMenuHovered.png"));
+                , imageLoader.loadImage("/resources/UI/optionMenu.png"), imageLoader.loadImage("/resources/UI/optionMenuHovered.png"));
 
         quitButton = new Button((GameCanvas.WIDTH - 244)/2, GameCanvas.HEIGHT / 2 + 150, 244, 120
-                , ImageLoader.loadImage("src/resources/UI/quitButton.png"), ImageLoader.loadImage("src/resources/UI/quitButtonHovered.png"));
+                , imageLoader.loadImage("/resources/UI/quitButton.png"), imageLoader.loadImage("/resources/UI/quitButtonHovered.png"));
     }
 
     public void update(){
@@ -54,7 +57,7 @@ public class StartMenu {
         }
         else if(quitButton.isOnButton(point)){
             playButton.playClick();
-            GameCanvas.save();
+            canvas.save();
             System.exit(0);
         }
     }

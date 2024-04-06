@@ -32,7 +32,7 @@ public class Opossum extends Enemy {
         setHitBoxLeftOffset(10);
         setHitBoxRightOffset(10);
 
-        this.spriteSheet = new SpriteSheet("src/resources/entities/spritesheets/oposum.png", 1,6,36, 28);
+        this.spriteSheet = new SpriteSheet("/resources/entities/spritesheets/oposum.png", 1,6,36, 28);
 
         collisionChecker = new CollisionChecker(tileMap);
         initOpossum();

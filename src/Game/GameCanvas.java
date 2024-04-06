@@ -27,8 +27,9 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     public static int currentLevelProgress;
     public static int currentLevel;
     public static boolean isFullScreen;
-    static{
-        if(!SaveFileManager.loadFile()){ // No save file
+    private SaveFileManager saveFileManager = new SaveFileManager();
+    {
+        if(!saveFileManager.loadFile()){ // No save file
             currentLevelProgress = 1;
             isFullScreen = true;
         }
@@ -74,14 +75,14 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     public static Keyboard keyboard = new Keyboard();
     private Camera camera;
     private final PauseMenu pauseMenu = new PauseMenu(this);
-    private final StartMenu startMenu = new StartMenu();
+    private final StartMenu startMenu = new StartMenu(this);
     private final LevelSelectMenu levelSelectMenu = new LevelSelectMenu(this);
     private final SettingsMenu settingsMenu = new SettingsMenu(this);
     private final ControlsMenu controlsMenu = new ControlsMenu();
     private HUD hud;
 
     //Sounds
-    Sound homeMusic = new Sound("src/resources/music/summer nights.wav");
+    Sound homeMusic = new Sound("/resources/music/summer-nights.wav");
 
 
     public GameCanvas(){
@@ -326,7 +327,7 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
     }
 
     public void playHomeMusic(){
-        homeMusic = new Sound("src/resources/music/summer nights.wav");
+        homeMusic = new Sound("/resources/music/summer-nights.wav");
         homeMusic.play();
         homeMusic.loop();
     }
@@ -355,8 +356,8 @@ public class GameCanvas extends Canvas implements Runnable, MouseListener, Mouse
         return level;
     }
 
-    public static void save(){
-        SaveFileManager.saveFile(isFullScreen, currentLevelProgress);
+    public void save(){
+        saveFileManager.saveFile(isFullScreen, currentLevelProgress);
     }
 
     @Override
